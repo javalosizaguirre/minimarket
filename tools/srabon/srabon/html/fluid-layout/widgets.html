@@ -1,0 +1,1463 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SRABON - Responsive, Touch Friendly Admin Template</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Admin Panel Template">
+<meta name="author" content="Westilian: Kamrujaman Shohel">
+<!-- styles -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/jquery-ui-1.8.16.custom.css" rel="stylesheet">
+<link href="css/jquery.jqplot.css" rel="stylesheet">
+<link href="css/prettify.css" rel="stylesheet">
+<link href="css/elfinder.min.css" rel="stylesheet">
+<link href="css/elfinder.theme.css" rel="stylesheet">
+<link href="css/fullcalendar.css" rel="stylesheet">
+<link href="js/plupupload/jquery.plupload.queue/css/jquery.plupload.queue.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/icons-sprite.css" rel="stylesheet">
+<link id="themes" href="css/themes.css" rel="stylesheet">
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" href="css/ie/ie7.css" />
+<![endif]-->
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="css/ie/ie8.css" />
+<![endif]-->
+<!--[if IE 9]>
+<link rel="stylesheet" type="text/css" href="css/ie/ie9.css" />
+<![endif]-->
+<!--fav and touch icons -->
+<link rel="shortcut icon" href="ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+<!-- Shared on MafiaShare.net  --><!-- Shared on MafiaShare.net  --></head>
+<body>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner top-nav">
+    <div class="container-fluid">
+      <div class="branding">
+        <div class="logo"> <a href="index.html"><img src="img/logo.png" width="168" height="40" alt="Logo"></a> </div>
+      </div>
+      <ul class="nav pull-right">
+        <li class="dropdown search-responsive"><a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="nav-icon magnifying_glass"></i><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li class="top-search">
+              <form action="#" method="get">
+                <div class="input-prepend"> <span class="add-on"><i class="icon-search"></i></span>
+                  <input type="text" id="searchIcon">
+                </div>
+              </form>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="lang-icons"><img src="img/flag-icons/us.png" width="16" height="11" alt="language"></i><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><i class="lang-icons"><img src="img/flag-icons/gb.png" width="16" height="11" alt="language"></i> English UK</a></li>
+            <li><a href="#"><i class="lang-icons"><img src="img/flag-icons/fr.png" width="16" height="11" alt="language"></i> French</a></li>
+            <li><a href="#"><i class="lang-icons"><img src="img/flag-icons/sa.png" width="16" height="11" alt="language"></i> Arabic</a></li>
+            <li><a href="#"><i class="lang-icons"><img src="img/flag-icons/it.png" width="16" height="11" alt="language"></i> Italian</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Anthony <span class="alert-noty">25</span><i class="white-icons admin_user"></i><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><i class="icon-inbox"></i> Inbox <span class="alert-noty">10</span></a></li>
+            <li><a href="#"><i class="icon-envelope"></i> Notifications <span class="alert-noty">15</span></a></li>
+            <li><a href="#"><i class="icon-briefcase"></i> My Account</a></li>
+            <li><a href="#"><i class="icon-file"></i> View Profile</a></li>
+            <li><a href="#"><i class="icon-pencil"></i> Edit Profile</a></li>
+            <li><a href="#"><i class="icon-cog"></i> Account Settings</a></li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="icon-off"></i><strong> Logout</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+      <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="nav-icon list"></i> Forms <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="form-elements.html">All Form Elements</a></li>
+              <li><a href="extendable-forms.html">Extendable Form</a></li>
+              <li><a href="form-stepy.html">Stepy Forms</a></li>
+              <li><a href="form-validation.html">Form Validation</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="nav-icon cup"></i> Features<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="table-default.html">Basic Table</a></li>
+              <li><a href="typography.html">Typography</a></li>
+              <li><a href="widgets.html">Widgets</a></li>
+              <li><a href="grid.html">Grid</a></li>
+              <li class=" divider"></li>
+              <li><a href="login.html">Login Page</a></li>
+              <li><a href="login2.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Another Login Page</a></li>
+              <li class=" divider"></li>
+              <li class="nav-header">UI Elements</li>
+              <li><a href="button-icons.html">Buttons &amp; Icons</a></li>
+              <li><a href="ui-elements.html">All UI Elements</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="nav-icon shuffle"></i> Others <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="table.html">Data Table</a></li>
+              <li><a href="chart.html">Chart and Graph</a></li>
+              <li><a href="file-explorer.html">File Manager</a></li>
+              <li><a href="calendar.html">Full Calendar</a></li>
+              <li><a href="colorbox.html">Colorbox</a></li>
+              <li class=" divider"></li>
+              <li class=" nav-header">More Pages</li>
+              <li><a href="inbox.html">Message Box</a></li>
+              <li><a href="content.html">Content Post</a></li>
+              <li><a href="forgot-pass.html">Forgot Password Page</a></li>
+              <li><a href="error.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Error Page</a></li>
+              <li><a href="another-error-page.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Another Error Page</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="nav-icon cog_3"></i> Themes Settings<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="nav-header">Colors</li>
+              <li class=" clearfix color-block"><span class="theme-color theme-blue" title="theme-blue"></span><span class="theme-color theme-light-blue" title="theme-light-blue"></span><span class="theme-color theme-dark" title="theme-dark"></span><span class="theme-color theme-chrome" title="theme-chrome"></span><span class="theme-color theme-chayam" title="theme-chayam"></span><span class="theme-color theme-default" title="theme-default"></span></li>
+              <li class=" divider hidden-phone hidden-tablet"></li>
+              <li class="nav-header hidden-phone hidden-tablet">Sidebar</li>
+              <li class="theme-settings clearfix hidden-phone hidden-tablet">
+                <div class="btn-group">
+                  <button id="sidebar-on" disabled="disabled" class="btn btn-success">On</button>
+                  <button id="sidebar-off" class="btn btn-inverse">Off</button>
+                </div>
+              </li>
+              <li class=" divider"></li>
+              <li class="nav-header hidden-phone hidden-tablet">Sidebar Placement</li>
+              <li class="theme-settings clearfix hidden-phone hidden-tablet">
+                <div class="btn-group">
+                  <button disabled="disabled" id="left-sidebar" class="btn btn-inverse">Left</button>
+                  <button id="right-sidebar" class="btn btn-info">Right</button>
+                </div>
+              </li>
+              <li class="nav-header">Layout</li>
+              
+              <li><a href="../fixed-layout/index.html">Fixed Layout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="sidebar">
+  <ul class="side-nav accordion_mnu collapsible">
+    <li><a href="index.html"><span class="white-icons computer_imac"></span> Dashboard</a></li>
+    <li><a href="#"><span class="white-icons list"></span> Forms</a>
+      <ul class="acitem">
+        <li><a href="form-elements.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>All Form Elements</a></li>
+        <li><a href="extendable-forms.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Extendable Form</a></li>
+        <li><a href="form-stepy.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Stepy Forms</a></li>
+        <li><a href="form-validation.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Form Validation</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><span class="white-icons cup"></span> Features</a>
+      <ul class="acitem">
+        <li><a href="typography.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Typography</a></li>
+        <li><a href="widgets.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Widgets</a></li>
+        <li><a href="grid.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Grid</a></li>
+        <li><a href="button-icons.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Buttons &amp; Icons</a></li>
+        <li><a href="ui-elements.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>All UI Elements</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><span class="white-icons shuffle"></span> Others</a>
+      <ul class="acitem">
+        <li><a href="table.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Data Table</a></li>
+        <li><a href="chart.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Chart and Graph</a></li>
+        <li><a href="file-explorer.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>File Manager</a></li>
+        <li><a href="calendar.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Full Calendar</a></li>
+        <li><a href="colorbox.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Colorbox</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><span class="white-icons documents"></span> Pages</a>
+      <ul class="acitem">
+        <li><a href="inbox.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Message Box</a></li>
+        <li><a href="content.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Content Post</a></li>
+        <li><a href="login.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Login Page</a></li>
+        <li><a href="login2.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Another Login Page</a></li>
+        <li><a href="forgot-pass.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Forgot Password Page</a></li>
+        <li><a href="error.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Error Page</a></li>
+        <li><a href="another-error-page.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Another Error Page</a></li>
+      </ul>
+    </li>
+  </ul>
+  <div id="side-accordion">
+    <div class="accordion-group">
+      <div class="accordion-header"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#side-accordion" href="#collapseOne"><i class="nav-icon month_calendar"></i> Today's event</a> </div>
+      <div id="collapseOne" class="collapse in">
+        <div class="accordion-content">
+          <ul class="event-list">
+            <li>
+              <div class="evnt-date"> 31<span>July</span> </div>
+              <div class="event-info"> <span><i class="icon-time"></i> 12:25 PM</span>
+                <p> Anim pariatur cliche repreh enderit, enim eiusmod high life </p>
+              </div>
+            </li>
+            <li>
+              <div class="evnt-date"> 31<span>July</span> </div>
+              <div class="event-info"> <span><i class="icon-time"></i> 2:35 PM</span>
+                <p> Anim pariatur cliche repreh enderit. </p>
+              </div>
+            </li>
+          </ul>
+          <table class="cal">
+            <caption>
+            <span class="prev"><a href="index.html">&laquo;</a></span><span class="next"><a href="index.html">&raquo;</a></span> July 2012
+            </caption>
+            <thead>
+              <tr>
+                <th> Mon </th>
+                <th> Tue </th>
+                <th> Web </th>
+                <th> Thu </th>
+                <th> Fri </th>
+                <th> Sat </th>
+                <th> Sun </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="off"><a href="index.html">26</a></td>
+                <td class="off"><a href="index.html">27</a></td>
+                <td class="off"><a href="index.html">28</a></td>
+                <td class="off"><a href="index.html">29</a></td>
+                <td class="off"><a href="index.html">30</a></td>
+                <td class="off"><a href="index.html">31</a></td>
+                <td><a href="index.html">1</a></td>
+              </tr>
+              <tr>
+                <td><a href="index.html">2</a></td>
+                <td><a href="index.html">3</a></td>
+                <td><a href="index.html">4</a></td>
+                <td><a href="index.html">5</a></td>
+                <td><a href="index.html">6</a></td>
+                <td><a href="index.html">7</a></td>
+                <td><a href="index.html">8</a></td>
+              </tr>
+              <tr>
+                <td><a href="index.html">9</a></td>
+                <td><a href="index.html">10</a></td>
+                <td><a href="index.html">11</a></td>
+                <td><a href="index.html">12</a></td>
+                <td><a href="index.html">13</a></td>
+                <td><a href="index.html">14</a></td>
+                <td><a href="index.html">15</a></td>
+              </tr>
+              <tr>
+                <td><a href="index.html">16</a></td>
+                <td><a href="index.html">17</a></td>
+                <td><a href="index.html">18</a></td>
+                <td><a href="index.html">19</a></td>
+                <td><a href="index.html">20</a></td>
+                <td><a href="index.html">21</a></td>
+                <td><a href="index.html">22</a></td>
+              </tr>
+              <tr>
+                <td><a href="index.html">23</a></td>
+                <td><a href="index.html">24</a></td>
+                <td><a href="index.html">25</a></td>
+                <td><a href="index.html">26</a></td>
+                <td><a href="index.html">27</a></td>
+                <td><a href="index.html">28</a></td>
+                <td><a href="index.html">29</a></td>
+              </tr>
+              <tr>
+                <td><a href="index.html">30</a></td>
+                <td class="active"><a href="index.html">31</a></td>
+                <td class="off"><a href="index.html">1</a></td>
+                <td class="off"><a href="index.html">2</a></td>
+                <td class="off"><a href="index.html">3</a></td>
+                <td class="off"><a href="index.html">4</a></td>
+                <td class="off"><a href="index.html">5</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-group">
+      <div class="accordion-header"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#side-accordion" href="#collapseTwo"><i class=" nav-icon graph"></i> Site Statistics</a> </div>
+      <div id="collapseTwo" class="collapse">
+        <div class="accordion-content">
+          <div class="site-stat">
+            <h5><i class="icon-signal"></i> Visit Rates</h5>
+            <ul>
+              <li>Avarage Traffic<span class="up">35K</span></li>
+              <li>Visitors<span class="down">5%</span></li>
+              <li>Conversation Rate<span class="up">10m</span></li>
+            </ul>
+            <h5><i class="icon-align-left"></i> Unique Visit</h5>
+            <ul>
+              <li>Visit Rate<span class="up">14K </span></li>
+              <li>Bounce Rate<span class="up">10K </span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="new-update">
+    <h2><i class="icon-list-alt"></i> Recent Update</h2>
+    <div class="side-news">
+      <h5><a href="#">Released Ziown Admin</a></h5>
+      <p> ZiOwn is a powerful and clean admin panel template for web entrepreneurs, app developers and site owners as this can be used for the admin part of any web application, web based software's or custom CMS admin panels. It is very easy to use and extremely easy to integrate ... </p>
+    </div>
+    <div class="side-news">
+      <h5><a href="#">Released Bingo Admin</a></h5>
+      <p> Bingo is very powerful high end admin/backend user interface template. You can use it ... </p>
+    </div>
+  </div>
+</div>
+<div id="main-content">
+  <div class="container-fluid">
+    <ul class="breadcrumb">
+      <li><a href="#">Home</a><span class="divider">&raquo;</span></li>
+      <li><a href="#">Library</a><span class="divider">&raquo;</span></li>
+      <li class="active">Data</li>
+    </ul>
+    <div class="page-header">
+      <h1>Dashboard Icons (Black Set)</h1>
+    </div>
+    <div class="dashboard-widget">
+      <div class="row-fluid">
+        <div class="span2">
+          <div class="dashboard-wid-wrap">
+            <div class="dashboard-wid-content"> <a href="#"> <i class="dashboard-icons computer_imac_blk"></i> <span class="dasboard-icon-title">Dashboard</span> </a> </div>
+          </div>
+        </div>
+        <div class="span2">
+          <div class="dashboard-wid-wrap">
+            <div class="dashboard-wid-content"> <a href="#"> <i class="dashboard-icons cog_2_blk"></i> <span class="dasboard-icon-title">Settings</span> </a> </div>
+          </div>
+        </div>
+        <div class="span2">
+          <div class="dashboard-wid-wrap">
+            <div class="dashboard-wid-content"> <a href="#"> <i class="dashboard-icons users_blk"></i> <span class="dasboard-icon-title">Users Lits</span> </a> </div>
+          </div>
+        </div>
+        <div class="span2">
+          <div class="dashboard-wid-wrap">
+            <div class="dashboard-wid-content"> <a href="#"> <i class="dashboard-icons graph_blk"></i> <span class="dasboard-icon-title">Statistics</span> </a> </div>
+          </div>
+        </div>
+        <div class="span2">
+          <div class="dashboard-wid-wrap">
+            <div class="dashboard-wid-content"> <a href="#"> <i class="dashboard-icons documents_blk"></i> <span class="dasboard-icon-title">Content</span> </a> </div>
+          </div>
+        </div>
+        <div class="span2">
+          <div class="dashboard-wid-wrap">
+            <div class="dashboard-wid-content"> <a href="#"> <i class="dashboard-icons help_blk"></i> <span class="dasboard-icon-title">Suport</span> </a> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-header">
+      <h1>Dashboard Icons (Color Set)</h1>
+    </div>
+    <div class="dashboard-widget">
+      <div class="row-fluid">
+        <div class="span2">
+          <div class="dashboard-wid-wrap">
+            <div class="dashboard-wid-content"> <a href="#"> <i class="dashboard-icons-colors graphic_design_sl"></i> <span class="dasboard-icon-title">Dashboard</span> </a> </div>
+          </div>
+        </div>
+        <div class="span2">
+          <div class="dashboard-wid-wrap">
+            <div class="dashboard-wid-content"> <a href="#"> <i class="dashboard-icons-colors settings_sl"></i> <span class="dasboard-icon-title">Settings</span> </a> </div>
+          </div>
+        </div>
+        <div class="span2">
+          <div class="dashboard-wid-wrap">
+            <div class="dashboard-wid-content"> <a href="#"> <i class="dashboard-icons-colors customers_sl"></i> <span class="dasboard-icon-title">Users Lits</span> </a> </div>
+          </div>
+        </div>
+        <div class="span2">
+          <div class="dashboard-wid-wrap">
+            <div class="dashboard-wid-content"> <a href="#"> <i class="dashboard-icons-colors current_work_sl"></i> <span class="dasboard-icon-title">Statistics</span> </a> </div>
+          </div>
+        </div>
+        <div class="span2">
+          <div class="dashboard-wid-wrap">
+            <div class="dashboard-wid-content"> <a href="#"> <i class="dashboard-icons-colors archives_sl"></i> <span class="dasboard-icon-title">Content</span> </a> </div>
+          </div>
+        </div>
+        <div class="span2">
+          <div class="dashboard-wid-wrap">
+            <div class="dashboard-wid-content"> <a href="#"> <i class="dashboard-icons-colors lightbulb_sl"></i> <span class="dasboard-icon-title">Suport</span> </a> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-header">
+      <h1>Dashboard Icons (Color Set - Non grid)</h1>
+    </div>
+    <div class="row-fluid">
+      <div class="switch-board">
+        <ul class="clearfix">
+          <li><a href="#"><span class="srabon-sprite customers_sl"></span><span class="widget-link">All User</span></a></li>
+          <li><a href="#"><span class="srabon-sprite lightbulb_sl"></span><span class="widget-link">Support Tickets</span></a></li>
+          <li><a href="#"><span class="srabon-sprite config_sl"></span><span class="widget-link">Settings</span></a></li>
+          <li><a href="#"><span class="srabon-sprite star_sl"></span><span class="widget-link">Favourites</span></a></li>
+          <li><a href="#"><span class="srabon-sprite statistics_sl"></span><span class="widget-link">statistics </span></a></li>
+          <li><a href="#"><span class="srabon-sprite administrative_docs_sl"></span><span class="widget-link">Invoice</span></a></li>
+          <li><a href="#"><span class="srabon-sprite business_contact_sl"></span><span class="widget-link">Media</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="page-header">
+      <h1>Mini Chart Widgets</h1>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">
+        <div class="board-stats">
+          <div class="statistics-wrap">
+            <div class="statistics-block">
+              <div class="stat-chart line-chart">200,300,500,200,300,500,1000</div>
+              <div class="stat-info">Sparklines - Line Chart</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="span2">
+        <div class="board-stats">
+          <div class="statistics-wrap">
+            <div class="statistics-block">
+              <div class="stat-chart pie-chart">1,2,3</div>
+              <div class="stat-info">Sparklines - Pie Chart</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="span2">
+        <div class="board-stats">
+          <div class="statistics-wrap">
+            <div class="statistics-block">
+              <div class="stat-chart bar-chart">5,6,7,2,0,-4,-2,4</div>
+              <div class="stat-info">Sparklines -  Bar Chart</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="span2">
+        <div class="board-stats">
+          <div class="statistics-wrap">
+            <div class="statistics-block">
+              <div class="stat-chart bar-chart">0:2,2:4,4:2,4:1,0:2,2:4,4:2,4:1</div>
+              <div class="stat-info">Composite Bar Chart</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="span2">
+        <div class="board-stats">
+          <div class="statistics-wrap">
+            <div class="statistics-block">
+              <div class="stat-chart composite-line">8,4,0,0,0,0,1,4,4,10,10,10,10,0,0,0,4,6,5,9,10</div>
+              <div class="stat-info">Composite Line Chart</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="span2">
+        <div class="board-stats">
+          <div class="statistics-wrap">
+            <div class="statistics-block">
+              <div class="stat-chart composite-bar">5,6,7,2,0,-4,-2,4</div>
+              <div class="stat-info">Composite Bar Chart</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-header">
+      <h1>Non Boxy Widgets</h1>
+    </div>
+    <div class="row-fluid">
+      <div class="span6 ">
+        <div class="nonboxy-widget">
+          <div class="widget-head">
+            <h5><i class="black-icons day_calendar"></i> Calendar</h5>
+          </div>
+          <div class="widget-content">
+            <div class="widget-box">
+              <div id="calendar-widget"> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="span6 ">
+        <div class="nonboxy-widget">
+          <div class="widget-head">
+            <h5><i class="black-icons  documents"></i> Recent Post</h5>
+          </div>
+          <div class="widget-content">
+            <div class="widget-searchbox">
+              <ul>
+                <li class="row-counts">Total Post: 30</li>
+                <li class="right">
+                  <form action="#" method="get">
+                    <div class="input-prepend"> <span class="add-on"><i class="icon-search"></i></span>
+                      <input type="text" id="inputIcon" class="span2">
+                    </div>
+                  </form>
+                </li>
+              </ul>
+            </div>
+            <div class="widget-box">
+              <table class="table post-tbl table-striped">
+                <thead>
+                  <tr>
+                    <th> Details </th>
+                    <th> Status </th>
+                    <th class="center"> Action </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><ul>
+                        <li>Title: <a href="#">IE7 and IE8 support for CSS3...</a></li>
+                        <li class="post-by"><i class="icon-small-black user_sc"></i> Posted By: <a href="#">Jhon Marker</a></li>
+                        <li class="post-date"><i class="icon-small-black alarm_clock_sc"></i> Posted Date: <a href="#">13th June 2012</a></li>
+                      </ul></td>
+                    <td><span class="label label-important">Pending</span></td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Details</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Post</a></li>
+                          <li><a href="#"><i class="icon-trash"></i> Remove Post</a></li>
+                          <li><a href="#"><i class="icon-ok"></i> Publish Post</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td><ul>
+                        <li>Title: <a href="#">IE7 and IE8 support for CSS3...</a></li>
+                        <li class="post-by"><i class="icon-small-black user_sc"></i> Posted By: <a href="#">Jhon Marker</a></li>
+                        <li class="post-date"><i class="icon-small-black alarm_clock_sc"></i> Posted Date: <a href="#">13th June 2012</a></li>
+                      </ul></td>
+                    <td><span class="label label-important">Pending</span></td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Details</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Post</a></li>
+                          <li><a href="#"><i class="icon-trash"></i> Remove Post</a></li>
+                          <li><a href="#"><i class="icon-ok"></i> Publish Post</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td><ul>
+                        <li>Title: <a href="#">IE7 and IE8 support for CSS3...</a></li>
+                        <li class="post-by"><i class="icon-small-black user_sc"></i> Posted By: <a href="#">Jhon Marker</a></li>
+                        <li class="post-date"><i class="icon-small-black alarm_clock_sc"></i> Posted Date: <a href="#">13th June 2012</a></li>
+                      </ul></td>
+                    <td><span class="label label-important">Pending</span></td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Details</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Post</a></li>
+                          <li><a href="#"><i class="icon-trash"></i> Remove Post</a></li>
+                          <li><a href="#"><i class="icon-ok"></i> Publish Post</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td><ul>
+                        <li>Title: <a href="#">IE7 and IE8 support for CSS3...</a></li>
+                        <li class="post-by"><i class="icon-small-black user_sc"></i> Posted By: <a href="#">Jhon Marker</a></li>
+                        <li class="post-date"><i class="icon-small-black alarm_clock_sc"></i> Posted Date: <a href="#">13th June 2012</a></li>
+                      </ul></td>
+                    <td><span class="label label-success">Published</span></td>
+                    <td><div class="btn-group pull-right dropup">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Details</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Post</a></li>
+                          <li><a href="#"><i class="icon-trash"></i> Remove Post</a></li>
+                          <li><a href="#"><i class="icon-ok"></i> Publish Post</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="widget-bottom">
+              <div class="pagination">
+                <ul>
+                  <li><a href="#">Prev</a></li>
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">Next</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-header">
+      <h1>Boxy Widgets</h1>
+    </div>
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="widget-block">
+          <div class="widget-head">
+            <h5><i class="black-icons cloud_upload"></i> MULTIPLE fiLES UPLOAD</h5>
+          </div>
+          <div class="widget-content">
+            <div class="widget-box">
+              <div class="white-box ">
+                <form>
+                  <div id="uploader">
+                    <p> You browser doesn't have Flash, Silverlight, Gears, BrowserPlus or HTML5 support. </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="span6 ">
+        <div class="widget-block">
+          <div class="widget-head">
+            <h5><i class="black-icons money"></i> Recent Orders</h5>
+            <div class="widget-control pull-right"> <a href="#" data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="icon-list"></i> View All Orders</a></li>
+                <li><a href="#"><i class="icon-search"></i> Search Orders</a></li>
+                <li><a href="#"><i class="icon-ok"></i> Bulk Approved</a></li>
+                <li><a href="#"><i class="icon-minus-sign"></i> Bulk Cancel</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="widget-content">
+            <div class="widget-selectbox">
+              <ul>
+                <li class="row-counts">Total Orders: 6</li>
+                <li class="right">
+                  <form action="#" method="get">
+                    <div class="input-prepend"> <span class="add-on"><i class="icon-list-alt"></i></span>
+                      <select name="" class="data-select">
+                        <option value="Pending">Pending</option>
+                        <option value="Processing">Processing</option>
+                        <option value="Completed">Completed</option>
+                      </select>
+                    </div>
+                  </form>
+                </li>
+              </ul>
+            </div>
+            <div class="widget-box">
+              <table class="table order-tbl">
+                <thead>
+                  <tr>
+                    <th class="center"> <input type="checkbox" name="checkbox" id="checkbox">
+                    </th>
+                    <th> Order# </th>
+                    <th> Details </th>
+                    <th class="center"> Status </th>
+                    <th class="center"> Price </th>
+                    <th class="center"> Action </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="center"><input type="checkbox" name="checkbox1"></td>
+                    <td> #3201 </td>
+                    <td><a href="#">Pemium Hosting Plan</a></td>
+                    <td><span class="label label-important">Pending</span></td>
+                    <td> $650.50 </td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Order</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Order</a></li>
+                          <li><a href="#"><i class="icon-share-alt"></i> Send Mesage</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#"><i class="icon-minus-sign"></i> Cancel Order</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td class="center"><input type="checkbox" name="checkbox2"></td>
+                    <td> #4586 </td>
+                    <td><a href="#">Regular Hosting</a></td>
+                    <td><span class="label label-important">Pending</span></td>
+                    <td> $56.50 </td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Order</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Order</a></li>
+                          <li><a href="#"><i class="icon-share-alt"></i> Send Mesage</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#"><i class="icon-minus-sign"></i> Cancel Order</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td class="center"><input type="checkbox" name="checkbox3"></td>
+                    <td> #5643 </td>
+                    <td><a href="#">A Premium Theme</a></td>
+                    <td><span class="label label-important">Pending</span></td>
+                    <td> $50.50 </td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Order</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Order</a></li>
+                          <li><a href="#"><i class="icon-share-alt"></i> Send Mesage</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#"><i class="icon-minus-sign"></i> Cancel Order</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td class="center"><input type="checkbox" name="checkbox4"></td>
+                    <td> #6458 </td>
+                    <td><a href="#">One Domain</a></td>
+                    <td><span class="label label-important">Pending</span></td>
+                    <td> $10.50 </td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Order</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Order</a></li>
+                          <li><a href="#"><i class="icon-share-alt"></i> Send Mesage</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#"><i class="icon-minus-sign"></i> Cancel Order</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td class="center"><input type="checkbox" name="checkbox5"></td>
+                    <td> #7896 </td>
+                    <td><a href="#">Platinum Pack</a></td>
+                    <td><span class="label label-important">Pending</span></td>
+                    <td> $98.50 </td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Order</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Order</a></li>
+                          <li><a href="#"><i class="icon-share-alt"></i> Send Mesage</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#"><i class="icon-minus-sign"></i> Cancel Order</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td class="center"><input type="checkbox" name="checkbox6"></td>
+                    <td> #8956 </td>
+                    <td><a href="#">Gold Pack</a></td>
+                    <td><span class="label label-important">Pending</span></td>
+                    <td> $60.50 </td>
+                    <td><div class="btn-group pull-right dropup">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Order</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Order</a></li>
+                          <li><a href="#"><i class="icon-share-alt"></i> Send Mesage</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#"><i class="icon-minus-sign"></i> Cancel Order</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="widget-bottom">
+              <div class="pagination">
+                <ul>
+                  <li><a href="#">Prev</a></li>
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">Next</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="widget-block">
+          <div class="widget-head">
+            <h5><i class="black-icons users"></i> Recent User</h5>
+            <div class="widget-control pull-right"> <a href="#" data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="icon-plus"></i> Add User</a></li>
+                <li><a href="#"><i class="icon-remove"></i> Remove User</a></li>
+                <li><a href="#"><i class="icon-pencil"></i> Edit User</a></li>
+                <li><a href="#"><i class="icon-ok"></i> Approve User</a></li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="icon-heart"></i> Add Favorites</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="widget-content">
+            <div class="widget-searchbox">
+              <ul>
+                <li class="row-counts">Total User: 30</li>
+                <li class="right">
+                  <form action="#" method="get">
+                    <div class="input-prepend"> <span class="add-on"><i class="icon-search"></i></span>
+                      <input type="text" class="span2">
+                    </div>
+                  </form>
+                </li>
+              </ul>
+            </div>
+            <div class="widget-box">
+              <table class="table user-tbl">
+                <thead>
+                  <tr>
+                    <th class="center"> <input type="checkbox" name="checkbox12" class="checkall-user">
+                    </th>
+                    <th class="center"> User </th>
+                    <th> Info </th>
+                    <th> Rated </th>
+                    <th class="center"> Action </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="center tr-user-check"><input type="checkbox" name="checkbox12"></td>
+                    <td class="center"><span class="user-thumb"><img src="img/user-thumb.png" width="40" height="40" alt="User"></span></td>
+                    <td> Jhon Defer Man<span class="user-position">UI Developer</span></td>
+                    <td><div class="star"> </div></td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Details</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Profile</a></li>
+                          <li><a href="#"><i class="icon-trash"></i> Remove User</a></li>
+                          <li><a href="#"><i class="icon-share-alt"></i> Send Mesage</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#"><i class="icon-minus-sign"></i> Suspend User</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td class="center tr-user-check"><input type="checkbox" name="checkbox12"></td>
+                    <td class="center"><span class="user-thumb"><img src="img/user-thumb.png" width="40" height="40" alt="User"></span></td>
+                    <td> Jhon Doe<span class="user-position">Author</span></td>
+                    <td><div class="star"> </div></td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Details</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Profile</a></li>
+                          <li><a href="#"><i class="icon-trash"></i> Remove User</a></li>
+                          <li><a href="#"><i class="icon-share-alt"></i> Send Mesage</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#"><i class="icon-minus-sign"></i> Suspend User</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td class="center tr-user-check"><input type="checkbox" name="checkbox12"></td>
+                    <td class="center"><span class="user-thumb"><img src="img/user-thumb.png" width="40" height="40" alt="User"></span></td>
+                    <td> UI Jaman<span class="user-position">Sr. Softwrae Eng</span></td>
+                    <td><div class="star"> </div></td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Details</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Profile</a></li>
+                          <li><a href="#"><i class="icon-trash"></i> Remove User</a></li>
+                          <li><a href="#"><i class="icon-share-alt"></i> Send Mesage</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#"><i class="icon-minus-sign"></i> Suspend User</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td class="center tr-user-check"><input type="checkbox" name="checkbox12"></td>
+                    <td class="center"><span class="user-thumb"><img src="img/user-thumb.png" width="40" height="40" alt="User"></span></td>
+                    <td> Pipa Wilson<span class="user-position">Project Manager</span></td>
+                    <td><div class="star"> </div></td>
+                    <td><div class="btn-group pull-right dropup">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Details</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Profile</a></li>
+                          <li><a href="#"><i class="icon-trash"></i> Remove User</a></li>
+                          <li><a href="#"><i class="icon-share-alt"></i> Send Mesage</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#"><i class="icon-minus-sign"></i> Suspend User</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="widget-bottom">
+              <div class="pagination">
+                <ul>
+                  <li><a href="#">Prev</a></li>
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">Next</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=" span6">
+        <div class="widget-block">
+          <div class="widget-head">
+            <h5><i class="black-icons graph"></i> Chart</h5>
+          </div>
+          <div class="widget-content">
+            <div class="widget-box">
+              <div id="chart4"> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="accordion-basic" id="list-accordion"> <a class="title">There is one obvious advantage:</a>
+          <div>
+            <p> Ut interdum justo quis mauris malesuada rutrum. Curabitur enim augue, eleifend ac vehicula eget, elementum nec mauris. Aenean aliquam mi turpis. </p>
+          </div>
+          <a class="title">Now that you've got...</a>
+          <div>
+            <p> Donec cursus fermentum mi vel tempus. Integer id dapibus ligula. Nulla facilisi. Quisque molestie dignissim tellus quis euismod. Nulla facilisi. </p>
+          </div>
+          <a class="title last">Rent one bear, ...</a>
+          <div>
+            <p> Mauris est turpis, <a href="#">mollis molestie</a> luctus eu, faucibus sit amet nisl. Nullam ultrices elementum lectus, id porttitor urna scelerisque a. Nullam accumsan pulvinar fermentum. </p>
+          </div>
+        </div>
+      </div>
+      <div class="span6">
+        <div id="accordion-widget" class="accordion boot-accordion">
+          <div class="accordion-group">
+            <div class="accordion-heading"> <a href="#One" data-parent="#accordion-widget" data-toggle="collapse" class="accordion-toggle"> Collapsible Group Item #1 </a> </div>
+            <div class="accordion-body collapse in" id="One">
+              <div class="accordion-inner"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. </div>
+            </div>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-heading"> <a href="#Two" data-parent="#accordion-widget" data-toggle="collapse" class="accordion-toggle"> Collapsible Group Item #2 </a> </div>
+            <div class="accordion-body collapse" id="Two">
+              <div class="accordion-inner"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. </div>
+            </div>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-heading"> <a href="#Three" data-parent="#accordion-widget" data-toggle="collapse" class="accordion-toggle"> Collapsible Group Item #3 </a> </div>
+            <div class="accordion-body collapse" id="Three">
+              <div class="accordion-inner"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span6 ">
+        <div class="widget-block">
+          <div class="widget-head">
+            <h5><i class="black-icons list_images"></i> Task List</h5>
+          </div>
+          <div class="widget-content">
+            <div class="widget-selectbox">
+              <ul>
+                <li class="row-counts">Pending Task: 5</li>
+                <li class="right">
+                  <form action="#" method="get">
+                    <div class="input-prepend"> <span class="add-on"><i class="icon-list-alt"></i></span>
+                      <select name="" class="data-select">
+                        <option value="Done">Done</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Done">Top Priority</option>
+                      </select>
+                    </div>
+                  </form>
+                </li>
+              </ul>
+            </div>
+            <div class="widget-box">
+              <table class="table task-tbl">
+                <thead>
+                  <tr>
+                    <th class="center"> <input type="checkbox" name="checkbox3" id="checkbox3">
+                    </th>
+                    <th> Details </th>
+                    <th> Progress </th>
+                    <th> Status </th>
+                    <th class="center"> Action </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="center"><input type="checkbox" name="checkbox7"></td>
+                    <td><h5>Make Wireframe</h5>
+                      <div> Priority: <span class="label label-warning">Top</span> </div></td>
+                    <td> 100% </td>
+                    <td><span class="label label-success">Done</span></td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Details</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Task</a></li>
+                          <li><a href="#"><i class="icon-trash"></i> Remove Task</a></li>
+                          <li><a href="#"><i class="icon-ok"></i> Mark as Complete</a></li>
+                          <li><a href="#"><i class="icon-hand-right"></i> Assign Others</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td class="center"><input type="checkbox" name="checkbox8"></td>
+                    <td><h5>Make psd design for bingo admin.</h5>
+                      <div> Priority: <span class="label label-warning">Top</span> </div></td>
+                    <td> 80% </td>
+                    <td><span class="label label-important">Pending</span></td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Details</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Task</a></li>
+                          <li><a href="#"><i class="icon-trash"></i> Remove Task</a></li>
+                          <li><a href="#"><i class="icon-ok"></i> Mark as Complete</a></li>
+                          <li><a href="#"><i class="icon-hand-right"></i> Assign Others</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td class="center"><input type="checkbox" name="checkbox9"></td>
+                    <td><h5>Css and Html</h5>
+                      <div> Priority: <span class="label label-warning">Top</span> </div></td>
+                    <td> 0% </td>
+                    <td><span class="label label-important">Pending</span></td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Details</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Task</a></li>
+                          <li><a href="#"><i class="icon-trash"></i> Remove Task</a></li>
+                          <li><a href="#"><i class="icon-ok"></i> Mark as Complete</a></li>
+                          <li><a href="#"><i class="icon-hand-right"></i> Assign Others</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td class="center"><input type="checkbox" name="checkbox10"></td>
+                    <td><h5>jQuery Implimentation</h5>
+                      <div> Priority: <span class="label label-warning">Top</span> </div></td>
+                    <td> 5% </td>
+                    <td><span class="label label-important">Pending</span></td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Details</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Task</a></li>
+                          <li><a href="#"><i class="icon-trash"></i> Remove Task</a></li>
+                          <li><a href="#"><i class="icon-ok"></i> Mark as Complete</a></li>
+                          <li><a href="#"><i class="icon-hand-right"></i> Assign Others</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td class="center"><input type="checkbox" name="checkbox11"></td>
+                    <td><h5>Prepare Manual</h5>
+                      <div> Priority: <span class="label label-warning">Top</span> </div></td>
+                    <td> 10% </td>
+                    <td><span class="label label-important">Pending</span></td>
+                    <td><div class="btn-group pull-right dropup">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Details</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Task</a></li>
+                          <li><a href="#"><i class="icon-trash"></i> Remove Task</a></li>
+                          <li><a href="#"><i class="icon-ok"></i> Mark as Complete</a></li>
+                          <li><a href="#"><i class="icon-hand-right"></i> Assign Others</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="widget-bottom">
+              <div class="pagination">
+                <ul>
+                  <li><a href="#">Prev</a></li>
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">Next</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="span6 ">
+        <div class="widget-block">
+          <div class="widget-head">
+            <h5><i class="black-icons  documents"></i> Recent Post</h5>
+          </div>
+          <div class="widget-content">
+            <div class="widget-searchbox">
+              <ul>
+                <li class="row-counts">Total Post: 30</li>
+                <li class="right">
+                  <form action="#" method="get">
+                    <div class="input-prepend"> <span class="add-on"><i class="icon-search"></i></span>
+                      <input type="text" class="span2">
+                    </div>
+                  </form>
+                </li>
+              </ul>
+            </div>
+            <div class="widget-box">
+              <table class="table post-tbl table-striped">
+                <thead>
+                  <tr>
+                    <th> Details </th>
+                    <th> Status </th>
+                    <th class="center"> Action </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><ul>
+                        <li>Title: <a href="#">IE7 and IE8 support for CSS3...</a></li>
+                        <li class="post-by"><i class="icon-small-black user_sc"></i> Posted By: <a href="#">Jhon Marker</a></li>
+                        <li class="post-date"><i class="icon-small-black alarm_clock_sc"></i> Posted Date: <a href="#">13th June 2012</a></li>
+                      </ul></td>
+                    <td><span class="label label-important">Pending</span></td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Details</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Post</a></li>
+                          <li><a href="#"><i class="icon-trash"></i> Remove Post</a></li>
+                          <li><a href="#"><i class="icon-ok"></i> Publish Post</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td><ul>
+                        <li>Title: <a href="#">IE7 and IE8 support for CSS3...</a></li>
+                        <li class="post-by"><i class="icon-small-black user_sc"></i> Posted By: <a href="#">Jhon Marker</a></li>
+                        <li class="post-date"><i class="icon-small-black alarm_clock_sc"></i> Posted Date: <a href="#">13th June 2012</a></li>
+                      </ul></td>
+                    <td><span class="label label-important">Pending</span></td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Details</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Post</a></li>
+                          <li><a href="#"><i class="icon-trash"></i> Remove Post</a></li>
+                          <li><a href="#"><i class="icon-ok"></i> Publish Post</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td><ul>
+                        <li>Title: <a href="#">IE7 and IE8 support for CSS3...</a></li>
+                        <li class="post-by"><i class="icon-small-black user_sc"></i> Posted By: <a href="#">Jhon Marker</a></li>
+                        <li class="post-date"><i class="icon-small-black alarm_clock_sc"></i> Posted Date: <a href="#">13th June 2012</a></li>
+                      </ul></td>
+                    <td><span class="label label-important">Pending</span></td>
+                    <td><div class="btn-group pull-right">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Details</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Post</a></li>
+                          <li><a href="#"><i class="icon-trash"></i> Remove Post</a></li>
+                          <li><a href="#"><i class="icon-ok"></i> Publish Post</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td><ul>
+                        <li>Title: <a href="#">IE7 and IE8 support for CSS3...</a></li>
+                        <li class="post-by"><i class="icon-small-black user_sc"></i> Posted By: <a href="#">Jhon Marker</a></li>
+                        <li class="post-date"><i class="icon-small-black alarm_clock_sc"></i> Posted Date: <a href="#">13th June 2012</a></li>
+                      </ul></td>
+                    <td><span class="label label-success">Published</span></td>
+                    <td><div class="btn-group pull-right dropup">
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog"></i><span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><i class="icon-file"></i> View Details</a></li>
+                          <li><a href="#"><i class="icon-edit"></i> Edit Post</a></li>
+                          <li><a href="#"><i class="icon-trash"></i> Remove Post</a></li>
+                          <li><a href="#"><i class="icon-ok"></i> Publish Post</a></li>
+                        </ul>
+                      </div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="widget-bottom">
+              <div class="pagination">
+                <ul>
+                  <li><a href="#">Prev</a></li>
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">Next</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-header">
+      <h1>Tab Widgets</h1>
+    </div>
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="box-tab">
+          <div class="tabbable"> 
+            <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#tab1" data-toggle="tab">Section 1</a></li>
+              <li><a href="#tab2" data-toggle="tab">Section 2</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab1">
+                <p> I'm in Section 1. </p>
+              </div>
+              <div class="tab-pane" id="tab2">
+                <p> Howdy, I'm in Section 2. </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="box-tab">
+          <div class="tabbable tabs-below">
+            <div class="tab-content">
+              <div class="tab-pane active" id="A">
+                <p> I'm in Section 1. </p>
+              </div>
+              <div class="tab-pane" id="B">
+                <p> Howdy, I'm in Section 2. </p>
+              </div>
+            </div>
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#A" data-toggle="tab">Section 1</a></li>
+              <li><a href="#B" data-toggle="tab">Section 2</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="box-tab">
+          <div class="tabbable tabs-left"> 
+            <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#C" data-toggle="tab">Section 1</a></li>
+              <li><a href="#D" data-toggle="tab">Section 2</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="C">
+                <p> I'm in Section 1. </p>
+              </div>
+              <div class="tab-pane" id="D">
+                <p> Howdy, I'm in Section 2. </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="box-tab">
+          <div class="tabbable tabs-right"> 
+            <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#E" data-toggle="tab">Section 1</a></li>
+              <li><a href="#F" data-toggle="tab">Section 2</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="E">
+                <p> I'm in Section 1. </p>
+              </div>
+              <div class="tab-pane" id="F">
+                <p> Howdy, I'm in Section 2. </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- javascript
+================================================== --> 
+<!-- Placed at the end of the document so the pages load faster --> 
+<script src="js/jquery.js"></script> 
+<script src="js/jquery-ui-1.8.16.custom.min.js"></script> 
+<script src="js/jquery.ui.touch-punch.js"></script> 
+<script src="js/bootstrap.js"></script> 
+<script src="js/prettify.js"></script> 
+<script src="js/jquery.sparkline.min.js"></script> 
+<script src="js/jquery.nicescroll.min.js"></script> 
+<script src="js/accordion.jquery.js"></script> 
+<script src="js/smart-wizard.jquery.js"></script> 
+<script src="js/vaidation.jquery.js"></script> 
+<script src="js/jquery-dynamic-form.js"></script> 
+<script src="js/fullcalendar.js"></script> 
+<script src="js/raty.jquery.js"></script> 
+<script src="js/jquery.noty.js"></script> 
+<script src="js/jquery.cleditor.min.js"></script> 
+<script src="js/data-table.jquery.js"></script> 
+<script src="js/TableTools.min.js"></script> 
+<script src="js/ColVis.min.js"></script> 
+<script src="js/plupload.full.js"></script> 
+<script src="js/elfinder/elfinder.min.js"></script> 
+<script src="js/chosen.jquery.js"></script> 
+<script src="js/uniform.jquery.js"></script> 
+<script src="js/jquery.tagsinput.js"></script> 
+<script src="js/jquery.colorbox-min.js"></script> 
+<script src="js/check-all.jquery.js"></script> 
+<script src="js/inputmask.jquery.js"></script> 
+<script src="http://bp.yahooapis.com/2.4.21/browserplus-min.js"></script> 
+<script src="js/plupupload/jquery.plupload.queue/jquery.plupload.queue.js"></script> 
+<script src="js/excanvas.min.js"></script> 
+<script src="js/jquery.jqplot.min.js"></script> 
+<script src="js/chart/jqplot.highlighter.min.js"></script> 
+<script src="js/chart/jqplot.cursor.min.js"></script> 
+<script src="js/chart/jqplot.barRenderer.min.js"></script> 
+<script src="js/chart/jqplot.pointLabels.min.js"></script> 
+<script src="js/chart/jqplot.dateAxisRenderer.min.js"></script> 
+<script src="js/chart/jqplot.pieRenderer.min.js"></script> 
+<script src="js/chart/jqplot.donutRenderer.min.js"></script> 
+<script src="js/chart/jqplot.categoryAxisRenderer.min.js"></script> 
+<script src="js/chart/jqplot.logAxisRenderer.min.js"></script> 
+<script src="js/chart/jqplot.canvasTextRenderer.min.js"></script> 
+<script src="js/chart/jqplot.canvasAxisTickRenderer.min.js"></script> 
+<script src="js/custom-script.js"></script> 
+<!-- html5.js for IE less than 9 --> 
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]--> 
+<script>
+	$(function() {
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		$('#calendar-widget').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			buttonText: {
+			prev: 'Prev',
+			next: 'Next',
+			today: 'Today',
+			month: 'Month',
+			week: 'Week',
+			day: 'Day'
+		},
+			editable: true,
+			events: [
+				{
+					title: 'All Day Event',
+					start: new Date(y, m, 1)
+				},
+				{
+					title: 'Long Event',
+					start: new Date(y, m, d-5),
+					end: new Date(y, m, d-2)
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: new Date(y, m, d-3, 16, 0),
+					allDay: false
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: new Date(y, m, d+4, 16, 0),
+					allDay: false
+				},
+				{
+					title: 'Meeting',
+					start: new Date(y, m, d, 10, 30),
+					allDay: false
+				},
+				{
+					title: 'Lunch',
+					start: new Date(y, m, d, 12, 0),
+					end: new Date(y, m, d, 14, 0),
+					allDay: false
+				},
+				{
+					title: 'Birthday Party',
+					start: new Date(y, m, d+1, 19, 0),
+					end: new Date(y, m, d+1, 22, 30),
+					allDay: false
+				},
+				{
+					title: 'Click for Google',
+					start: new Date(y, m, 28),
+					end: new Date(y, m, 29),
+					url: 'http://google.com/'
+				}
+			]
+		});
+	});
+	$(function(){
+  plot2 = jQuery.jqplot('chart4',
+    [[['Verwerkende industrie', 9],['Retail', 0], ['Primaire producent', 0],
+    ['Out of home', 0],['Groothandel', 0], ['Grondstof', 0], ['Consument', 3], ['Bewerkende industrie', 2]]],
+    {
+      title: ' ',
+      seriesDefaults: {
+        shadow: false,
+        renderer: jQuery.jqplot.PieRenderer,
+        rendererOptions: {
+          startAngle: 180,
+          sliceMargin: 4,
+          showDataLabels: true }
+      },
+	grid: {
+            background: '#fff',
+            drawBorder: false,
+            shadow: false,
+            gridLineColor: '#ccc',
+            gridLineWidth: 1
+        },
+      legend: { show:true, location: 'w' }
+    }
+  );
+});
+</script> 
+<script src="js/respond.min.js"></script>
+<script src="js/ios-orientationchange-fix.js"></script>
+</body>
+</html>

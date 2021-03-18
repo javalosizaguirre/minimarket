@@ -1,0 +1,1326 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SRABON - Responsive, Touch Friendly Admin Template</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Admin Panel Template">
+<meta name="author" content="Westilian: Kamrujaman Shohel">
+<!-- styles -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/jquery-ui-1.8.16.custom.css" rel="stylesheet">
+<link href="css/jquery.jqplot.css" rel="stylesheet">
+<link href="css/prettify.css" rel="stylesheet">
+<link href="css/elfinder.min.css" rel="stylesheet">
+<link href="css/elfinder.theme.css" rel="stylesheet">
+<link href="css/fullcalendar.css" rel="stylesheet">
+<link href="js/plupupload/jquery.plupload.queue/css/jquery.plupload.queue.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/icons-sprite.css" rel="stylesheet">
+<link id="themes" href="css/themes.css" rel="stylesheet">
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" href="css/ie/ie7.css" />
+<![endif]-->
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="css/ie/ie8.css" />
+<![endif]-->
+<!--[if IE 9]>
+<link rel="stylesheet" type="text/css" href="css/ie/ie9.css" />
+<![endif]-->
+<!--fav and touch icons -->
+<link rel="shortcut icon" href="ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+<!-- Shared on MafiaShare.net  --><!-- Shared on MafiaShare.net  --></head>
+<body>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner top-nav">
+    <div class="container">
+      <div class="branding">
+        <div class="logo"> <a href="index.html"><img src="img/logo.png" width="168" height="40" alt="Logo"></a> </div>
+      </div>
+      <ul class="nav pull-right">
+        <li class="dropdown search-responsive"><a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="nav-icon magnifying_glass"></i><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li class="top-search">
+              <form action="#" method="get">
+                <div class="input-prepend"> <span class="add-on"><i class="icon-search"></i></span>
+                  <input type="text" id="searchIcon">
+                </div>
+              </form>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="lang-icons"><img src="img/flag-icons/us.png" width="16" height="11" alt="language"></i><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><i class="lang-icons"><img src="img/flag-icons/gb.png" width="16" height="11" alt="language"></i> English UK</a></li>
+            <li><a href="#"><i class="lang-icons"><img src="img/flag-icons/fr.png" width="16" height="11" alt="language"></i> French</a></li>
+            <li><a href="#"><i class="lang-icons"><img src="img/flag-icons/sa.png" width="16" height="11" alt="language"></i> Arabic</a></li>
+            <li><a href="#"><i class="lang-icons"><img src="img/flag-icons/it.png" width="16" height="11" alt="language"></i> Italian</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Anthony <span class="alert-noty">25</span><i class="white-icons admin_user"></i><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><i class="icon-inbox"></i> Inbox <span class="alert-noty">10</span></a></li>
+            <li><a href="#"><i class="icon-envelope"></i> Notifications <span class="alert-noty">15</span></a></li>
+            <li><a href="#"><i class="icon-briefcase"></i> My Account</a></li>
+            <li><a href="#"><i class="icon-file"></i> View Profile</a></li>
+            <li><a href="#"><i class="icon-pencil"></i> Edit Profile</a></li>
+            <li><a href="#"><i class="icon-cog"></i> Account Settings</a></li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="icon-off"></i><strong> Logout</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+      <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="nav-icon list"></i> Forms <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="form-elements.html">All Form Elements</a></li>
+              <li><a href="extendable-forms.html">Extendable Form</a></li>
+              <li><a href="form-stepy.html">Stepy Forms</a></li>
+              <li><a href="form-validation.html">Form Validation</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="nav-icon cup"></i> Features<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="table-default.html">Basic Table</a></li>
+              <li><a href="typography.html">Typography</a></li>
+              <li><a href="widgets.html">Widgets</a></li>
+              <li><a href="grid.html">Grid</a></li>
+              <li class=" divider"></li>
+              <li><a href="login.html">Login Page</a></li>
+              <li><a href="login2.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Another Login Page</a></li>
+              <li class=" divider"></li>
+              <li class="nav-header">UI Elements</li>
+              <li><a href="button-icons.html">Buttons &amp; Icons</a></li>
+              <li><a href="ui-elements.html">All UI Elements</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="nav-icon shuffle"></i> Others <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="table.html">Data Table</a></li>
+              <li><a href="chart.html">Chart and Graph</a></li>
+              <li><a href="file-explorer.html">File Manager</a></li>
+              <li><a href="calendar.html">Full Calendar</a></li>
+              <li><a href="colorbox.html">Colorbox</a></li>
+              <li class=" divider"></li>
+              <li class=" nav-header">More Pages</li>
+              <li><a href="inbox.html">Message Box</a></li>
+              <li><a href="content.html">Content Post</a></li>
+              <li><a href="forgot-pass.html">Forgot Password Page</a></li>
+              <li><a href="error.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Error Page</a></li>
+              <li><a href="another-error-page.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Another Error Page</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="nav-icon cog_3"></i> Themes Settings<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="nav-header">Colors</li>
+              <li class=" clearfix color-block"><span class="theme-color theme-blue" title="theme-blue"></span><span class="theme-color theme-light-blue" title="theme-light-blue"></span><span class="theme-color theme-dark" title="theme-dark"></span><span class="theme-color theme-chrome" title="theme-chrome"></span><span class="theme-color theme-chayam" title="theme-chayam"></span><span class="theme-color theme-default" title="theme-default"></span></li>
+              <li class="nav-header">Layout</li>
+              <li><a href="../fluid-layout/index.html">Fluid, Liquid, Responsive</a></li>
+              
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="sidebar">
+  <ul class="side-nav accordion_mnu collapsible">
+    <li><a href="index.html"><span class="white-icons computer_imac"></span> Dashboard</a></li>
+    <li><a href="#"><span class="white-icons list"></span> Forms</a>
+      <ul class="acitem">
+        <li><a href="form-elements.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>All Form Elements</a></li>
+        <li><a href="extendable-forms.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Extendable Form</a></li>
+        <li><a href="form-stepy.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Stepy Forms</a></li>
+        <li><a href="form-validation.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Form Validation</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><span class="white-icons cup"></span> Features</a>
+      <ul class="acitem">
+        <li><a href="typography.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Typography</a></li>
+        <li><a href="widgets.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Widgets</a></li>
+        <li><a href="grid.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Grid</a></li>
+        <li><a href="button-icons.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Buttons &amp; Icons</a></li>
+        <li><a href="ui-elements.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>All UI Elements</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><span class="white-icons shuffle"></span> Others</a>
+      <ul class="acitem">
+        <li><a href="table.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Data Table</a></li>
+        <li><a href="chart.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Chart and Graph</a></li>
+        <li><a href="file-explorer.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>File Manager</a></li>
+        <li><a href="calendar.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Full Calendar</a></li>
+        <li><a href="colorbox.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Colorbox</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><span class="white-icons documents"></span> Pages</a>
+      <ul class="acitem">
+        <li><a href="inbox.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Message Box</a></li>
+        <li><a href="content.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Content Post</a></li>
+        <li><a href="login.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Login Page</a></li>
+        <li><a href="login2.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Another Login Page</a></li>
+        <li><a href="forgot-pass.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Forgot Password Page</a></li>
+        <li><a href="error.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Error Page</a></li>
+        <li><a href="another-error-page.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Another Error Page</a></li>
+      </ul>
+    </li>
+  </ul>
+  <div id="side-accordion">
+    <div class="accordion-group">
+      <div class="accordion-header"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#side-accordion" href="#collapseOne"><i class="nav-icon month_calendar"></i> Today's event</a> </div>
+      <div id="collapseOne" class="collapse in">
+        <div class="accordion-content">
+          <ul class="event-list">
+            <li>
+              <div class="evnt-date"> 31<span>July</span> </div>
+              <div class="event-info"> <span><i class="icon-time"></i> 12:25 PM</span>
+                <p> Anim pariatur cliche repreh enderit, enim eiusmod high life </p>
+              </div>
+            </li>
+            <li>
+              <div class="evnt-date"> 31<span>July</span> </div>
+              <div class="event-info"> <span><i class="icon-time"></i> 2:35 PM</span>
+                <p> Anim pariatur cliche repreh enderit. </p>
+              </div>
+            </li>
+          </ul>
+          <table class="cal">
+            <caption>
+            <span class="prev"><a href="index.html">&laquo;</a></span><span class="next"><a href="index.html">&raquo;</a></span> July 2012
+            </caption>
+            <thead>
+              <tr>
+                <th> Mon </th>
+                <th> Tue </th>
+                <th> Web </th>
+                <th> Thu </th>
+                <th> Fri </th>
+                <th> Sat </th>
+                <th> Sun </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="off"><a href="index.html">26</a></td>
+                <td class="off"><a href="index.html">27</a></td>
+                <td class="off"><a href="index.html">28</a></td>
+                <td class="off"><a href="index.html">29</a></td>
+                <td class="off"><a href="index.html">30</a></td>
+                <td class="off"><a href="index.html">31</a></td>
+                <td><a href="index.html">1</a></td>
+              </tr>
+              <tr>
+                <td><a href="index.html">2</a></td>
+                <td><a href="index.html">3</a></td>
+                <td><a href="index.html">4</a></td>
+                <td><a href="index.html">5</a></td>
+                <td><a href="index.html">6</a></td>
+                <td><a href="index.html">7</a></td>
+                <td><a href="index.html">8</a></td>
+              </tr>
+              <tr>
+                <td><a href="index.html">9</a></td>
+                <td><a href="index.html">10</a></td>
+                <td><a href="index.html">11</a></td>
+                <td><a href="index.html">12</a></td>
+                <td><a href="index.html">13</a></td>
+                <td><a href="index.html">14</a></td>
+                <td><a href="index.html">15</a></td>
+              </tr>
+              <tr>
+                <td><a href="index.html">16</a></td>
+                <td><a href="index.html">17</a></td>
+                <td><a href="index.html">18</a></td>
+                <td><a href="index.html">19</a></td>
+                <td><a href="index.html">20</a></td>
+                <td><a href="index.html">21</a></td>
+                <td><a href="index.html">22</a></td>
+              </tr>
+              <tr>
+                <td><a href="index.html">23</a></td>
+                <td><a href="index.html">24</a></td>
+                <td><a href="index.html">25</a></td>
+                <td><a href="index.html">26</a></td>
+                <td><a href="index.html">27</a></td>
+                <td><a href="index.html">28</a></td>
+                <td><a href="index.html">29</a></td>
+              </tr>
+              <tr>
+                <td><a href="index.html">30</a></td>
+                <td class="active"><a href="index.html">31</a></td>
+                <td class="off"><a href="index.html">1</a></td>
+                <td class="off"><a href="index.html">2</a></td>
+                <td class="off"><a href="index.html">3</a></td>
+                <td class="off"><a href="index.html">4</a></td>
+                <td class="off"><a href="index.html">5</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-group">
+      <div class="accordion-header"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#side-accordion" href="#collapseTwo"><i class=" nav-icon graph"></i> Site Statistics</a> </div>
+      <div id="collapseTwo" class="collapse">
+        <div class="accordion-content">
+          <div class="site-stat">
+            <h5><i class="icon-signal"></i> Visit Rates</h5>
+            <ul>
+              <li>Avarage Traffic<span class="up">35K</span></li>
+              <li>Visitors<span class="down">5%</span></li>
+              <li>Conversation Rate<span class="up">10m</span></li>
+            </ul>
+            <h5><i class="icon-align-left"></i> Unique Visit</h5>
+            <ul>
+              <li>Visit Rate<span class="up">14K </span></li>
+              <li>Bounce Rate<span class="up">10K </span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="new-update">
+    <h2><i class="icon-list-alt"></i> Recent Update</h2>
+    <div class="side-news">
+      <h5><a href="#">Released Ziown Admin</a></h5>
+      <p> ZiOwn is a powerful and clean admin panel template for web entrepreneurs, app developers and site owners as this can be used for the admin part of any web application, web based software's or custom CMS admin panels. It is very easy to use and extremely easy to integrate ... </p>
+    </div>
+    <div class="side-news">
+      <h5><a href="#">Released Bingo Admin</a></h5>
+      <p> Bingo is very powerful high end admin/backend user interface template. You can use it ... </p>
+    </div>
+  </div>
+</div>
+<div id="main-content">
+	<div class="container">
+		<ul class="breadcrumb">
+			<li><a href="#">Home</a><span class="divider">&raquo;</span></li>
+			<li><a href="#">Library</a><span class="divider">&raquo;</span></li>
+			<li class="active">Data</li>
+		</ul>
+		<div class="row">
+			<div class="span7">
+				<div class="nonboxy-widget">
+					<div class="widget-head">
+						<h5> Form Elements</h5>
+					</div>
+					<div class="widget-content">
+						<div class="widget-box">
+							<form class="form-horizontal well">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label" for="input01">Text input</label>
+										<div class="controls">
+											<input type="text" class="input-xlarge text-tip" id="input01" title="first tooltip">
+											<p class="help-block">
+												 In addition to freeform text, any HTML5 text-based input appears like so.
+											</p>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="typehead">Auto Complete</label>
+										<div class="controls">
+											<input type="text" class="span8" data-provide="typeahead" data-items="5" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]' id="typehead">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="input02">Password Input</label>
+										<div class="controls">
+											<input type="password" class="input-xlarge" id="input02"/>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Uneditable input</label>
+										<div class="controls">
+											<span class="input-xlarge uneditable-input">Some value here</span>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="input04">Disable Input</label>
+										<div class="controls">
+											<input type="text" class="input-xlarge disabled" disabled="disabled" placeholder="Disabled input here…" id="input04">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Checkbox</label>
+										<div class="controls">
+											<label class="checkbox">
+											<input type="checkbox" value="option1">
+											Option one</label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Disabled checkbox</label>
+										<div class="controls">
+											<label class="checkbox">
+											<input type="checkbox" disabled="" value="option1">
+											This is a disabled checkbox </label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Inline checkboxes</label>
+										<div class="controls">
+											<label class="checkbox inline">
+											<input type="checkbox" value="option1">
+											1 </label>
+											<label class="checkbox inline">
+											<input type="checkbox" value="option2">
+											2 </label>
+											<label class="checkbox inline">
+											<input type="checkbox" value="option3">
+											3 </label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Checkboxes</label>
+										<div class="controls">
+											<label class="checkbox">
+											<input type="checkbox" value="option1" name="optionsCheckboxList1">
+											Option one</label>
+											<label class="checkbox">
+											<input type="checkbox" value="option2" name="optionsCheckboxList2">
+											Option two</label>
+											<label class="checkbox">
+											<input type="checkbox" value="option3" name="optionsCheckboxList3">
+											Option three</label>
+											<p class="help-block">
+												<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
+											</p>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Radio buttons</label>
+										<div class="controls">
+											<label class="radio">
+											<input type="radio" checked="" value="option1" name="optionsRadios">
+											Option one</label>
+											<label class="radio">
+											<input type="radio" value="option2" name="optionsRadios">
+											Option two</label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Select list</label>
+										<div class="controls">
+											<select>
+												<option>something</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
+											</select>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Multicon-select</label>
+										<div class="controls">
+											<select multiple="multiple">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
+											</select>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">File input</label>
+										<div class="controls">
+											<input class="input-file" type="file">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Textarea</label>
+										<div class="controls">
+											<textarea class="input-xlarge" rows="3"></textarea>
+										</div>
+									</div>
+									<div class="form-actions">
+										<button type="submit" class="btn btn-info">Save changes</button>
+										<button class="btn btn-warning">Cancel</button>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="span5">
+				<div class="nonboxy-widget">
+					<div class="widget-head">
+						<h5> Left Label Uppercase</h5>
+					</div>
+					<div class="widget-content">
+						<div class="widget-box">
+							<form class="form-horizontal well ucase">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label" for="input205">Text input</label>
+										<div class="controls">
+											<input type="text" class="input-medium text-tip" id="input205" title="first tooltip">
+											<p class="help-block">
+												 In addition to freeform text, any HTML5 text-based input appears like so.
+											</p>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+					<div class="widget-head">
+						<h5>Top Label</h5>
+					</div>
+					<div class="widget-content">
+						<div class="widget-box">
+							<form class="well">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label" for="input101">Text input</label>
+										<div class="controls">
+											<input type="text" class="input-xlarge text-tip" id="input101" title="first tooltip">
+											<p class="help-block">
+												 In addition to freeform text, any HTML5 text-based input appears like so.
+											</p>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="input102">Password Input</label>
+										<div class="controls">
+											<input type="password" class="input-xlarge" id="input102"/>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Uneditable input</label>
+										<div class="controls">
+											<span class="input-xlarge uneditable-input">Some value here</span>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="input103">Disable Input</label>
+										<div class="controls">
+											<input type="text" class="input-xlarge disabled" disabled="disabled" placeholder="Disabled input here…" id="input103">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Disabled checkbox</label>
+										<div class="controls">
+											<label class="checkbox">
+											<input type="checkbox" disabled="" value="option1">
+											This is a disabled checkbox </label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Inline checkboxes</label>
+										<div class="controls">
+											<label class="checkbox inline">
+											<input type="checkbox" value="option1">
+											1 </label>
+											<label class="checkbox inline">
+											<input type="checkbox" value="option2">
+											2 </label>
+											<label class="checkbox inline">
+											<input type="checkbox" value="option3">
+											3 </label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Checkboxes</label>
+										<div class="controls">
+											<label class="checkbox">
+											<input type="checkbox" value="option1" name="optionsCheckboxList1">
+											Option one</label>
+											<label class="checkbox">
+											<input type="checkbox" value="option2" name="optionsCheckboxList2">
+											Option two</label>
+											<p class="help-block">
+												<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
+											</p>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+					<div class="widget-head">
+						<h5> Top Label Uppercase</h5>
+					</div>
+					<div class="widget-content">
+						<div class="widget-box">
+							<form class=" well ucase">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label" for="input201">Text input</label>
+										<div class="controls">
+											<input type="text" class="input-xlarge text-tip" id="input201" title="first tooltip">
+											<p class="help-block">
+												 In addition to freeform text, any HTML5 text-based input appears like so.
+											</p>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+					<div class="widget-head">
+						<h5> Inline Form</h5>
+					</div>
+					<div class="widget-content">
+						<div class="widget-box">
+							<form class="well form-inline">
+								<input type="text" class="input-small" placeholder="Email">
+								<input type="password" class="input-small" placeholder="Password">
+								<button type="submit" class="btn">Sign in</button>
+								<label class="checkbox">
+								<input type="checkbox">
+								Remember me </label>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="page-header">
+			<h1>Extended Form Elements <small>used some cool plugins</small></h1>
+		</div>
+		<div class="row">
+			<div class="span6">
+				<div class="nonboxy-widget">
+					<div class="widget-head">
+						<h5> Select Box</h5>
+					</div>
+					<div class="widget-content">
+						<div class="widget-box">
+							<form class="form-horizontal well ucase">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label" for="input02">Multiplee Seletct</label>
+										<div class="controls">
+											<select data-placeholder="Your Favorite Football Team" class="chzn-select" multiple tabindex="15" style=" width:300px">
+												<option value=""></option>
+												<optgroup label="NFC EAST">
+												<option>Dallas Cowboys</option>
+												<option>New York Giants</option>
+												<option>Philadelphia Eagles</option>
+												<option>Washington Redskins</option>
+												</optgroup>
+												<optgroup label="NFC NORTH">
+												<option>Chicago Bears</option>
+												<option>Detroit Lions</option>
+												<option>Green Bay Packers</option>
+												<option>Minnesota Vikings</option>
+												</optgroup>
+												<optgroup label="NFC SOUTH">
+												<option>Atlanta Falcons</option>
+												<option>Carolina Panthers</option>
+												<option>New Orleans Saints</option>
+												<option>Tampa Bay Buccaneers</option>
+												</optgroup>
+												<optgroup label="NFC WEST">
+												<option>Arizona Cardinals</option>
+												<option>St. Louis Rams</option>
+												<option>San Francisco 49ers</option>
+												<option>Seattle Seahawks</option>
+												</optgroup>
+												<optgroup label="AFC EAST">
+												<option>Buffalo Bills</option>
+												<option>Miami Dolphins</option>
+												<option>New England Patriots</option>
+												<option>New York Jets</option>
+												</optgroup>
+												<optgroup label="AFC NORTH">
+												<option>Baltimore Ravens</option>
+												<option>Cincinnati Bengals</option>
+												<option>Cleveland Browns</option>
+												<option>Pittsburgh Steelers</option>
+												</optgroup>
+												<optgroup label="AFC SOUTH">
+												<option>Houston Texans</option>
+												<option>Indianapolis Colts</option>
+												<option>Jacksonville Jaguars</option>
+												<option>Tennessee Titans</option>
+												</optgroup>
+												<optgroup label="AFC WEST">
+												<option>Denver Broncos</option>
+												<option>Kansas City Chiefs</option>
+												<option>Oakland Raiders</option>
+												<option>San Diego Chargers</option>
+												</optgroup>
+											</select>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Select</label>
+										<div class="controls">
+											<select data-placeholder="Your Favorite Football Team" style=" width:300px" class="chzn-select" tabindex="13">
+												<option value=""></option>
+												<optgroup label="NFC EAST">
+												<option>Dallas Cowboys</option>
+												<option>New York Giants</option>
+												<option>Philadelphia Eagles</option>
+												<option>Washington Redskins</option>
+												</optgroup>
+												<optgroup label="NFC NORTH">
+												<option>Chicago Bears</option>
+												<option>Detroit Lions</option>
+												<option>Green Bay Packers</option>
+												<option>Minnesota Vikings</option>
+												</optgroup>
+												<optgroup label="NFC SOUTH">
+												<option>Atlanta Falcons</option>
+												<option>Carolina Panthers</option>
+												<option>New Orleans Saints</option>
+												<option>Tampa Bay Buccaneers</option>
+												</optgroup>
+												<optgroup label="NFC WEST">
+												<option>Arizona Cardinals</option>
+												<option>St. Louis Rams</option>
+												<option>San Francisco 49ers</option>
+												<option>Seattle Seahawks</option>
+												</optgroup>
+												<optgroup label="AFC EAST">
+												<option>Buffalo Bills</option>
+												<option>Miami Dolphins</option>
+												<option>New England Patriots</option>
+												<option>New York Jets</option>
+												</optgroup>
+												<optgroup label="AFC NORTH">
+												<option>Baltimore Ravens</option>
+												<option>Cincinnati Bengals</option>
+												<option>Cleveland Browns</option>
+												<option>Pittsburgh Steelers</option>
+												</optgroup>
+												<optgroup label="AFC SOUTH">
+												<option>Houston Texans</option>
+												<option>Indianapolis Colts</option>
+												<option>Jacksonville Jaguars</option>
+												<option>Tennessee Titans</option>
+												</optgroup>
+												<optgroup label="AFC WEST">
+												<option>Denver Broncos</option>
+												<option>Kansas City Chiefs</option>
+												<option>Oakland Raiders</option>
+												<option>San Diego Chargers</option>
+												</optgroup>
+											</select>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="nonboxy-widget">
+					<div class="widget-head">
+						<h5> Sexy Checkbox, radio uniform</h5>
+					</div>
+					<div class="widget-content">
+						<div class="widget-box">
+							<form class="form-horizontal well ucase">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label">Checkbox</label>
+										<div class="controls">
+											<label class="checkbox">
+											<input class="checkbox-b" type="checkbox" value="option1">
+											Option one</label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Disabled checkbox</label>
+										<div class="controls">
+											<label class="checkbox">
+											<input class="checkbox-b" type="checkbox" disabled="" value="option1">
+											This is a disabled checkbox </label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Inline checkboxes</label>
+										<div class="controls">
+											<label class="checkbox inline">
+											<input class="checkbox-b" type="checkbox" value="option1">
+											1 </label>
+											<label class="checkbox inline">
+											<input class="checkbox-b" type="checkbox" value="option2">
+											2 </label>
+											<label class="checkbox inline">
+											<input class="checkbox-b" type="checkbox" value="option3">
+											3 </label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Checkboxes</label>
+										<div class="controls">
+											<label class="checkbox">
+											<input class="checkbox-b" type="checkbox" value="option1" name="optionsCheckboxList1">
+											Option one</label>
+											<label class="checkbox">
+											<input class="checkbox-b" type="checkbox" value="option2" name="optionsCheckboxList2">
+											Option two</label>
+											<label class="checkbox">
+											<input class="checkbox-b" type="checkbox" value="option3" name="optionsCheckboxList3">
+											Option three</label>
+											<p class="help-block">
+												<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
+											</p>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Radio buttons</label>
+										<div class="controls">
+											<label class="radio">
+											<input class="radio-b" type="radio" checked="" value="option1" name="optionsRadios">
+											Option one</label>
+											<label class="radio">
+											<input class="radio-b" type="radio" value="option2" name="optionsRadios">
+											Option two</label>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="span6">
+				<div class="nonboxy-widget">
+					<div class="widget-head">
+						<h5> Tags Input</h5>
+					</div>
+					<div class="widget-content">
+						<div class="widget-box">
+							<form class="form-horizontal well ucase">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label" for="input02">Tags</label>
+										<div class="controls">
+											<input id="tags_1" type="text" class="tags" value="foo,bar,baz,roffle"/>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="nonboxy-widget">
+					<div class="widget-head">
+						<h5> Input Mask</h5>
+					</div>
+					<div class="widget-content">
+						<div class="widget-box">
+							<form class="form-horizontal well ucase">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label" for="input01">Date</label>
+										<div class="controls">
+											<input name="date" type="text" id="date"/>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Phone</label>
+										<div class="controls">
+											<input name="phone" type="text" id="phone"/>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Tin</label>
+										<div class="controls">
+											<input name="tin" type="text" id="tin"/>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="typehead">ssn</label>
+										<div class="controls">
+											<input name="ssn" type="text" id="ssn"/>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="nonboxy-widget">
+					<div class="widget-head">
+						<h5> File input Uniform</h5>
+					</div>
+					<div class="widget-content">
+						<div class="widget-box">
+							<form class="form-horizontal well ucase">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label">File input</label>
+										<div class="controls">
+											<input class="input-file" type="file">
+										</div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span12">
+				<div class="nonboxy-widget">
+					<div class="widget-head">
+						<h5> FOrm Grid and alternate size form elements</h5>
+					</div>
+					<div class="widget-content">
+						<div class="widget-box">
+							<form class="form-horizontal well">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label">Form grid sizes</label>
+										<div class="controls multiline-input">
+											<input type="text" placeholder=".span1" class="span1">
+											<input type="text" placeholder=".span2" class="span2">
+											<input type="text" placeholder=".span3" class="span3">
+											<select class="span1">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
+											</select>
+											<select class="span2">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
+											</select>
+											<select class="span3">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
+											</select>
+											<p class="help-block">
+												 Use the same <code>.span*</code> classes from the grid system for input sizes.
+											</p>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Alternate sizes</label>
+										<div class="controls">
+											<input type="text" placeholder=".input-mini" class="input-mini">
+											<input type="text" placeholder=".input-small" class="input-small">
+											<input type="text" placeholder=".input-medium" class="input-medium">
+											<p class="help-block">
+												 You may also use static classes that don't map to the grid, adapt to the responsive CSS styles, or account for varying types of controls (e.g., <code>input</code> vs. <code>select</code>).
+											</p>
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="prependedInput" class="control-label">Prepended text</label>
+										<div class="controls">
+											<div class="input-prepend">
+												<span class="add-on">@</span>
+												<input type="text" size="16" id="prependedInput" class="span8">
+											</div>
+											<p class="help-block">
+												 Here's some help text
+											</p>
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="appendedInput" class="control-label">Appended text</label>
+										<div class="controls">
+											<div class="input-append">
+												<input type="text" size="16" id="appendedInput" class="span8">
+												<span class="add-on margin-fix">.00</span>
+											</div>
+											<span class="help-inline">Here's more help text</span>
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="appendedPrependedInput" class="control-label">Append and prepend</label>
+										<div class="controls">
+											<div class="input-prepend input-append">
+												<span class="add-on">$</span>
+												<input type="text" size="16" id="appendedPrependedInput" class="span8">
+												<span class="add-on">.00</span>
+											</div>
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="appendedInputButton" class="control-label">Append with button</label>
+										<div class="controls">
+											<div class="input-append">
+												<input type="text" size="16" id="appendedInputButton" class="span8">
+												<button type="button" class="btn margin-fix">Go!</button>
+											</div>
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="appendedInputButtons" class="control-label">Two-button append</label>
+										<div class="controls">
+											<div class="input-append">
+												<input type="text" size="16" id="appendedInputButtons" class="span5">
+												<button type="button" class="btn margin-fix">Search</button>
+												<button type="button" class="btn margin-fix">Options</button>
+											</div>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Inline checkboxes</label>
+										<div class="controls">
+											<label class="checkbox inline">
+											<input type="checkbox" value="option1">
+											1 </label>
+											<label class="checkbox inline">
+											<input type="checkbox" value="option2">
+											2 </label>
+											<label class="checkbox inline">
+											<input type="checkbox" value="option3">
+											3 </label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Checkboxes</label>
+										<div class="controls">
+											<label class="checkbox">
+											<input type="checkbox" value="option1" name="optionsCheckboxList1">
+											Option one</label>
+											<label class="checkbox">
+											<input type="checkbox" value="option2" name="optionsCheckboxList2">
+											Option two</label>
+											<label class="checkbox">
+											<input type="checkbox" value="option3" name="optionsCheckboxList3">
+											Option three</label>
+											<p class="help-block">
+												<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
+											</p>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Radio buttons</label>
+										<div class="controls">
+											<label class="radio">
+											<input type="radio" checked="" value="option1" name="optionsRadios">
+											Option one</label>
+											<label class="radio">
+											<input type="radio" value="option2" name="optionsRadios">
+											Option two</label>
+										</div>
+									</div>
+									<div class="form-actions">
+										<button class="btn btn-primary" type="submit">Save changes</button>
+										<button class="btn">Cancel</button>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="page-header">
+			<h1>Form Elements <small>This is forms example with boxy widget</small></h1>
+		</div>
+		<div class="row">
+			<div class="span7">
+				<div class="widget-block">
+					<div class="widget-head">
+						<h5> Form ELements</h5>
+					</div>
+					<div class="widget-content">
+						<div class="widget-box">
+							<form class="form-horizontal well white-box">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label" for="input501">Text input</label>
+										<div class="controls">
+											<input type="text" class="input-xlarge text-tip" id="input501" title="first tooltip">
+											<p class="help-block">
+												 In addition to freeform text, any HTML5 text-based input appears like so.
+											</p>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="input502">Password Input</label>
+										<div class="controls">
+											<input type="password" class="input-xlarge" id="input502"/>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Uneditable input</label>
+										<div class="controls">
+											<span class="input-xlarge uneditable-input">Some value here</span>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="input504">Disable Input</label>
+										<div class="controls">
+											<input type="text" class="input-xlarge disabled" disabled="disabled" placeholder="Disabled input here…" id="input504">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Checkbox</label>
+										<div class="controls">
+											<label class="checkbox">
+											<input type="checkbox" value="option1">
+											Option one</label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Disabled checkbox</label>
+										<div class="controls">
+											<label class="checkbox">
+											<input type="checkbox" disabled="" value="option1">
+											This is a disabled checkbox </label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Inline checkboxes</label>
+										<div class="controls">
+											<label class="checkbox inline">
+											<input type="checkbox" value="option1">
+											1 </label>
+											<label class="checkbox inline">
+											<input type="checkbox" value="option2">
+											2 </label>
+											<label class="checkbox inline">
+											<input type="checkbox" value="option3">
+											3 </label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Checkboxes</label>
+										<div class="controls">
+											<label class="checkbox">
+											<input type="checkbox" value="option1" name="optionsCheckboxList1">
+											Option one</label>
+											<label class="checkbox">
+											<input type="checkbox" value="option2" name="optionsCheckboxList2">
+											Option two</label>
+											<label class="checkbox">
+											<input type="checkbox" value="option3" name="optionsCheckboxList3">
+											Option three</label>
+											<p class="help-block">
+												<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
+											</p>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Select list</label>
+										<div class="controls">
+											<select>
+												<option>something</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
+											</select>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Multicon-select</label>
+										<div class="controls">
+											<select multiple="multiple">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
+											</select>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">File input</label>
+										<div class="controls">
+											<input class="input-file" type="file">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Textarea</label>
+										<div class="controls">
+											<textarea class="input-xlarge" rows="3"></textarea>
+										</div>
+									</div>
+									<div class="form-actions">
+										<button type="submit" class="btn btn-primary">Save changes</button>
+										<button class="btn">Cancel</button>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="span5">
+				<div class="widget-block">
+					<div class="widget-head">
+						<h5> Top Label form</h5>
+					</div>
+					<div class="widget-content">
+						<div class="widget-box">
+							<form class="well white-box">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label" for="input801">Text input</label>
+										<div class="controls">
+											<input type="text" class="input-xlarge text-tip" id="input801" title="first tooltip">
+											<p class="help-block">
+												 In addition to freeform text, any HTML5 text-based input appears like so.
+											</p>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Checkbox</label>
+										<div class="controls">
+											<label class="checkbox">
+											<input type="checkbox" value="option1">
+											Option one</label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Disabled checkbox</label>
+										<div class="controls">
+											<label class="checkbox">
+											<input type="checkbox" disabled="" value="option1">
+											This is a disabled checkbox </label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Inline checkboxes</label>
+										<div class="controls">
+											<label class="checkbox inline">
+											<input type="checkbox" value="option1">
+											1 </label>
+											<label class="checkbox inline">
+											<input type="checkbox" value="option2">
+											2 </label>
+											<label class="checkbox inline">
+											<input type="checkbox" value="option3">
+											3 </label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Checkboxes</label>
+										<div class="controls">
+											<label class="checkbox">
+											<input type="checkbox" value="option1" name="optionsCheckboxList1">
+											Option one</label>
+											<label class="checkbox">
+											<input type="checkbox" value="option2" name="optionsCheckboxList2">
+											Option two</label>
+											<label class="checkbox">
+											<input type="checkbox" value="option3" name="optionsCheckboxList3">
+											Option three</label>
+											<p class="help-block">
+												<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
+											</p>
+										</div>
+									</div>
+									<div class="form-actions">
+										<button type="submit" class="btn btn-primary">Save changes</button>
+										<button class="btn">Cancel</button>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="widget-block">
+					<div class="widget-head">
+						<h5> Left Label Uppercase</h5>
+					</div>
+					<div class="widget-content">
+						<div class="widget-box">
+							<form class=" form-horizontal well white-box ucase">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label">Text input</label>
+										<div class="controls">
+											<input type="text" class=" input-medium text-tip" title="first tooltip">
+											<p class="help-block">
+												 In addition to freeform text, any HTML5 text-based input appears like so.
+											</p>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="widget-block">
+					<div class="widget-head">
+						<h5> Top Label Uppercase</h5>
+					</div>
+					<div class="widget-content">
+						<div class="widget-box">
+							<form class=" well white-box ucase">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label">Text input</label>
+										<div class="controls">
+											<input type="text" class="input-xlarge text-tip" title="first tooltip">
+											<p class="help-block">
+												 In addition to freeform text, any HTML5 text-based input appears like so.
+											</p>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui-1.8.16.custom.min.js"></script>
+<script src="js/jquery.ui.touch-punch.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/prettify.js"></script>
+<script src="js/jquery.sparkline.min.js"></script>
+<script src="js/jquery.nicescroll.min.js"></script>
+<script src="js/accordion.jquery.js"></script>
+<script src="js/smart-wizard.jquery.js"></script>
+<script src="js/vaidation.jquery.js"></script>
+<script src="js/jquery-dynamic-form.js"></script>
+<script src="js/fullcalendar.js"></script>
+<script src="js/raty.jquery.js"></script>
+<script src="js/jquery.noty.js"></script>
+<script src="js/jquery.cleditor.min.js"></script>
+<script src="js/data-table.jquery.js"></script>
+<script src="js/TableTools.min.js"></script>
+<script src="js/ColVis.min.js"></script>
+<script src="js/plupload.full.js"></script>
+<script src="js/elfinder/elfinder.min.js"></script>
+<script src="js/chosen.jquery.js"></script>
+<script src="js/uniform.jquery.js"></script>
+<script src="js/jquery.tagsinput.js"></script>
+<script src="js/jquery.colorbox-min.js"></script>
+<script src="js/check-all.jquery.js"></script>
+<script src="js/inputmask.jquery.js"></script>
+<script src="http://bp.yahooapis.com/2.4.21/browserplus-min.js"></script>
+<script src="js/plupupload/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+<script src="js/excanvas.min.js"></script>
+<script src="js/jquery.jqplot.min.js"></script>
+<script src="js/chart/jqplot.highlighter.min.js"></script>
+<script src="js/chart/jqplot.cursor.min.js"></script>
+<script src="js/chart/jqplot.dateAxisRenderer.min.js"></script>
+<script src="js/custom-script.js"></script>
+<!-- html5.js for IE less than 9 -->
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script src="js/respond.min.js"></script>
+<script src="js/ios-orientationchange-fix.js"></script>
+</body>
+</html>

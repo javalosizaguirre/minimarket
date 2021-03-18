@@ -1,0 +1,819 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SRABON - Responsive, Touch Friendly Admin Template</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Admin Panel Template">
+<meta name="author" content="Westilian: Kamrujaman Shohel">
+<!-- styles -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/jquery-ui-1.8.16.custom.css" rel="stylesheet">
+<link href="css/jquery.jqplot.css" rel="stylesheet">
+<link href="css/prettify.css" rel="stylesheet">
+<link href="css/elfinder.min.css" rel="stylesheet">
+<link href="css/elfinder.theme.css" rel="stylesheet">
+<link href="css/fullcalendar.css" rel="stylesheet">
+<link href="js/plupupload/jquery.plupload.queue/css/jquery.plupload.queue.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/icons-sprite.css" rel="stylesheet">
+<link id="themes" href="css/themes.css" rel="stylesheet">
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" href="css/ie/ie7.css" />
+<![endif]-->
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="css/ie/ie8.css" />
+<![endif]-->
+<!--[if IE 9]>
+<link rel="stylesheet" type="text/css" href="css/ie/ie9.css" />
+<![endif]-->
+<!--fav and touch icons -->
+<link rel="shortcut icon" href="ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+<!-- Shared on MafiaShare.net  --><!-- Shared on MafiaShare.net  --></head>
+<body>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner top-nav">
+    <div class="container-fluid">
+      <div class="branding">
+        <div class="logo"> <a href="index.html"><img src="img/logo.png" width="168" height="40" alt="Logo"></a> </div>
+      </div>
+      <ul class="nav pull-right">
+        <li class="dropdown search-responsive"><a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="nav-icon magnifying_glass"></i><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li class="top-search">
+              <form action="#" method="get">
+                <div class="input-prepend"> <span class="add-on"><i class="icon-search"></i></span>
+                  <input type="text" id="searchIcon">
+                </div>
+              </form>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="lang-icons"><img src="img/flag-icons/us.png" width="16" height="11" alt="language"></i><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><i class="lang-icons"><img src="img/flag-icons/gb.png" width="16" height="11" alt="language"></i> English UK</a></li>
+            <li><a href="#"><i class="lang-icons"><img src="img/flag-icons/fr.png" width="16" height="11" alt="language"></i> French</a></li>
+            <li><a href="#"><i class="lang-icons"><img src="img/flag-icons/sa.png" width="16" height="11" alt="language"></i> Arabic</a></li>
+            <li><a href="#"><i class="lang-icons"><img src="img/flag-icons/it.png" width="16" height="11" alt="language"></i> Italian</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Anthony <span class="alert-noty">25</span><i class="white-icons admin_user"></i><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><i class="icon-inbox"></i> Inbox <span class="alert-noty">10</span></a></li>
+            <li><a href="#"><i class="icon-envelope"></i> Notifications <span class="alert-noty">15</span></a></li>
+            <li><a href="#"><i class="icon-briefcase"></i> My Account</a></li>
+            <li><a href="#"><i class="icon-file"></i> View Profile</a></li>
+            <li><a href="#"><i class="icon-pencil"></i> Edit Profile</a></li>
+            <li><a href="#"><i class="icon-cog"></i> Account Settings</a></li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="icon-off"></i><strong> Logout</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+      <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="nav-icon list"></i> Forms <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="form-elements.html">All Form Elements</a></li>
+              <li><a href="extendable-forms.html">Extendable Form</a></li>
+              <li><a href="form-stepy.html">Stepy Forms</a></li>
+              <li><a href="form-validation.html">Form Validation</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="nav-icon cup"></i> Features<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="table-default.html">Basic Table</a></li>
+              <li><a href="typography.html">Typography</a></li>
+              <li><a href="widgets.html">Widgets</a></li>
+              <li><a href="grid.html">Grid</a></li>
+              <li class=" divider"></li>
+              <li><a href="login.html">Login Page</a></li>
+              <li><a href="login2.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Another Login Page</a></li>
+              <li class=" divider"></li>
+              <li class="nav-header">UI Elements</li>
+              <li><a href="button-icons.html">Buttons &amp; Icons</a></li>
+              <li><a href="ui-elements.html">All UI Elements</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="nav-icon shuffle"></i> Others <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="table.html">Data Table</a></li>
+              <li><a href="chart.html">Chart and Graph</a></li>
+              <li><a href="file-explorer.html">File Manager</a></li>
+              <li><a href="calendar.html">Full Calendar</a></li>
+              <li><a href="colorbox.html">Colorbox</a></li>
+              <li class=" divider"></li>
+              <li class=" nav-header">More Pages</li>
+              <li><a href="inbox.html">Message Box</a></li>
+              <li><a href="content.html">Content Post</a></li>
+              <li><a href="forgot-pass.html">Forgot Password Page</a></li>
+              <li><a href="error.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Error Page</a></li>
+              <li><a href="another-error-page.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Another Error Page</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="nav-icon cog_3"></i> Themes Settings<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="nav-header">Colors</li>
+              <li class=" clearfix color-block"><span class="theme-color theme-blue" title="theme-blue"></span><span class="theme-color theme-light-blue" title="theme-light-blue"></span><span class="theme-color theme-dark" title="theme-dark"></span><span class="theme-color theme-chrome" title="theme-chrome"></span><span class="theme-color theme-chayam" title="theme-chayam"></span><span class="theme-color theme-default" title="theme-default"></span></li>
+              <li class=" divider hidden-phone hidden-tablet"></li>
+              <li class="nav-header hidden-phone hidden-tablet">Sidebar</li>
+              <li class="theme-settings clearfix hidden-phone hidden-tablet">
+                <div class="btn-group">
+                  <button id="sidebar-on" disabled="disabled" class="btn btn-success">On</button>
+                  <button id="sidebar-off" class="btn btn-inverse">Off</button>
+                </div>
+              </li>
+              <li class=" divider"></li>
+              <li class="nav-header hidden-phone hidden-tablet">Sidebar Placement</li>
+              <li class="theme-settings clearfix hidden-phone hidden-tablet">
+                <div class="btn-group">
+                  <button disabled="disabled" id="left-sidebar" class="btn btn-inverse">Left</button>
+                  <button id="right-sidebar" class="btn btn-info">Right</button>
+                </div>
+              </li>
+              <li class="nav-header">Layout</li>
+              
+              <li><a href="../fixed-layout/index.html">Fixed Layout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="sidebar">
+  <ul class="side-nav accordion_mnu collapsible">
+    <li><a href="index.html"><span class="white-icons computer_imac"></span> Dashboard</a></li>
+    <li><a href="#"><span class="white-icons list"></span> Forms</a>
+      <ul class="acitem">
+        <li><a href="form-elements.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>All Form Elements</a></li>
+        <li><a href="extendable-forms.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Extendable Form</a></li>
+        <li><a href="form-stepy.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Stepy Forms</a></li>
+        <li><a href="form-validation.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Form Validation</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><span class="white-icons cup"></span> Features</a>
+      <ul class="acitem">
+        <li><a href="typography.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Typography</a></li>
+        <li><a href="widgets.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Widgets</a></li>
+        <li><a href="grid.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Grid</a></li>
+        <li><a href="button-icons.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Buttons &amp; Icons</a></li>
+        <li><a href="ui-elements.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>All UI Elements</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><span class="white-icons shuffle"></span> Others</a>
+      <ul class="acitem">
+        <li><a href="table.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Data Table</a></li>
+        <li><a href="chart.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Chart and Graph</a></li>
+        <li><a href="file-explorer.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>File Manager</a></li>
+        <li><a href="calendar.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Full Calendar</a></li>
+        <li><a href="colorbox.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Colorbox</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><span class="white-icons documents"></span> Pages</a>
+      <ul class="acitem">
+        <li><a href="inbox.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Message Box</a></li>
+        <li><a href="content.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Content Post</a></li>
+        <li><a href="login.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Login Page</a></li>
+        <li><a href="login2.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Another Login Page</a></li>
+        <li><a href="forgot-pass.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Forgot Password Page</a></li>
+        <li><a href="error.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Error Page</a></li>
+        <li><a href="another-error-page.html"><span class="sidenav-icon"><span class="sidenav-link-color"></span></span>Another Error Page</a></li>
+      </ul>
+    </li>
+  </ul>
+  <div id="side-accordion">
+    <div class="accordion-group">
+      <div class="accordion-header"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#side-accordion" href="#collapseOne"><i class="nav-icon month_calendar"></i> Today's event</a> </div>
+      <div id="collapseOne" class="collapse in">
+        <div class="accordion-content">
+          <ul class="event-list">
+            <li>
+              <div class="evnt-date"> 31<span>July</span> </div>
+              <div class="event-info"> <span><i class="icon-time"></i> 12:25 PM</span>
+                <p> Anim pariatur cliche repreh enderit, enim eiusmod high life </p>
+              </div>
+            </li>
+            <li>
+              <div class="evnt-date"> 31<span>July</span> </div>
+              <div class="event-info"> <span><i class="icon-time"></i> 2:35 PM</span>
+                <p> Anim pariatur cliche repreh enderit. </p>
+              </div>
+            </li>
+          </ul>
+          <table class="cal">
+            <caption>
+            <span class="prev"><a href="index.html">&laquo;</a></span><span class="next"><a href="index.html">&raquo;</a></span> July 2012
+            </caption>
+            <thead>
+              <tr>
+                <th> Mon </th>
+                <th> Tue </th>
+                <th> Web </th>
+                <th> Thu </th>
+                <th> Fri </th>
+                <th> Sat </th>
+                <th> Sun </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="off"><a href="index.html">26</a></td>
+                <td class="off"><a href="index.html">27</a></td>
+                <td class="off"><a href="index.html">28</a></td>
+                <td class="off"><a href="index.html">29</a></td>
+                <td class="off"><a href="index.html">30</a></td>
+                <td class="off"><a href="index.html">31</a></td>
+                <td><a href="index.html">1</a></td>
+              </tr>
+              <tr>
+                <td><a href="index.html">2</a></td>
+                <td><a href="index.html">3</a></td>
+                <td><a href="index.html">4</a></td>
+                <td><a href="index.html">5</a></td>
+                <td><a href="index.html">6</a></td>
+                <td><a href="index.html">7</a></td>
+                <td><a href="index.html">8</a></td>
+              </tr>
+              <tr>
+                <td><a href="index.html">9</a></td>
+                <td><a href="index.html">10</a></td>
+                <td><a href="index.html">11</a></td>
+                <td><a href="index.html">12</a></td>
+                <td><a href="index.html">13</a></td>
+                <td><a href="index.html">14</a></td>
+                <td><a href="index.html">15</a></td>
+              </tr>
+              <tr>
+                <td><a href="index.html">16</a></td>
+                <td><a href="index.html">17</a></td>
+                <td><a href="index.html">18</a></td>
+                <td><a href="index.html">19</a></td>
+                <td><a href="index.html">20</a></td>
+                <td><a href="index.html">21</a></td>
+                <td><a href="index.html">22</a></td>
+              </tr>
+              <tr>
+                <td><a href="index.html">23</a></td>
+                <td><a href="index.html">24</a></td>
+                <td><a href="index.html">25</a></td>
+                <td><a href="index.html">26</a></td>
+                <td><a href="index.html">27</a></td>
+                <td><a href="index.html">28</a></td>
+                <td><a href="index.html">29</a></td>
+              </tr>
+              <tr>
+                <td><a href="index.html">30</a></td>
+                <td class="active"><a href="index.html">31</a></td>
+                <td class="off"><a href="index.html">1</a></td>
+                <td class="off"><a href="index.html">2</a></td>
+                <td class="off"><a href="index.html">3</a></td>
+                <td class="off"><a href="index.html">4</a></td>
+                <td class="off"><a href="index.html">5</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-group">
+      <div class="accordion-header"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#side-accordion" href="#collapseTwo"><i class=" nav-icon graph"></i> Site Statistics</a> </div>
+      <div id="collapseTwo" class="collapse">
+        <div class="accordion-content">
+          <div class="site-stat">
+            <h5><i class="icon-signal"></i> Visit Rates</h5>
+            <ul>
+              <li>Avarage Traffic<span class="up">35K</span></li>
+              <li>Visitors<span class="down">5%</span></li>
+              <li>Conversation Rate<span class="up">10m</span></li>
+            </ul>
+            <h5><i class="icon-align-left"></i> Unique Visit</h5>
+            <ul>
+              <li>Visit Rate<span class="up">14K </span></li>
+              <li>Bounce Rate<span class="up">10K </span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="new-update">
+    <h2><i class="icon-list-alt"></i> Recent Update</h2>
+    <div class="side-news">
+      <h5><a href="#">Released Ziown Admin</a></h5>
+      <p> ZiOwn is a powerful and clean admin panel template for web entrepreneurs, app developers and site owners as this can be used for the admin part of any web application, web based software's or custom CMS admin panels. It is very easy to use and extremely easy to integrate ... </p>
+    </div>
+    <div class="side-news">
+      <h5><a href="#">Released Bingo Admin</a></h5>
+      <p> Bingo is very powerful high end admin/backend user interface template. You can use it ... </p>
+    </div>
+  </div>
+</div>
+<div id="main-content">
+	<div class="container-fluid">
+		<ul class="breadcrumb">
+			<li><a href="#">Home</a><span class="divider">&raquo;</span></li>
+			<li><a href="#">Library</a><span class="divider">&raquo;</span></li>
+			<li class="active">Data</li>
+		</ul>
+        
+        <div class="row-fluid">
+      <div class="span2">
+    <div class="board-stats">
+    <div class="statistics-wrap">
+    <div class="statistics-block">
+    <div class="stat-chart line-chart">200,300,500,200,300,500,1000</div>
+    <div class="stat-info">Sparklines - Line Chart</div>
+    </div>
+    </div>
+    
+    </div>
+    </div>
+    <div class="span2">
+    <div class="board-stats">
+    <div class="statistics-wrap">
+    <div class="statistics-block">
+    <div class="stat-chart pie-chart">1,2,3</div>
+    <div class="stat-info">Sparklines - Pie Chart</div>
+    </div>
+    </div>
+    
+    </div>
+    </div>
+    <div class="span2">
+    <div class="board-stats">
+    <div class="statistics-wrap">
+    <div class="statistics-block">
+    <div class="stat-chart bar-chart">5,6,7,2,0,-4,-2,4</div>
+    <div class="stat-info">Sparklines -  Bar Chart</div>
+    </div>
+    </div>
+    
+    </div>
+    </div>
+    <div class="span2">
+    <div class="board-stats">
+    <div class="statistics-wrap">
+    <div class="statistics-block">
+    <div class="stat-chart bar-chart">0:2,2:4,4:2,4:1,0:2,2:4,4:2,4:1</div>
+    <div class="stat-info">Composite Bar Chart</div>
+    </div>
+    </div>
+    
+    </div>
+    </div>
+    <div class="span2">
+    <div class="board-stats">
+    <div class="statistics-wrap">
+    <div class="statistics-block">
+    <div class="stat-chart composite-line">8,4,0,0,0,0,1,4,4,10,10,10,10,0,0,0,4,6,5,9,10</div>
+    <div class="stat-info">Composite Line Chart</div>
+    </div>
+    </div>
+    
+    </div>
+    </div>
+    <div class="span2">
+    <div class="board-stats">
+    <div class="statistics-wrap">
+    <div class="statistics-block">
+    <div class="stat-chart composite-bar">5,6,7,2,0,-4,-2,4</div>
+    <div class="stat-info">Composite Bar Chart</div>
+    </div>
+    </div>
+    
+    </div>
+    </div>
+    
+    </div>
+		<div class="row-fluid">
+			<div class="span12">
+            <div class="graph-wrap">
+				<div class="chart-block">
+					<div id="chart6">
+					</div>
+				</div>
+            </div>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span12">
+            <div class="graph-wrap">
+				<div class="chart-block">
+					<div id="chart2">
+					</div>
+				</div>
+            </div>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span6">
+            <div class="graph-wrap">
+				<div class="chart-block">
+					<div id="chart3">
+					</div>
+				</div>
+             </div>
+			</div>
+			<div class="span6">
+				<div class="graph-wrap">
+				<div class="chart-block">
+					<div id="chart4">
+					</div>
+				</div>
+                </div>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span6">
+				<div class="graph-wrap">
+				<div class="chart-block">
+					<div id="chart5">
+					</div>
+				</div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui-1.8.16.custom.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/prettify.js"></script>
+<script src="js/jquery.sparkline.min.js"></script>
+<script src="js/jquery.nicescroll.min.js"></script>
+<script src="js/accordion.jquery.js"></script>
+<script src="js/smart-wizard.jquery.js"></script>
+<script src="js/vaidation.jquery.js"></script>
+<script src="js/jquery-dynamic-form.js"></script>
+<script src="js/fullcalendar.js"></script>
+<script src="js/raty.jquery.js"></script>
+<script src="js/jquery.noty.js"></script>
+<script src="js/jquery.cleditor.min.js"></script>
+<script src="js/data-table.jquery.js"></script>
+<script src="js/TableTools.min.js"></script>
+<script src="js/ColVis.min.js"></script>
+<script src="js/plupload.full.js"></script>
+<script src="js/elfinder/elfinder.min.js"></script>
+<script src="js/chosen.jquery.js"></script>
+<script src="js/uniform.jquery.js"></script>
+<script src="js/jquery.tagsinput.js"></script>
+<script src="js/jquery.colorbox-min.js"></script>
+<script src="js/check-all.jquery.js"></script>
+<script src="js/inputmask.jquery.js"></script>
+<script src="http://bp.yahooapis.com/2.4.21/browserplus-min.js"></script>
+<script src="js/plupupload/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+<script src="js/excanvas.min.js"></script>
+<script src="js/jquery.jqplot.min.js"></script>
+<script src="js/chart/jqplot.highlighter.min.js"></script>
+<script src="js/chart/jqplot.cursor.min.js"></script>
+<script src="js/chart/jqplot.barRenderer.min.js"></script>
+<script src="js/chart/jqplot.pointLabels.min.js"></script>
+<script src="js/chart/jqplot.dateAxisRenderer.min.js"></script>
+<script src="js/chart/jqplot.pieRenderer.min.js"></script>
+<script src="js/chart/jqplot.donutRenderer.min.js"></script>
+<script src="js/chart/jqplot.categoryAxisRenderer.min.js"></script>
+<script src="js/chart/jqplot.logAxisRenderer.min.js"></script>
+<script src="js/chart/jqplot.canvasTextRenderer.min.js"></script>
+<script src="js/chart/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script src="js/custom-script.js"></script>
+<script>
+$(function () {
+    var s1 = [[2002, 112000], [2003, 122000], [2004, 104000], [2005, 99000], [2006, 121000],
+    [2007, 148000], [2008, 114000], [2009, 133000], [2010, 161000], [2011, 173000]];
+    var s2 = [[2002, 10200], [2003, 10800], [2004, 11200], [2005, 11800], [2006, 12400],
+    [2007, 12800], [2008, 13200], [2009, 12600], [2010, 13100]];
+    plot1 = $.jqplot("chart2", [s2, s1], {
+        // Turns on animatino for all series in this plot.
+        animate: true,
+        // Will animate plot on calls to plot1.replot({resetAxes:true})
+        animateReplot: true,
+        cursor: {
+            show: true,
+            zoom: false,
+            looseZoom: true,
+            showTooltip: false
+        },
+		seriesDefaults: {
+        shadow: false  // show shadow or not.
+	  },
+        series:[
+            {
+                pointLabels: {
+                    show: true
+                },
+                renderer: $.jqplot.BarRenderer,
+                showHighlight: false,
+                yaxis: 'y2axis',
+                rendererOptions: {
+                    // Speed up the animation a little bit.
+                    // This is a number of milliseconds. 
+                    // Default for bar series is 3000. 
+                    animation: {
+					speed: 2500
+                    },
+                    barWidth: 15,
+                    barPadding: -15,
+                    barMargin: 0,
+                    highlightMouseOver: false
+                }
+            },
+            {
+                rendererOptions: {
+                    // speed up the animation a little bit.
+                    // This is a number of milliseconds.
+                    // Default for a line series is 2500.
+                    animation: {
+                        speed: 2000
+                    }
+                }
+            }
+        ],
+        axesDefaults: {
+            pad: 0
+        },
+        axes: {
+            // These options will set up the x axis like a category axis.
+            xaxis: {
+                tickInterval: 1,
+                drawMajorGridlines: false,
+                drawMinorGridlines: true,
+                drawMajorTickMarks: false,
+                rendererOptions: {
+                tickInset: 0.5,
+                minorTicks: 1
+            }
+            },
+            yaxis: {
+                tickOptions: {
+                    formatString: "$%'d"
+                },
+                rendererOptions: {
+                    forceTickAt0: true
+                }
+            },
+            y2axis: {
+                tickOptions: {
+                    formatString: "$%'d"
+                },
+                rendererOptions: {
+                    // align the ticks on the y2 axis with the y axis.
+                    alignTicks: true,
+                    forceTickAt0: true
+                }
+            }
+        },
+		 grid: {
+            background: '#fff',
+            drawBorder: false,
+            shadow: false,
+            gridLineColor: '#ccc',
+            gridLineWidth: 1
+        },
+        highlighter: {
+            show: true,
+            showLabel: true,
+            tooltipAxes: 'y',
+            sizeAdjust: 7.5 , tooltipLocation : 'ne'
+        }
+    });
+});
+$(function(){
+  var data = [
+    ['Heavy Industry', 12],['Retail', 9], ['Light Industry', 14],
+    ['Out of home', 16],['Commuting', 7], ['Orientation', 9]
+  ];
+  var plot1 = jQuery.jqplot ('chart3', [data],
+    {
+      seriesDefaults: {
+        // Make this a pie chart.
+        renderer: jQuery.jqplot.PieRenderer,
+        rendererOptions: {
+          // Put data labels on the pie slices.
+          // By default, labels show the percentage of the slice.
+          showDataLabels: true,
+		  shadow:false
+        }
+      },
+	grid: {
+            background: '#fff',
+            drawBorder: false,
+            shadow: false,
+            gridLineColor: '#ccc',
+            gridLineWidth: 1
+        },
+      legend: { show:true, location: 'e' }
+    }
+  );
+});
+$(function(){
+  plot2 = jQuery.jqplot('chart4',
+    [[['Verwerkende industrie', 9],['Retail', 0], ['Primaire producent', 0],
+    ['Out of home', 0],['Groothandel', 0], ['Grondstof', 0], ['Consument', 3], ['Bewerkende industrie', 2]]],
+    {
+      title: ' ',
+      seriesDefaults: {
+        shadow: false,
+        renderer: jQuery.jqplot.PieRenderer,
+        rendererOptions: {
+          startAngle: 180,
+          sliceMargin: 4,
+          showDataLabels: true }
+      },
+	grid: {
+            background: '#fff',
+            drawBorder: false,
+            shadow: false,
+            gridLineColor: '#ccc',
+            gridLineWidth: 1
+        },
+      legend: { show:true, location: 'w' }
+    }
+  );
+});
+$(function(){
+    var s1 = [200, 600, 700, 1000];
+    var s2 = [460, -210, 690, 820];
+    var s3 = [-260, -440, 320, 200];
+    // Can specify a custom tick Array.
+    // Ticks should match up one for each y value (category) in the series.
+    var ticks = ['May', 'June', 'July', 'August'];
+    var plot1 = $.jqplot('chart5', [s1, s2, s3], {
+        // The "seriesDefaults" option is an options object that will
+        // be applied to all series in the chart.
+        seriesDefaults:{
+            renderer:$.jqplot.BarRenderer,
+			 shadow:false,
+            rendererOptions: {fillToZero: true}
+        },
+        // Custom labels for the series are specified with the "label"
+        // option on the series option.  Here a series option object
+        // is specified for each series.
+        series:[
+            {label:'Hotel'},
+            {label:'Event Regristration'},
+            {label:'Airfare'}
+        ],
+        // Show the legend and put it outside the grid, but inside the
+        // plot container, shrinking the grid to accomodate the legend.
+        // A value of "outside" would not shrink the grid and allow
+        // the legend to overflow the container.
+        legend: {
+            show: true,
+            placement: 'outsideGrid'
+        },
+	grid: {
+            background: '#fff',
+            drawBorder: false,
+            shadow: false,
+            gridLineColor: '#ccc',
+            gridLineWidth: 1
+        },
+        axes: {
+            // Use a category axis on the x axis and use our custom ticks.
+            xaxis: {
+                renderer: $.jqplot.CategoryAxisRenderer,
+                ticks: ticks
+            },
+            // Pad the y axis just a little so bars can get close to, but
+            // not touch, the grid boundaries.  1.2 is the default padding.
+            yaxis: {
+                pad: 1.05,
+                tickOptions: {formatString: '$%d'}
+            }
+        }
+    });
+});
+$(function () {
+    $.jqplot._noToImageButton = true;
+    var prevYear = [["2011-08-01",398], ["2011-08-02",255.25], ["2011-08-03",263.9], ["2011-08-04",154.24],
+    ["2011-08-05",210.18], ["2011-08-06",109.73], ["2011-08-07",166.91], ["2011-08-08",330.27], ["2011-08-09",546.6],
+    ["2011-08-10",260.5], ["2011-08-11",330.34], ["2011-08-12",464.32], ["2011-08-13",432.13], ["2011-08-14",197.78],
+    ["2011-08-15",311.93], ["2011-08-16",650.02], ["2011-08-17",486.13], ["2011-08-18",330.99], ["2011-08-19",504.33],
+    ["2011-08-20",773.12], ["2011-08-21",296.5], ["2011-08-22",280.13], ["2011-08-23",428.9], ["2011-08-24",469.75],
+    ["2011-08-25",628.07], ["2011-08-26",516.5], ["2011-08-27",405.81], ["2011-08-28",367.5], ["2011-08-29",492.68],
+    ["2011-08-30",700.79], ["2011-08-31",588.5], ["2011-09-01",511.83], ["2011-09-02",721.15], ["2011-09-03",649.62],
+    ["2011-09-04",653.14], ["2011-09-06",900.31], ["2011-09-07",803.59], ["2011-09-08",851.19], ["2011-09-09",2059.24],
+    ["2011-09-10",994.05], ["2011-09-11",742.95], ["2011-09-12",1340.98], ["2011-09-13",839.78], ["2011-09-14",1769.21],
+    ["2011-09-15",1559.01], ["2011-09-16",2099.49], ["2011-09-17",1510.22], ["2011-09-18",1691.72],
+    ["2011-09-19",1074.45], ["2011-09-20",1529.41], ["2011-09-21",1876.44], ["2011-09-22",1986.02],
+    ["2011-09-23",1461.91], ["2011-09-24",1460.3], ["2011-09-25",1392.96], ["2011-09-26",2164.85],
+    ["2011-09-27",1746.86], ["2011-09-28",2220.28], ["2011-09-29",2617.91], ["2011-09-30",3236.63]];
+    var currYear = [["2011-08-01",796.01], ["2011-08-02",510.5], ["2011-08-03",527.8], ["2011-08-04",308.48],
+    ["2011-08-05",420.36], ["2011-08-06",219.47], ["2011-08-07",333.82], ["2011-08-08",660.55], ["2011-08-09",1093.19],
+    ["2011-08-10",521], ["2011-08-11",660.68], ["2011-08-12",928.65], ["2011-08-13",864.26], ["2011-08-14",395.55],
+    ["2011-08-15",623.86], ["2011-08-16",1300.05], ["2011-08-17",972.25], ["2011-08-18",661.98], ["2011-08-19",1008.67],
+    ["2011-08-20",1546.23], ["2011-08-21",593], ["2011-08-22",560.25], ["2011-08-23",857.8], ["2011-08-24",939.5],
+    ["2011-08-25",1256.14], ["2011-08-26",1033.01], ["2011-08-27",811.63], ["2011-08-28",735.01], ["2011-08-29",985.35],
+    ["2011-08-30",1401.58], ["2011-08-31",1177], ["2011-09-01",1023.66], ["2011-09-02",1442.31], ["2011-09-03",1299.24],
+    ["2011-09-04",1306.29], ["2011-09-06",1800.62], ["2011-09-07",1607.18], ["2011-09-08",1702.38],
+    ["2011-09-09",4118.48], ["2011-09-10",1988.11], ["2011-09-11",1485.89], ["2011-09-12",2681.97],
+    ["2011-09-13",1679.56], ["2011-09-14",3538.43], ["2011-09-15",3118.01], ["2011-09-16",4198.97],
+    ["2011-09-17",3020.44], ["2011-09-18",3383.45], ["2011-09-19",2148.91], ["2011-09-20",3058.82],
+    ["2011-09-21",3752.88], ["2011-09-22",3972.03], ["2011-09-23",2923.82], ["2011-09-24",2920.59],
+    ["2011-09-25",2785.93], ["2011-09-26",4329.7], ["2011-09-27",3493.72], ["2011-09-28",4440.55],
+    ["2011-09-29",5235.81], ["2011-09-30",6473.25]];
+    var plot1 = $.jqplot("chart6", [prevYear, currYear], {
+        seriesColors: ["#054f79", "#d44703"],
+        title: 'Monthly TurnKey Revenue',
+        highlighter: {
+            show: true,
+            sizeAdjust: 1,
+            tooltipOffset: 9
+        },
+        grid: {
+            background: '#fff',
+            drawBorder: false,
+            shadow: false,
+            gridLineColor: '#666666',
+            gridLineWidth: 1
+        },
+        legend: {
+            show: true,
+            placement: 'outside'
+        },
+        seriesDefaults: {
+			 shadow: false, // show shadow or not.
+            rendererOptions: {
+                smooth: true,
+                animation: {
+                    show: true
+                }
+            },
+			markerOptions: {
+            show: true,             // wether to show data point markers.
+            style: 'filledCircle',  // circle, diamond, square, filledCircle.
+                                    // filledDiamond or filledSquare.
+            lineWidth: 2,       // width of the stroke drawing the marker.
+            size: 10,            // size (diameter, edge length, etc.) of the marker.
+            color: '#ff8a00',    // color of marker, set to color of line by default.
+            shadow: false,       // wether to draw shadow on marker or not.
+            shadowAngle: 45,    // angle of the shadow.  Clockwise from x axis.
+            shadowOffset: 1,    // offset from the line of the shadow,
+            shadowDepth: 3,     // Number of strokes to make when drawing shadow.  Each stroke
+                                // offset by shadowOffset from the last.
+            shadowAlpha: 0.07   // Opacity of the shadow
+        }
+        },
+        series: [
+            {
+                fill: true,
+                label: '2010'
+            },
+            {
+                label: '2011'
+            }
+        ],
+        axesDefaults: {
+            rendererOptions: {
+                baselineWidth: 1.5,
+                baselineColor: '#444444',
+                drawBaseline: false
+            }
+        },
+        axes: {
+            xaxis: {
+                renderer: $.jqplot.DateAxisRenderer,
+                tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+                tickOptions: {
+                    formatString: "%b %e",
+                    angle: -30,
+                    textColor: '#000'
+                },
+                min: "2011-08-01",
+                max: "2011-09-30",
+                tickInterval: "7 days",
+                drawMajorGridlines: false
+            },
+            yaxis: {
+                renderer: $.jqplot.LogAxisRenderer,
+                pad: 0,
+                rendererOptions: {
+                    minorTicks: 1
+                },
+                tickOptions: {
+                    formatString: "$%'d",
+                    showMark: false
+                }
+            }
+        }
+    });
+});
+</script>
+<!-- html5.js for IE less than 9 -->
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script src="js/respond.min.js"></script>
+<script src="js/ios-orientationchange-fix.js"></script>
+</body>
+</html>
