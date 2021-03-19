@@ -1,17 +1,19 @@
 <?php
 include_once RUTA_CLASES . 'perfil.class.php';
-class interfazPerfil{
-function principal(){
+class interfazPerfil
+{
+    function principal()
+    {
         $clsabstract = new interfazAbstract();
         $clsabstract->legenda('fa fa-user-edit', 'Editar');
         $clsabstract->legenda('fa fa-times-circle', 'Eliminar');
 
         $leyenda = $clsabstract->renderLegenda('30%');
         $titulo = "Perfiles de Usuario";
-        $html=' 
+        $html = ' 
     
     <div class="card">
-        <div class="card-header">'.$titulo.'</div>
+        <div class="card-header">' . $titulo . '</div>
             <div class="card-body">        
                 <form class="form-inline" onsubmit="return false;">
                     <input type="text" class="form-control" id="txtBuscar" placeholder="Buscar por descripcion" style="width:70%">                           
@@ -21,7 +23,7 @@ function principal(){
             </div>
             
             <div class="card-body" id="outQuery">
-                '.$this->datagrid('').'
+                ' . $this->datagrid('') . '
             </div>
             <p><center>' . $leyenda . '</center></p>
         
@@ -126,7 +128,7 @@ function principal(){
     }
 
     public function interfazNuevo()
-    {                  
+    {
         $html = '
             <form name="form" id="form" class="form-horizontal" onsubmit="return false" method="post">                
                 
@@ -156,33 +158,32 @@ function principal(){
             </fieldset>
             </form>';
         return array($html, $botones);
-
     }
 
-    public function interfazEditar($perfil)    
-    {                  
+    public function interfazEditar($perfil)
+    {
         $clase = new perfil();
-        $data = $clase->consultar('1',$perfil);
-        
+        $data = $clase->consultar('1', $perfil);
+
         $html = '
             <form name="form" id="form" class="form-horizontal" onsubmit="return false" method="post">                
                 
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label" >Código:</label>
                         <div class="col-sm-9">
-                            <input type="text" style ="width:30%" class="form-control"   id="txtCodigo" name="txtCodigo" value="'.$perfil.'" maxlength="3" readonly />
+                            <input type="text" style ="width:30%" class="form-control"   id="txtCodigo" name="txtCodigo" value="' . $perfil . '" maxlength="3" readonly />
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label" ><span style="color:red">(*)</span> Descripción:</label>
                         <div class="col-sm-9">
-                            <input type="text" style ="width:100%" class="form-control"   id="txtDescripcion" name="txtDescripcion" value="'.$data[0]["descripcion"].'"/>
+                            <input type="text" style ="width:100%" class="form-control"   id="txtDescripcion" name="txtDescripcion" value="' . $data[0]["descripcion"] . '"/>
                         </div>
                     </div>                                    
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label" >Activo:</label>
                         <div class="col-sm-9">
-                            <input id="chk_activo"  name="chk_activo" type="checkbox" value="1" style="vertical-align:middle" '.($data[0]["activo"]=='1'?'checked':'').'>
+                            <input id="chk_activo"  name="chk_activo" type="checkbox" value="1" style="vertical-align:middle" ' . ($data[0]["activo"] == '1' ? 'checked' : '') . '>
                         </div>
                     </div>                                                                                                                                                                                                                          
             </form>';
@@ -193,27 +194,27 @@ function principal(){
             </fieldset>
             </form>';
         return array($html, $botones);
-
-    }    
+    }
 }
 
-function _interfazPerfil(){
-    $rpta = new xajaxResponse();   
-    $cls = new interfazPerfil(); 
+function _interfazPerfil()
+{
+    $rpta = new xajaxResponse();
+    $cls = new interfazPerfil();
     $html = $cls->principal();
-    $rpta->assign("container","innerHTML",$html);   
+    $rpta->assign("container", "innerHTML", $html);
     $rpta->script("
     $('#btnNuevo').unbind('click').click(function() {
         xajax__interfazPerfilNuevo();
-    });"); 
+    });");
     $rpta->script("
     $('#btnBuscar').unbind('click').click(function() {
     xajax__perfilDatagrid(document.getElementById('txtBuscar').value);
-    });"); 
+    });");
     $rpta->script("
     $('#txtBuscar').unbind('keypress').keypress(function() {
         validarEnter(event)
-    });"); 
+    });");
     return $rpta;
 }
 
@@ -224,14 +225,13 @@ function _interfazPerfilNuevo()
     $html = $cls->interfazNuevo();
     $rpta->script("$('#modal .modal-header h5').text('Registrar Perfil');");
     $rpta->assign("contenido", "innerHTML", $html[0]);
-    $rpta->assign("footer","innerHTML", $html[1]);
+    $rpta->assign("footer", "innerHTML", $html[1]);
     $rpta->script("$('#modal').modal('show')");
     $rpta->script("
         $('#btnGuardar').unbind('click').click(function() {
             xajax__perfilMantenimiento('1',xajax.getFormValues('form'));
         });");
     return $rpta;
-
 }
 
 function _interfazPerfilEditar($flag, $perfil)
@@ -241,52 +241,65 @@ function _interfazPerfilEditar($flag, $perfil)
     $html = $cls->interfazEditar($perfil);
     $rpta->script("$('#modal .modal-header h5').text('Registrar Perfil');");
     $rpta->assign("contenido", "innerHTML", $html[0]);
-    $rpta->assign("footer","innerHTML", $html[1]);
+    $rpta->assign("footer", "innerHTML", $html[1]);
     $rpta->script("$('#modal').modal('show')");
     $rpta->script("
         $('#btnEdiar').unbind('click').click(function() {
-            xajax__perfilMantenimiento('".$flag."',xajax.getFormValues('form'));
+            xajax__perfilMantenimiento('" . $flag . "',xajax.getFormValues('form'));
         });");
     return $rpta;
-
 }
 
-function _perfilDatagrid($criterio, $total_regs = 0, $pagina = 1, $nregs = 50){
-    $rpta = new xajaxResponse();           
-    $cls = new interfazPerfil();               
+function _perfilDatagrid($criterio, $total_regs = 0, $pagina = 1, $nregs = 50)
+{
+    $rpta = new xajaxResponse();
+    $cls = new interfazPerfil();
     $html = $cls->datagrid($criterio, $total_regs, $pagina, $nregs);
-    $rpta->assign("outQuery", "innerHTML", $html);    
-    return $rpta;    
+    $rpta->assign("outQuery", "innerHTML", $html);
+    return $rpta;
 }
 
-function _perfilMantenimiento($flag, $form=''){
-    $rpta = new xajaxResponse();     
-    $clase = new perfil();     
-    $interfaz = new interfazPerfil();         
-    if($flag=='3'){
-        $form = array("txtCodigo"=>$form);
+function _perfilMantenimiento($flag, $form = '')
+{
+    $rpta = new xajaxResponse();
+    $clase = new perfil();
+    $interfaz = new interfazPerfil();
+    if ($flag == '3') {
+        $form = array("txtCodigo" => $form);
     }
 
+    $msj1 = '';
+    $msj = 'LOS SIGUIENTES CAMPOS SON REQUERIDOS (*)';
+    $msj .= '\\n-----------------------------------------------------------------------\\n';
 
-    $result = $clase->mantenedor($flag, $form);
-    if($result[0]['mensaje']=='MSG_001'){
-        $rpta->alert(MSG_001);        
-        $rpta->script("jQuery('#modal').modal('hide');");
-        $rpta->assign("outQuery", "innerHTML", $interfaz->datagrid(''));
-    }elseif($result[0]['mensaje']=='MSG_002'){        
-        $rpta->alert(MSG_002);        
-        $rpta->script("jQuery('#modal').modal('hide');");
-        $rpta->assign("outQuery", "innerHTML", $interfaz->datagrid(''));
-    }elseif($result[0]['mensaje']=='MSG_003'){
-        $rpta->alert(MSG_003);                
-        $rpta->assign("outQuery", "innerHTML", $interfaz->datagrid(''));
-    }elseif($result[0]['mensaje']=='MSG_004'){
-        $rpta->alert(MSG_004);
-    }elseif($result[0]['mensaje']=='MSG_005'){
-        $rpta->alert(MSG_005);
+
+    if ($form["txtDescripcion"] == '') {
+        $msj1 .= '- Descripcion\\n';
     }
 
-    return $rpta;    
+    if ($msj1 != '' && $flag != '3') {
+        $rpta->script('alert("' . $msj . $msj1 . '")');
+    } else {
+
+        $result = $clase->mantenedor($flag, $form);
+        if ($result[0]['mensaje'] == 'MSG_001') {
+            $rpta->alert(MSG_001);
+            $rpta->script("jQuery('#modal').modal('hide');");
+            $rpta->assign("outQuery", "innerHTML", $interfaz->datagrid(''));
+        } elseif ($result[0]['mensaje'] == 'MSG_002') {
+            $rpta->alert(MSG_002);
+            $rpta->script("jQuery('#modal').modal('hide');");
+            $rpta->assign("outQuery", "innerHTML", $interfaz->datagrid(''));
+        } elseif ($result[0]['mensaje'] == 'MSG_003') {
+            $rpta->alert(MSG_003);
+            $rpta->assign("outQuery", "innerHTML", $interfaz->datagrid(''));
+        } elseif ($result[0]['mensaje'] == 'MSG_004') {
+            $rpta->alert(MSG_004);
+        } elseif ($result[0]['mensaje'] == 'MSG_005') {
+            $rpta->alert(MSG_005);
+        }
+    }
+    return $rpta;
 }
 
 $xajax->register(XAJAX_FUNCTION, '_interfazPerfil');
