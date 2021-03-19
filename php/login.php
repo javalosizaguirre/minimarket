@@ -1,6 +1,8 @@
 <?php
 session_start();
-include_once "clases/admin.class.php";
+include_once "config.php";
+include_once "clases/gestioncomercial/admin.class.php";
+
 
 
 $clsAdmin = new admin();

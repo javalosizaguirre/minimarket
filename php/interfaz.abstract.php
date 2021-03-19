@@ -1216,7 +1216,7 @@ background: linear-gradient(to bottom, rgb(241, 241, 241) 0%, rgb(219, 219, 219)
         $this->legendLabel[] = $label;
     }
 
-    function renderLegenda($w = "10%")
+    function renderLegenda($w = "25%")
     {
         $html = '
         <table class="data-tbl-simple table table-bordered" align="center" style="width:' . $w . '">
@@ -1226,7 +1226,7 @@ background: linear-gradient(to bottom, rgb(241, 241, 241) 0%, rgb(219, 219, 219)
             <tbody>
             <tr>';
         foreach ($this->legendIcon as $key => $icon) {
-            $html .= '<td><span class="' . $icon . '"></span></td><td>' . $this->legendLabel[$key] . '</td>';
+            $html .= '<td ><span class="' . $icon . '"></span></td><td style="font-size:12px">' . $this->legendLabel[$key] . '</td>';
         }
         $html .= '
             </tr>

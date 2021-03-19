@@ -1,10 +1,26 @@
 <?php
 session_start();
-include_once "php/clases/admin.class.php";
-$clsAdmin = new admin();
+include_once "tools/xajax/xajax_core/xajax.inc.php";
+include_once "php/config.php";
+include_once "php/mensajes.php";
+include_once RUTA_CLASES. "menu.class.php";
+include_once RUTA_PHP . "interfaz.abstract.php";
+include_once RUTA_PHP . "funciones.php";
+include_once RUTA_DATAGRID . "dataGrid.class.php";
 
-$dataModulos = $clsAdmin->consultarMenu('1',$_SESSION["sys_perfil"]);
 
+$xajax = new xajax();
+$xajax->configure( 'javascript URI', 'tools/xajax/' );
+$xajax->configure( "errorHandler", true );
+$xajax->register( XAJAX_PROCESSING_EVENT, XAJAX_PROCESSING_EVENT_INVALID, "onInvalidRequest" );
+
+include RUTA_PHP_MODULO . "interfazPerfil.php";
+
+
+$clsMenu = new menu();
+$dataModulos = $clsMenu->consultarMenu('1',$_SESSION["sys_perfil"]);
+
+$xajax->processRequest();
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,13 +36,17 @@ $dataModulos = $clsAdmin->consultarMenu('1',$_SESSION["sys_perfil"]);
     <script type="text/javascript" src="js/solid.js" ></script>
     <script type="text/javascript" src="js/fontawesome.js" ></script>
     <script type="text/javascript" src="js/sidebar.js" ></script>
+    <script type="text/javascript" src="js/funciones.js" ></script>
 
     <link rel="stylesheet" href="css/bootstrap-4.6.0-dist/bootstrap.min.css">   
     <link rel="stylesheet" href="css/stylesidebar.css">        
     <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/datagrid.css">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     
-
+    <?php
+        $xajax->printJavascript('/');
+    ?>
       
     
 </head>
@@ -72,13 +92,13 @@ $dataModulos = $clsAdmin->consultarMenu('1',$_SESSION["sys_perfil"]);
                                 <i class="'.$value["Imagen"].'"></i>
                                 <span>'.$value["Nombre"].'</span>
                             </a>';
-                            $dataOpciones = $clsAdmin->consultarMenu('2',$_SESSION["sys_perfil"], $value["Menu"]);
+                            $dataOpciones = $clsMenu->consultarMenu('2',$_SESSION["sys_perfil"], $value["Menu"]);
                                 echo '<div class="sidebar-submenu">';
                             foreach ($dataOpciones as $item) {
                                 echo '
                                         <ul>
                                             <li>
-                                                <a href="#">'.$item["Nombre"].'</a>
+                                                <a href="javascript:void(0)" onclick="'.$item["Url"].'">'.$item["Nombre"].'</a>
                                             </li>
                                         </ul>
                                         ';
@@ -86,93 +106,7 @@ $dataModulos = $clsAdmin->consultarMenu('1',$_SESSION["sys_perfil"]);
                     echo '  </div>
                         </li>';
                 }
-            ?>
-        <!--    
-        <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-tachometer-alt"></i>
-              <span>Dashboard</span>
-              <span class="badge badge-pill badge-warning">New</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Dashboard 1
-                    <span class="badge badge-pill badge-success">Pro</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Dashboard 2</a>
-                </li>
-                <li>
-                  <a href="#">Dashboard 3</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-shopping-cart"></i>
-              <span>E-commerce</span>
-              <span class="badge badge-pill badge-danger">3</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Products
-
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Orders</a>
-                </li>
-                <li>
-                  <a href="#">Credit cart</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-chart-line"></i>
-              <span>Charts</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Pie chart</a>
-                </li>
-                <li>
-                  <a href="#">Line chart</a>
-                </li>
-                <li>
-                  <a href="#">Bar chart</a>
-                </li>
-                <li>
-                  <a href="#">Histogram</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-globe"></i>
-              <span>Maps</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Google maps</a>
-                </li>
-                <li>
-                  <a href="#">Open street map</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-            -->
-                    
+            ?>                            
         </ul>
       </div>
       <!-- sidebar-menu  -->
@@ -200,19 +134,19 @@ $dataModulos = $clsAdmin->consultarMenu('1',$_SESSION["sys_perfil"]);
   </nav>
   <!-- sidebar-wrapper  -->
   <main class="page-content">
-    <div class="container-fluid">
+    <div class="container-fluid" id="container">
       
 
       
     </div>
   </main>
-  <!-- page-content" -->
 </div>
 
-    <script src="js/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>    
-    <script src="js/4.1.0/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="js/popper.min.js"></script>    
+    <script src="js/4.1.0/bootstrap.min.js"></script>
 
     
 </body>
 
 </html>
+

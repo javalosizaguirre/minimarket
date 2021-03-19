@@ -3,9 +3,6 @@
 # funciones comunes xajax 
 # estas funciones estan disponibles en todo el proyecto.
 #
-require_once(GL_DIR_FS_APP . 'modules/interfaz.abstract.php');
-require_once(GL_DIR_FS_APP . "class/maestros/mae_ubigeo.class.php");
-require_once(GL_DIR_FS_APP . "class/maestros/mae_persona.class.php");
 
 # clase principal
 
