@@ -20,6 +20,11 @@ include RUTA_PHP_MODULO . "interfazTipoComprobante.php";
 include RUTA_PHP_MODULO . "interfazFormadePago.php";
 include RUTA_PHP_MODULO . "interfazTarjetas.php";
 include RUTA_PHP_MODULO . "interfazTipoDocumento.php";
+include RUTA_PHP_MODULO . "interfazCategoriaProducto.php";
+include RUTA_PHP_MODULO . "interfazMarcaProducto.php";
+include RUTA_PHP_MODULO . "interfazModeloProducto.php";
+include RUTA_PHP_MODULO . "interfazTallaProducto.php";
+include RUTA_PHP_MODULO . "interfazUnidadMedidaProducto.php";
 
 
 $clsMenu = new menu();
