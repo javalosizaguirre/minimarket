@@ -16,6 +16,10 @@ $xajax->register(XAJAX_PROCESSING_EVENT, XAJAX_PROCESSING_EVENT_INVALID, "onInva
 
 include RUTA_PHP_MODULO . "interfazPerfil.php";
 include RUTA_PHP_MODULO . "interfazUsuarios.php";
+include RUTA_PHP_MODULO . "interfazTipoComprobante.php";
+include RUTA_PHP_MODULO . "interfazFormadePago.php";
+include RUTA_PHP_MODULO . "interfazTarjetas.php";
+include RUTA_PHP_MODULO . "interfazTipoDocumento.php";
 
 
 $clsMenu = new menu();
