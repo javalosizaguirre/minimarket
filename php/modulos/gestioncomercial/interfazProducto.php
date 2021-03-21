@@ -55,7 +55,7 @@ class interfazProducto
         return $html;
     }
 
-    function datagrid($criterio, $total_regs = 0, $pagina = 1, $nreg_x_pag = 50)
+    function datagrid($criterio, $total_regs = 0, $pagina = 1, $nreg_x_pag = 100)
     {
         $Grid = new eGrid();
         $Grid->numeracion();
@@ -492,7 +492,7 @@ function _interfazProductoEditar($flag, $producto)
     return $rpta;
 }
 
-function _productoDatagrid($criterio, $total_regs = 0, $pagina = 1, $nregs = 50)
+function _productoDatagrid($criterio, $total_regs = 0, $pagina = 1, $nregs = 100)
 {
     $rpta = new xajaxResponse();
     $cls = new interfazProducto();

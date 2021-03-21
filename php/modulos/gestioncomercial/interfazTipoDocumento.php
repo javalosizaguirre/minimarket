@@ -245,7 +245,7 @@ function _interfazTipoDocumentoEditar($flag, $tipodocumento)
     $rpta = new xajaxResponse('UTF-8');
     $cls = new interfazTipoDocumento();
     $html = $cls->interfazEditar($tipodocumento);
-    $rpta->script("$('#modal .modal-header h5').text('Registrar Perfil');");
+    $rpta->script("$('#modal .modal-header h5').text('Editar Tipo de Documento');");
     $rpta->assign("contenido", "innerHTML", $html[0]);
     $rpta->assign("footer", "innerHTML", $html[1]);
     $rpta->script("$('#modal').modal('show')");

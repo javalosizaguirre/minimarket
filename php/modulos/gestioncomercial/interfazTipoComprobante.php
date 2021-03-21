@@ -103,7 +103,7 @@ class interfazTipoComprobante
 
         $Grid->accion(array(
             "icono" => "fa fa-user-edit",
-            "titulo" => "Editar Usuario",
+            "titulo" => "Editar Tipo de Comprobante",
             "xajax" => array(
                 "fn" => "xajax__interfazTipoComprobanteEditar",
                 "parametros" => array(
@@ -229,7 +229,7 @@ function _interfazTipoComprobanteNuevo()
     $rpta = new xajaxResponse('UTF-8');
     $cls = new interfazTipoComprobante();
     $html = $cls->interfazNuevo();
-    $rpta->script("$('#modal .modal-header h5').text('Registrar Perfil');");
+    $rpta->script("$('#modal .modal-header h5').text('Registrar Tipo de Comprobante');");
     $rpta->assign("contenido", "innerHTML", $html[0]);
     $rpta->assign("footer", "innerHTML", $html[1]);
     $rpta->script("$('#modal').modal('show')");
@@ -245,7 +245,7 @@ function _interfazTipoComprobanteEditar($flag, $tipocomprobante)
     $rpta = new xajaxResponse('UTF-8');
     $cls = new interfazTipoComprobante();
     $html = $cls->interfazEditar($tipocomprobante);
-    $rpta->script("$('#modal .modal-header h5').text('Registrar Perfil');");
+    $rpta->script("$('#modal .modal-header h5').text('Editar Tipo de Comprobante');");
     $rpta->assign("contenido", "innerHTML", $html[0]);
     $rpta->assign("footer", "innerHTML", $html[1]);
     $rpta->script("$('#modal').modal('show')");

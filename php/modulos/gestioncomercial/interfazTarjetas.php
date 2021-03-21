@@ -223,7 +223,7 @@ function _interfazTarjetasNuevo()
     $rpta = new xajaxResponse('UTF-8');
     $cls = new interfazTarjetas();
     $html = $cls->interfazNuevo();
-    $rpta->script("$('#modal .modal-header h5').text('Registrar Perfil');");
+    $rpta->script("$('#modal .modal-header h5').text('Registrar Tarjeta');");
     $rpta->assign("contenido", "innerHTML", $html[0]);
     $rpta->assign("footer", "innerHTML", $html[1]);
     $rpta->script("$('#modal').modal('show')");
@@ -239,7 +239,7 @@ function _interfazTarjetasEditar($flag, $tarjeta)
     $rpta = new xajaxResponse('UTF-8');
     $cls = new interfazTarjetas();
     $html = $cls->interfazEditar($tarjeta);
-    $rpta->script("$('#modal .modal-header h5').text('Registrar Perfil');");
+    $rpta->script("$('#modal .modal-header h5').text('Editar Tarjeta');");
     $rpta->assign("contenido", "innerHTML", $html[0]);
     $rpta->assign("footer", "innerHTML", $html[1]);
     $rpta->script("$('#modal').modal('show')");

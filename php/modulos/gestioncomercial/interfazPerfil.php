@@ -239,7 +239,7 @@ function _interfazPerfilEditar($flag, $perfil)
     $rpta = new xajaxResponse('UTF-8');
     $cls = new interfazPerfil();
     $html = $cls->interfazEditar($perfil);
-    $rpta->script("$('#modal .modal-header h5').text('Registrar Perfil');");
+    $rpta->script("$('#modal .modal-header h5').text('Editar Perfil');");
     $rpta->assign("contenido", "innerHTML", $html[0]);
     $rpta->assign("footer", "innerHTML", $html[1]);
     $rpta->script("$('#modal').modal('show')");

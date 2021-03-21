@@ -97,7 +97,7 @@ class interfazTallaProducto
 
         $Grid->accion(array(
             "icono" => "fa fa-user-edit",
-            "titulo" => "Editar Marca",
+            "titulo" => "Editar Producto",
             "xajax" => array(
                 "fn" => "xajax__interfazTallaProductoEditar",
                 "parametros" => array(
@@ -223,7 +223,7 @@ function _interfazTallaProductoNuevo()
     $rpta = new xajaxResponse('UTF-8');
     $cls = new interfazTallaProducto();
     $html = $cls->interfazNuevo();
-    $rpta->script("$('#modal .modal-header h5').text('Registrar Perfil');");
+    $rpta->script("$('#modal .modal-header h5').text('Registrar Producto');");
     $rpta->assign("contenido", "innerHTML", $html[0]);
     $rpta->assign("footer", "innerHTML", $html[1]);
     $rpta->script("$('#modal').modal('show')");
@@ -239,7 +239,7 @@ function _interfazTallaProductoEditar($flag, $marca)
     $rpta = new xajaxResponse('UTF-8');
     $cls = new interfazTallaProducto();
     $html = $cls->interfazEditar($marca);
-    $rpta->script("$('#modal .modal-header h5').text('Registrar Talla');");
+    $rpta->script("$('#modal .modal-header h5').text('Editar Producto');");
     $rpta->assign("contenido", "innerHTML", $html[0]);
     $rpta->assign("footer", "innerHTML", $html[1]);
     $rpta->script("$('#modal').modal('show')");

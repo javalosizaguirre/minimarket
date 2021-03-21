@@ -223,7 +223,7 @@ function _interfazUnidadMedidaProductoNuevo()
     $rpta = new xajaxResponse('UTF-8');
     $cls = new interfazUnidadMedidaProducto();
     $html = $cls->interfazNuevo();
-    $rpta->script("$('#modal .modal-header h5').text('Registrar Perfil');");
+    $rpta->script("$('#modal .modal-header h5').text('Registrar Unidad de Medida');");
     $rpta->assign("contenido", "innerHTML", $html[0]);
     $rpta->assign("footer", "innerHTML", $html[1]);
     $rpta->script("$('#modal').modal('show')");
@@ -239,7 +239,7 @@ function _interfazUnidadMedidaProductoEditar($flag, $marca)
     $rpta = new xajaxResponse('UTF-8');
     $cls = new interfazUnidadMedidaProducto();
     $html = $cls->interfazEditar($marca);
-    $rpta->script("$('#modal .modal-header h5').text('Registrar Talla');");
+    $rpta->script("$('#modal .modal-header h5').text('Editar Unidad de Medida');");
     $rpta->assign("contenido", "innerHTML", $html[0]);
     $rpta->assign("footer", "innerHTML", $html[1]);
     $rpta->script("$('#modal').modal('show')");
