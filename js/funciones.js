@@ -39,3 +39,25 @@ function validarEnter(e) {
   tecla = (document.all) ? e.keyCode : e.which;
   if (tecla==13) document.getElementById('btnBuscar').click();
 }
+
+function validarEnterCliente(e) {
+  tecla = (document.all) ? e.keyCode : e.which;
+  if (tecla==13) document.getElementById('btnBuscarCliente').click();
+}
+
+function sumaSubtotales(){
+    let subtotales = 0;
+    let total = 0.00;
+    let igv = 1.18;
+    let base = 0.00;
+    let basetemporal = 0.00
+    $(".subtotales").each(function(){
+        total = parseFloat(total) + parseFloat($(this).text());
+    })
+    $("#tdSubtotal").text(total.toFixed(2));
+    basetemporal = parseFloat(total.toFixed(2));
+    
+    console.log(basetemporal/igv);
+
+    
+}

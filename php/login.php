@@ -13,15 +13,15 @@ $clave = md5($_POST["hhddPassword"]);
 $datosUsuario = $clsAdmin->logeo($usuario, $clave);
 
 
-if($datosUsuario[0]["perfil"]!=''){
+if ($datosUsuario[0]["perfil"] != '') {
     $_SESSION["sys_usuario"] = $usuario;
     $_SESSION["sys_perfil"] = $datosUsuario[0]["perfil"];
     $_SESSION["sys_img"] = $datosUsuario[0]["rutaimg"];
     $_SESSION["sys_perfil_nombre"] = $datosUsuario[0]["descripcion"];
-    $_SESSION["sys_usuario_nombre"]= $datosUsuario[0]["nombres"];
-    $_SESSION["sys_usuario_apellido"]= $datosUsuario[0]["apellidos"];
+    $_SESSION["sys_usuario_nombre"] = $datosUsuario[0]["nombres"];
+    $_SESSION["sys_usuario_apellido"] = $datosUsuario[0]["apellidos"];
+    $_SESSION["carrito"] = array();
     header('Location: ../interfazMenuPrincipal.php');
-}else{
+} else {
     header('Location: ../');
 }
-

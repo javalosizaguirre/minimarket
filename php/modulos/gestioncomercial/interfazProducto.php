@@ -9,7 +9,7 @@ class interfazProducto
         $clsabstract->legenda('fa fa-times-circle', 'Eliminar');
 
         $leyenda = $clsabstract->renderLegenda('30%');
-        $titulo = "Perfiles de Usuario";
+        $titulo = "Productos";
         $html = ' 
     
     <div class="card">
@@ -50,7 +50,9 @@ class interfazProducto
         </div>
 
         </div>
-    </div>';
+    </div>
+    
+    ';
 
         return $html;
     }
@@ -437,6 +439,41 @@ class interfazProducto
             </form>';
         return array($html, $botones);
     }
+
+    public function listarProductos($producto)
+    {
+        $claseproducto = new producto();
+        $dataproducto = $claseproducto->consultar('3', $producto);
+
+
+
+        $html = '<table id="tab_" class="data-tbl-simple table table-bordered" style="border-left:#ccc 1px solid;border-right:0px;width:100%;">
+                    <thead>
+                        <tr>
+                            <th style="width:20px;vertical-align:middle;text-align:center">Código</th>
+                            <th style="width:700px;vertical-align:middle;text-align:center">Producto</th>
+                            <th style="width:20px;vertical-align:middle;text-align:center">Precio</th>
+                            <th style="width:20px;vertical-align:middle;text-align:center">Agregar</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
+        if (count($dataproducto) > 0) {
+            foreach ($dataproducto as $value) {
+                $html .= '<tr>
+                            <td>' . $value["producto"] . '</td>
+                            <td>' . $value["descripcion"] . '</td>
+                            <td style="text-align:right">' . $value["precioventa"] . '</td>
+                            <td style="text-align:center"><button type="button" class="btn btn-primary" id="btnAgregarProducto" onclick="xajax__llenarBandejaVenta(\'' . $value["producto"] . '\', \'' . round($value["precioventa"], 2) . '\', \'' . $value["descripcion"] . '\')"><i class="fas fa-plus"></i></button></td>
+                        </tr>';
+            }
+        } else {
+            $html .= '<tr><td colspan="4"><div class="alert alert-danger">No se encoentraron resultados</td></tr>';
+        }
+        $html .= '</tbody>
+                </table>';
+
+        return $html;
+    }
 }
 
 function _interfazProducto()
@@ -545,8 +582,19 @@ function _productoMantenimiento($flag, $form = '')
     return $rpta;
 }
 
+function _listarProductos($criterio)
+{
+    $rpta = new xajaxResponse();
+    $cls = new interfazProducto();
+    $html = $cls->listarProductos($criterio);
+    $rpta->assign("outQuery", "innerHTML", $html);
+    return $rpta;
+}
+
+
 $xajax->register(XAJAX_FUNCTION, '_interfazProducto');
 $xajax->register(XAJAX_FUNCTION, '_interfazProductoNuevo');
 $xajax->register(XAJAX_FUNCTION, '_productoDatagrid');
 $xajax->register(XAJAX_FUNCTION, '_productoMantenimiento');
 $xajax->register(XAJAX_FUNCTION, '_interfazProductoEditar');
+$xajax->register(XAJAX_FUNCTION, '_listarProductos');

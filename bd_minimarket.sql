@@ -161,10 +161,10 @@ CREATE TABLE `mae_tipocomprobante` (
 /*Data for the table `mae_tipocomprobante` */
 
 insert  into `mae_tipocomprobante`(`tipocomprobante`,`descripcion`,`activo`,`usuarioregistra`,`fecharegistra`,`usuariomodifica`,`fechamodifica`) values 
-('01','Factura','1','42412264','2021-03-17 17:12:58',NULL,NULL),
-('03','Boleta','1','42412264','2021-03-17 17:12:39',NULL,NULL),
-('07','Nota de Credito','1','42412264','2021-03-17 17:13:19',NULL,NULL),
-('08','Nota de Débito','1','42412264','2021-03-17 17:13:31',NULL,NULL);
+('01','FACTURA','1','42412264','2021-03-17 17:12:58',NULL,NULL),
+('03','BOLETA','1','42412264','2021-03-17 17:12:39',NULL,NULL),
+('07','NOTA DE CRÉDITO','1','42412264','2021-03-17 17:13:19',NULL,NULL),
+('08','NOTA DE DÉBITO','1','42412264','2021-03-17 17:13:31',NULL,NULL);
 
 /*Table structure for table `mae_tipodocumento` */
 
@@ -285,7 +285,7 @@ insert  into `men_opciones`(`Menu`,`Opcion`,`Subopcion`,`Nombre`,`Imagen`,`Url`,
 ('003','002','000','Listado de Clientes','','','','','0',0,2,'','0','','','2021-03-21 08:53:18',NULL),
 ('004','001','000','Registro de Proveedores','','','','','0',0,1,'','0','','','2021-03-21 12:47:04',NULL),
 ('004','002','000','Listado de Proveedores','','','','','0',0,2,'','0','','','2021-03-21 12:47:04',NULL),
-('005','001','000','Registro de Ventas','','','','','0',0,1,'','1','','','2021-03-18 09:58:09',NULL),
+('005','001','000','Registro de Ventas','','xajax__interfazVentas();','','','0',0,1,'','1','','','2021-03-21 15:27:09',NULL),
 ('006','001','000','Cierre de Caja','','','','','0',0,1,'','1','','','2021-03-18 09:58:24',NULL),
 ('006','002','000','Consultar Cierre','','','','','0',0,2,'','1','','','2021-03-18 09:58:37',NULL),
 ('007','001','000','Enviar facturas','','','','','0',0,1,'','1','','','2021-03-18 09:58:54',NULL),
@@ -7606,6 +7606,9 @@ BEGIN
 			SELECT * FROM `prod_producto` WHERE `producto` = _criterio;
 		ELSEIF _flag = '2' THEN
 			SELECT `producto`, descripcion FROM `prod_producto` WHERE activo ='1';
+		elseif _flag = '3' then
+			select `producto`,`descripcion`,`stockactual`,`precioventa` from `prod_producto` 
+			where (`producto` = _criterio or if(_criterio='',false,`descripcion` like concat('%',_criterio,'%')));
 		END IF;
 
 	END */$$

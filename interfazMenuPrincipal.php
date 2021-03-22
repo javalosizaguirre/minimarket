@@ -27,6 +27,7 @@ include RUTA_PHP_MODULO . "interfazTallaProducto.php";
 include RUTA_PHP_MODULO . "interfazUnidadMedidaProducto.php";
 include RUTA_PHP_MODULO . "interfazProducto.php";
 include RUTA_PHP_MODULO . "interfazCliente.php";
+include RUTA_PHP_MODULO . "interfazVentas.php";
 
 
 $clsMenu = new menu();
