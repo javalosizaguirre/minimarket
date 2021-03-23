@@ -1,0 +1,112 @@
+body {
+  background-color: #ffffff;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 15px;
+}
+@media print {
+  body {
+    color: #000;
+    font-size: 12pt;
+    font-family: Arial, Helvetica, Sans-Serif;
+  }
+  p {
+    padding: 1px 0px 0px 0px;
+    margin: 0px;
+  }
+  td {
+    font: 11px sans-serif;
+    color: #000000;
+  }
+  .entre {
+    vertical-align: top;
+    padding: 0px 0px 0px 130px;
+  }
+
+  .p1 {
+    padding: 2px 0px 0px 0px;
+    margin: 0px;
+  }
+  .p2 {
+    padding: 2px 0px 0px 35px;
+    margin: 0px;
+  }
+  .p3 {
+    padding: 2px 20px 0px 0px;
+    margin: 0px;
+    text-align: right;
+  }
+  .p4 {
+    padding: 2px 0px 0px 0px;
+    margin: 0px;
+    text-align: right;
+  }
+  .msgErr {
+    padding: 5px 5px 5px 5px;
+    background-color: #ffff99;
+    border-top: 2px solid #ff0000;
+    border-bottom: 2px solid #ff0000;
+    font: bold 11px Arial, Verdana, Helvetica, sans-serif;
+    color: #ff0000;
+    text-align: center;
+  }
+
+  table.factura1 {
+    width: 96%;
+  } /*95*/
+  table.factura1 td.hg {
+    height: 7mm;
+  }
+  table.factura1 td.hg2 {
+    height: 6mm;
+  }
+  table.factura1 td.concept {
+    height: 64mm;
+  }
+  table.factura1 td.left {
+    width: 35mm;
+  }
+  table.factura1 td.right {
+    width: 17mm;
+  } /*10*/
+  table.factura1 td.middle {
+    width: 35mm;
+  }
+  table.factura1 td p {
+    padding: 0;
+    margin: 0;
+  }
+
+  table.factura2 {
+    width: 96%;
+  } /*95*/
+  table.factura2 td.hg {
+    height: 7mm;
+  } /*8*/
+  table.factura2 td.concept {
+    height: 65mm;
+  }
+  table.factura2 td.m1 {
+    width: 20mm;
+  }
+  table.factura2 td.m2 {
+    width: 40mm;
+  }
+  table.factura2 td.m3 {
+    width: 30mm;
+  }
+  table.factura2 td.m4 {
+    width: 50mm;
+  }
+  table.factura2 td.m5 {
+    width: 10mm;
+  }
+  table.factura2 td p {
+    padding: 0;
+    margin: 0;
+  }
+  table.factura2 td.concept2 {
+    height: 63mm;
+  }
+}

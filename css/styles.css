@@ -123,3 +123,12 @@ a {
     margin: 0px 15px;
   }
 }
+
+@media print {
+  @page {
+    margin: 0;
+  }
+  body {
+    margin: 1cm;
+  }
+}

@@ -56,11 +56,22 @@ $xajax->processRequest();
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/datagrid.css">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link href="tools/datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
 
     <?php
     $xajax->printJavascript('/');
     ?>
 
+    <script language="Javascript">
+        function imprSelec(nombre) {
+            var ficha = document.getElementById(nombre);
+            var ventimp = window.open(' ', 'popimpr');
+            ventimp.document.write(ficha.innerHTML);
+            ventimp.document.close();
+            ventimp.print();
+            ventimp.close();
+        }
+    </script>
 
 </head>
 
@@ -156,6 +167,8 @@ $xajax->processRequest();
 
     <script src="js/popper.min.js"></script>
     <script src="js/4.1.0/bootstrap.min.js"></script>
+    <script src="tools/datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="tools/datepicker/locales/bootstrap-datepicker.es.min.js"></script>
 
 
 </body>

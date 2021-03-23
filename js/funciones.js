@@ -49,15 +49,31 @@ function sumaSubtotales(){
     let subtotales = 0;
     let total = 0.00;
     let igv = 1.18;
-    let base = 0.00;
-    let basetemporal = 0.00
+    let base = 0.00;    
+    let tipocomprobante = $("#lstTipoDocumento").val();
+
+    /*Calculo de subtotales*/
     $(".subtotales").each(function(){
         total = parseFloat(total) + parseFloat($(this).text());
     })
-    $("#tdSubtotal").text(total.toFixed(2));
-    basetemporal = parseFloat(total.toFixed(2));
+    $("#tdtotal").text(total.toFixed(2));
     
-    console.log(basetemporal/igv);
 
-    
+    if(tipocomprobante==='01'){/**/
+        subtotales = parseFloat(total.toFixed(2));
+        base = parseFloat(subtotales.toFixed(2))/parseFloat(igv.toFixed(2))
+        igv = parseFloat(total.toFixed(2))-parseFloat(base.toFixed(2))
+        $("#tdSubtotal").text(base.toFixed(2));
+        $("#tdigv").text(igv.toFixed(2));
+
+        $("#txtSubtotal").val(base.toFixed(2));
+        $("#txtIgv").val(igv.toFixed(2));
+        $("#txtTotal").val(total.toFixed(2));
+    }else{
+        $("#tdSubtotal").text('0.00');
+        $("#tdigv").text('0.00');
+         $("#txtSubtotal").val('0.00');
+        $("#txtIgv").val('0.00');
+        $("#txtTotal").val(total.toFixed(2));
+    }            
 }
