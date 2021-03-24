@@ -586,8 +586,10 @@ function _listarProductos($criterio)
 {
     $rpta = new xajaxResponse();
     $cls = new interfazProducto();
+    $claseproducto = new producto();     
     $html = $cls->listarProductos($criterio);
     $rpta->assign("outQuery", "innerHTML", $html);
+    $dataproducto = $claseproducto->consultar('3', $producto);       
     return $rpta;
 }
 

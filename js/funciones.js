@@ -77,3 +77,13 @@ function sumaSubtotales(){
         $("#txtTotal").val(total.toFixed(2));
     }            
 }
+
+function calcularSubtotalItem(guia){
+    let subtotal = 0;    
+    let cantidad = parseFloat(($('#tdCantidad_'+guia)).html());
+    let precio = parseFloat(($('#tdPrecio_'+guia)).html());
+    let subtotalitem = parseFloat(cantidad*precio);
+    $('#tdSub_'+guia).text(subtotalitem.toFixed(2));    
+    sumaSubtotales();
+    xajax__actualizarCantidad(($('#tdProducto_'+guia)).html(),cantidad, subtotalitem);
+}

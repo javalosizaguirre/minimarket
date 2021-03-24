@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+date_default_timezone_set('America/Lima');
 include_once '../../clases/gestioncomercial/comprobante.class.php';
 include_once '../../../tools/phpqrcode/qrlib.php';
 
@@ -23,9 +23,11 @@ $infoqr = '20605714413|' . $datacomprobante[0]["tipocomprobante"] . '|' . $datac
 QRcode::png($infoqr, $codesdir . $codefile, 'H - Mejor', '2');
 
 if ($datacomprobante[0]["tipocomprobante"] == '01') {
-    $tipocomprobante = "Factura";
-} else {
-    $tipocomprobante = "Boleta";
+    $tipocomprobante = "Factura de Venta Electrónica";
+} elseif ($datacomprobante[0]["tipocomprobante"] == '03') {
+    $tipocomprobante = "Boleta de Venta Electrónica";
+} elseif ($datacomprobante[0]["tipocomprobante"] == '00') {
+    $tipocomprobante = "Nota de Venta";
 }
 /*
     [id] => 40 
@@ -67,28 +69,36 @@ if ($datacomprobante[0]["tipocomprobante"] == '01') {
 <body>
     <table>
         <tr>
-            <td align="center">.:: AAA MINIMARKET E.I.R.L. ::.</td>
+            <td align="center"  style="font-size:16px; font-weight:bold">.:: AAA MINIMARKET E.I.R.L. ::.</td>
         </tr>
         <tr>
-            <td align="center">R.U.C. 20605714413</td>
+            <td align="center"  style="font-size:16px; font-weight:bold">R.U.C. 20605714413</td>
         </tr>
         <tr>
-            <td align="center">AC. PACÍFICO A-1 NUEVO CHIMBOTE - ANCASH</td>
+            <td align="center"  style="font-size:16px; font-weight:bold">AV. PACÍFICO A-1 NUEVO CHIMBOTE - ANCASH</td>
         </tr>
         <tr>
-            <td align="center">FECHA/HORA: <?php date("Y-m-d H:i:s"); ?></td>
+            <td align="center"  style="font-size:12px">FECHA/HORA: <?php echo date("Y-m-d H:i:s"); ?></td>
         </tr>
         <tr>
-            <td align="center"><?php echo $tipocomprobante . ' de Venta Electrónica: ' . $datacomprobante[0]["serie"] . '-' . str_pad($datacomprobante[0]["nrocomprobante"], 8, "0", STR_PAD_LEFT); ?> </td>
-        </tr>
-        <tr>
-            <td align="left">Nro. Doc. <?php echo $datacomprobante[0]["cliente"]; ?> </td>
+            <td align="center"  style="font-size:12px"><?php echo $tipocomprobante . ' de Venta Electrónica: ' . $datacomprobante[0]["serie"] . '-' . str_pad($datacomprobante[0]["nrocomprobante"], 8, "0", STR_PAD_LEFT); ?> </td>
         </tr>
         <tr>
             <td>
-                &nbsp;
+                ===========================================
             </td>
+        </tr
+        <tr>
+            <td align="left"  style="font-size:12px">Nro. Doc. <?php echo $datacomprobante[0]["cliente"]; ?> </td>           
         </tr>
+        <tr>
+            <td align="left"  style="font-size:12px">Cliente <?php echo $datacomprobante[0]["nombres"]; ?> </td>           
+        </tr>        
+        <tr>
+            <td>
+                ===========================================
+            </td>
+        </tr
         <tr>
             <td>
                 <table>
@@ -132,10 +142,10 @@ if ($datacomprobante[0]["tipocomprobante"] == '01') {
                     }
                     ?>
                     <tr align="right">
-                        <td colspan="4">
+                        <td colspan="4" style="font-size:16px; font-weight:bold">
                             TOTAL
                         </td>
-                        <td style="font-size:12px">
+                        <td style="font-size:16px; font-weight:bold">
                             <?php echo $datacomprobante[0]["total"] ?>
                         </td>
                     </tr>

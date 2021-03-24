@@ -22,11 +22,12 @@ class interfazVentas
         $html = ' 
     
     <div class="card">
+    <button class="btn btn-primary" type="button" id="btnReset" style="width:100px; display:none" onclick="xajax__interfazVentas()">Procesar</button>
         <div class="card-header">' . $titulo .
             '</div>
             <div class="card-body">        
                 <form class="form-inline" onsubmit="return false;">
-                    <input type="text" class="form-control" id="txtBuscar" placeholder="Buscar por Nombres o Nro. Documento" style="width:70%">                           
+                    <input type="text" class="form-control" id="txtBuscar" placeholder="Buscar por Código o Descripción" style="width:70%">                           
                     <button type="button" class="btn btn-secondary" id="btnBuscar"><i class="fas fa-search"></i>Buscar</button>
                                            
                 </form>             
@@ -51,7 +52,7 @@ class interfazVentas
                             <select id="lstTipoDocumento" name="lstTipoDocumento" class ="form-control" style="width:100%">
                                 <option value="">Seleccionar...</option>';
         foreach ($datatipocomprobante as $value) {
-            $html .= '<option value="' . $value["tipocomprobante"] . '" ' . ($value["tipocomprobante"] == '01') . '>' . $value["descripcion"] . '</option>';
+            $html .= '<option value="' . $value["tipocomprobante"] . '" >' . $value["descripcion"] . '</option>';
         }
         $html .=
             '</select>
@@ -133,9 +134,10 @@ class interfazVentas
             <div style="text-align:center">
            <button class="btn btn-primary" type="button" id="btnProcesarVenta" style="width:100px">Procesar</button>
            </div> 
-        </div>                
+        </div>     
+        <iframe style="display:none" id="frame" width="1" height="1" frameborder="0"></iframe>           
     </div>   
-    <iframe style="display:none" id="frame" width="400" height="400" frameborder="0"></iframe>
+    
 
     </form>';
 
@@ -144,8 +146,14 @@ class interfazVentas
 
     function listarBandeja()
     {
-        $html =
-            '<table id="tab_" class="data-tbl-simple table table-bordered" style="border-left:#ccc 1px solid;border-right:0px;width:100%;">
+        $c = 1;
+        $d = 0;
+        $total = count($_SESSION["carrito"]["producto"]);
+
+        if ($total == 0) {
+
+            $html =
+                '<table id="tab_" class="data-tbl-simple table table-bordered" style="border-left:#ccc 1px solid;border-right:0px;width:100%;">
                     <thead>
                         <tr>
                             <th style="width:20px;vertical-align:middle;text-align:center">Item</th>
@@ -157,41 +165,54 @@ class interfazVentas
                             
                         </tr>
                     </thead>
+                    <tbody></table>';
+        } else {
+            $html =
+                '<table id="tab_" class="data-tbl-simple table table-bordered" style="border-left:#ccc 1px solid;border-right:0px;width:100%;">
+                    <thead>
+                        <tr>
+                            <th style="width:20px;vertical-align:middle;text-align:center">Rem.</th>
+                            <th style="width:20px;vertical-align:middle;text-align:center">Item</th>
+                            <th style="width:80px;vertical-align:middle;text-align:center">Código</th>
+                            <th style="width:400px;vertical-align:middle;text-align:center">Producto</th>
+                            <th style="width:10px;vertical-align:middle;text-align:center">Cant.</th>
+                            <th style="width:10px;vertical-align:middle;text-align:center">Precio</th>
+                            <th style="width:10px;vertical-align:middle;text-align:center">Subtotal</th>                            
+                        </tr>
+                    </thead>
                     <tbody>';
-        $c = 1;
-        $d = 0;
-
-        $total = count($_SESSION["carrito"]["producto"]);
-        while ($d < $total) {
-            $html .= '<tr>
+            while ($d < $total) {
+                if ($_SESSION["carrito"]["producto"][$d] != '') {
+                    $html .= '<tr>
+                                        <td style="text-align:center"><a href="javascript:void(0)" onclick="xajax__vaciarBandejaVenta(\'' . $_SESSION["carrito"]["producto"][$d] . '\')"><i class="fa fa-times-circle" style="font-size:18px"></i></td>
                                         <td >' . $c++ . '</td>
-                                        <td >' . $_SESSION["carrito"]["producto"][$d] . '</td>
-                                        <td >' . $_SESSION["carrito"]["descripcion"][$d] . '</td>
-                                        <td style="text-align:right">' . $_SESSION["carrito"]["cantidad"][$d] . '</td>
-                                        <td style="text-align:right">' . (number_format($_SESSION["carrito"]["precioventa"][$d], 2, '.', '')) . '</td>
-                                        <td style="text-align:right" class="subtotales">' . (number_format(($_SESSION["carrito"]["cantidad"][$d] * $_SESSION["carrito"]["precioventa"][$d]), 2, '.', '')) . '</td>
+                                        <td id="tdProducto_' . ($c - 1) . '">' . $_SESSION["carrito"]["producto"][$d] . '</td>
+                                        <td id="tdDescripcion_' . ($c - 1) . '">' . $_SESSION["carrito"]["descripcion"][$d] . '</td>
+                                        <td id="tdCantidad_' . ($c - 1) . '" style="text-align:right" onkeyup="calcularSubtotalItem(\'' . ($c - 1) . '\')" contenteditable="true">' . $_SESSION["carrito"]["cantidad"][$d] . '</td>
+                                        <td id="tdPrecio_' . ($c - 1) . '" style="text-align:right">' . (number_format($_SESSION["carrito"]["precioventa"][$d], 2, '.', '')) . '</td>
+                                        <td id="tdSub_' . ($c - 1) . '" style="text-align:right" class="subtotales">' . (number_format(($_SESSION["carrito"]["cantidad"][$d] * $_SESSION["carrito"]["precioventa"][$d]), 2, '.', '')) . '</td>
                                     </tr>';
-            $d++;
-        }
-        $html .= '<tr>
-                    <td colspan="5" style="text-align:center;font-size:18px; font-weight:bold">SUB TOTAL</td>
+                }
+                $d++;
+            }
+            $html .= '<tr>
+                    <td colspan="6" style="text-align:center;font-size:18px; font-weight:bold">SUB TOTAL</td>
                     <td id="tdSubtotal" style="text-align:right">0.00</td>                    
                 </tr>
                 <tr>
-                    <td colspan="5" style="text-align:center;font-size:18px; font-weight:bold">IGV</td>
+                    <td colspan="6" style="text-align:center;font-size:18px; font-weight:bold">IGV</td>
                     <td id="tdigv" style="text-align:right">0.00</td>
                 </tr>
                 <tr>
-                    <td colspan="5" style="text-align:center;font-size:18px; font-weight:bold">TOTAL</td>
+                    <td colspan="6" style="text-align:center;font-size:18px; font-weight:bold">TOTAL</td>
                     <td id="tdtotal" style="text-align:right">0.00</td>
                 </tr>
                 <input type="hidden" id="txtSubtotal" name="txtSubtotal" value="0.00">
                 <input type="hidden" id="txtIgv" name="txtIgv"  value="0.00">
                 <input type="hidden" id="txtTotal" name="txtTotal" value="0.00">';
-        $html .= '</tbody>
-                                
-                ';
-        return $html;
+            $html .= '</tbody></table>';
+            return $html;
+        }
     }
 }
 
@@ -238,6 +259,11 @@ function _interfazVentas()
                 $('#txtNombre').removeAttr('readonly');
                 $('#txtBuscarCliente').removeAttr('readonly');
                 sumaSubtotales();
+                if(this.value=='01'){
+                    $('#txtBuscarCliente').attr('maxlength','11');                                        
+                }else if(this.value=='03' || this.value=='00'){
+                    $('#txtBuscarCliente').attr('maxlength','8');                                        
+                }
             }
             
     });");
@@ -268,31 +294,39 @@ function _interfazVentas()
 function _BuscarDatosxDni($dni)
 {
     $rpta = new xajaxResponse();
-    $data = array();
-    if (strlen($dni) == 8) {
-        $arrContextOptions = array(
-            "ssl" => array(
-                "verify_peer" => false,
-                "verify_peer_name" => false,
-            ),
-        );
-        $response = file_get_contents("https://api.reniec.cloud/dni/" . $dni, false, stream_context_create($arrContextOptions));
-        $data = (json_decode($response, true));
-        $nombre = $data["apellido_paterno"] . ' ' . $data["apellido_materno"] . ' ' . $data["nombres"];
-        $rpta->assign("txtNombre", "value", $nombre);
-    } elseif (strlen($dni) == 11) {
-        $arrContextOptions = array(
-            "ssl" => array(
-                "verify_peer" => false,
-                "verify_peer_name" => false,
-            ),
-        );
-        $response = file_get_contents("https://api.apis.net.pe/v1/ruc?numero=" . $dni, false, stream_context_create($arrContextOptions));
-        $data = (json_decode($response, true));
-        $nombre = $data["nombre"];
-        $direccion = $data["direccion"];
-        $rpta->assign("txtNombre", "value", $nombre);
-        $rpta->assign("txtDireccion", "value", $direccion);
+    $clasecliente = new cliente();
+    $datacliente = $clasecliente->consultar('1', $dni);
+
+    if (count($datacliente) == 0) {
+        $data = array();
+        if (strlen($dni) == 8) {
+            $arrContextOptions = array(
+                "ssl" => array(
+                    "verify_peer" => false,
+                    "verify_peer_name" => false,
+                ),
+            );
+            $response = file_get_contents("https://api.reniec.cloud/dni/" . $dni, false, stream_context_create($arrContextOptions));
+            $data = (json_decode($response, true));
+            $nombre = $data["apellido_paterno"] . ' ' . $data["apellido_materno"] . ' ' . $data["nombres"];
+            $rpta->assign("txtNombre", "value", $nombre);
+        } elseif (strlen($dni) == 11) {
+            $arrContextOptions = array(
+                "ssl" => array(
+                    "verify_peer" => false,
+                    "verify_peer_name" => false,
+                ),
+            );
+            $response = file_get_contents("https://api.apis.net.pe/v1/ruc?numero=" . $dni, false, stream_context_create($arrContextOptions));
+            $data = (json_decode($response, true));
+            $nombre = $data["nombre"];
+            $direccion = $data["direccion"];
+            $rpta->assign("txtNombre", "value", $nombre);
+            $rpta->assign("txtDireccion", "value", $direccion);
+        }
+    } else {
+        $rpta->assign("txtNombre", "value", $datacliente[0]["nombres"]);
+        $rpta->assign("txtDireccion", "value", $datacliente[0]["direccion"]);
     }
     return $rpta;
 }
@@ -327,7 +361,10 @@ function _llenarBandejaVenta($producto, $precioventa, $descripcion)
     }
     $html = $interfaz->listarBandeja();
     $rpta->assign("outQueryDetalle", "innerHTML", $html);
+    $rpta->assign("txtBuscar", "value", '');
     $rpta->script("sumaSubtotales()");
+    $rpta->script("$('#txtBuscar').focus()");
+    $rpta->assign("outQuery", "innerHTML", '');
     return $rpta;
 }
 
@@ -368,6 +405,8 @@ function _procesarVenta($form)
         $msj1 .= '- Debe agregar al menos un Producto.\\n';
     }
 
+
+
     if ($msj1 != '') {
         $rpta->script('alert("' . $msj . $msj1 . '")');
     } else {
@@ -391,8 +430,21 @@ function _procesarVenta($form)
                         frame.attr('src',url);
                     }
                 ");
+
                 $rpta->script("loadPage()");
-                $rpta->script("xajax__interfazVentas()");
+                $_SESSION["carrito"] = array();
+                $rpta->assign("outQuery", "innerHTML", '');
+                $rpta->assign("txtBuscar", "value", "");
+                $rpta->assign("txtBuscarCliente", "value", "");
+                $rpta->assign("txtNombre", "value", "");
+                $rpta->assign("txtDireccion", "value", "");
+                $rpta->assign("lstTipoDocumento", "value", "");
+                $rpta->script("
+                 $('#txtDireccion').attr('readonly','readonly');
+                $('#txtNombre').attr('readonly','readonly');
+                $('#txtBuscarCliente').attr('readonly','readonly');
+                ");
+                $rpta->assign("outQueryDetalle", "innerHTML", $interfazventa->listarBandeja());
             }
         } else {
             $rpta->alert('Ocurrio un error al guardar los datos, por favor comuníquese con el Administrador de Sistemas');
@@ -402,7 +454,58 @@ function _procesarVenta($form)
     return $rpta;
 }
 
+function _vaciarBandejaVenta($producto)
+{
+    $rpta = new xajaxResponse();
+    $interfaz = new interfazVentas();
+
+    $total = count($_SESSION["carrito"]["producto"]);
+    $existe = false;
+    $c = 0;
+
+    while ($c < $total) {
+        if ($_SESSION["carrito"]["producto"][$c] == $producto) {
+            if ($_SESSION["carrito"]["cantidad"][$c] > 1) {
+                $_SESSION["carrito"]["cantidad"][$c] = $_SESSION["carrito"]["cantidad"][$c] - 1;
+            } elseif ($_SESSION["carrito"]["cantidad"][$c] = 1) {
+                $_SESSION["carrito"]["cantidad"][$c] = '';
+                $_SESSION["carrito"]["producto"][$c] = '';
+                $_SESSION["carrito"]["precioventa"][$c] = '';
+                $_SESSION["carrito"]["descripcion"][$c] = '';
+            }
+        }
+        $c++;
+    }
+
+
+    $html = $interfaz->listarBandeja();
+    $rpta->assign("outQueryDetalle", "innerHTML", $html);
+    $rpta->script("sumaSubtotales()");
+    return $rpta;
+}
+
+function _actualizarCantidad($producto, $cantidad, $subtotalitem)
+{
+    $rpta = new xajaxResponse();
+
+    $total = count($_SESSION["carrito"]["producto"]);
+
+    $c = 0;
+
+    while ($c < $total) {
+        if ($_SESSION["carrito"]["producto"][$c] == $producto) {
+            $_SESSION["carrito"]["cantidad"][$c] = $cantidad;
+        }
+        $c++;
+    }
+
+    return $rpta;
+}
+
+
 $xajax->register(XAJAX_FUNCTION, '_interfazVentas');
 $xajax->register(XAJAX_FUNCTION, '_BuscarDatosxDni');
 $xajax->register(XAJAX_FUNCTION, '_llenarBandejaVenta');
 $xajax->register(XAJAX_FUNCTION, '_procesarVenta');
+$xajax->register(XAJAX_FUNCTION, '_vaciarBandejaVenta');
+$xajax->register(XAJAX_FUNCTION, '_actualizarCantidad');
