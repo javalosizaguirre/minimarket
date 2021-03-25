@@ -5,7 +5,7 @@ class venta extends connectdb
     function buscar($criterio, $buscar, $flagContar = 0, $paginaActual = 1, $regsPorPag = 20)
     {
         $data = array();
-        $query = "CALL sp_perfilBuscar('$criterio', '$buscar', '$flagContar', '$paginaActual', '$regsPorPag')";
+        $query = "CALL sp_ventaBuscar('$criterio', '$buscar', '$flagContar', '$paginaActual', '$regsPorPag')";
         // echo "buscar--->   ".$query;
         $result = parent::query($query);
 
@@ -37,8 +37,9 @@ class venta extends connectdb
         $total = isset($form["txtTotal"]) ? $form["txtTotal"] : '0.00';
         $formapago  = isset($form["lstFormaPago"]) ? $form["lstFormaPago"] : '';
         $tarjeta = isset($form["lstTarjeta"]) ? $form["lstTarjeta"] : '';
+        $caja = $_SESSION["sys_caja_asignada"];
 
-        $query = "CALL sp_ventaMantenedor('$flag', '$tipocomprobante', '$fechacomprobante', '$cliente','$direccion','$nombrecliente','$formapago','$tarjeta','$subtotal','$igv','$total', '$usuario')";
+        $query = "CALL sp_ventaMantenedor('$flag', '$tipocomprobante', '$fechacomprobante', '$cliente','$direccion','$nombrecliente','$formapago','$tarjeta','$subtotal','$igv','$total', '$usuario','$caja')";
         $result = parent::query($query);
         if (!isset($result['error'])) {
             foreach ($result as $row) {
@@ -53,7 +54,7 @@ class venta extends connectdb
     function consultar($flag, $criterio)
     {
         $data = array();
-        $query = "CALL sp_perfilConsultar('$flag', '$criterio')";
+        $query = "CALL sp_ventaConsultar('$flag', '$criterio')";
         $result = parent::query($query);
         if (!isset($result['error'])) {
             foreach ($result as $row) {

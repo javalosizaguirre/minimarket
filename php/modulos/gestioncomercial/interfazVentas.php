@@ -1,6 +1,7 @@
 <?php
 include_once RUTA_CLASES . 'ventas.class.php';
 include_once RUTA_CLASES . 'ventasdetalle.class.php';
+include_once RUTA_CLASES . 'caja.class.php';
 class interfazVentas
 {
     function principal()
@@ -21,18 +22,14 @@ class interfazVentas
         $titulo = "Buscar Productos";
         $html = ' 
     
-    <div class="card">
-    <button class="btn btn-primary" type="button" id="btnReset" style="width:100px; display:none" onclick="xajax__interfazVentas()">Procesar</button>
-        <div class="card-header">' . $titulo .
-            '</div>
-            <div class="card-body">        
+         
                 <form class="form-inline" onsubmit="return false;">
                     <input type="text" class="form-control" id="txtBuscar" placeholder="Buscar por Código o Descripción" style="width:70%">                           
                     <button type="button" class="btn btn-secondary" id="btnBuscar"><i class="fas fa-search"></i>Buscar</button>
                                            
                 </form>             
             </div>
-            
+            <br>
             <div class="card-body" id="outQuery" style="margin-top:-50px"> 
 
             </div>           
@@ -135,11 +132,16 @@ class interfazVentas
            <button class="btn btn-primary" type="button" id="btnProcesarVenta" style="width:100px">Procesar</button>
            </div> 
         </div>     
-        <iframe style="display:none" id="frame" width="1" height="1" frameborder="0"></iframe>           
+        <iframe style="display:none" id="frame" width="1" height="1" frameborder="0"></iframe>    
+            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        
+    </div>       
     </div>   
     
 
-    </form>';
+    </form>
+
+            ';
 
         return $html;
     }
@@ -188,7 +190,7 @@ class interfazVentas
                                         <td >' . $c++ . '</td>
                                         <td id="tdProducto_' . ($c - 1) . '">' . $_SESSION["carrito"]["producto"][$d] . '</td>
                                         <td id="tdDescripcion_' . ($c - 1) . '">' . $_SESSION["carrito"]["descripcion"][$d] . '</td>
-                                        <td id="tdCantidad_' . ($c - 1) . '" style="text-align:right" onkeyup="calcularSubtotalItem(\'' . ($c - 1) . '\')" contenteditable="true">' . $_SESSION["carrito"]["cantidad"][$d] . '</td>
+                                        <td id="tdCantidad_' . ($c - 1) . '" style="text-align:right" onkeyup="calcularSubtotalItem(\'' . ($c - 1) . '\')" contenteditable="true" onkeypress="return gKeyAceptaSoloDigitosPunto(event)">' . $_SESSION["carrito"]["cantidad"][$d] . '</td>
                                         <td id="tdPrecio_' . ($c - 1) . '" style="text-align:right">' . (number_format($_SESSION["carrito"]["precioventa"][$d], 2, '.', '')) . '</td>
                                         <td id="tdSub_' . ($c - 1) . '" style="text-align:right" class="subtotales">' . (number_format(($_SESSION["carrito"]["cantidad"][$d] * $_SESSION["carrito"]["precioventa"][$d]), 2, '.', '')) . '</td>
                                     </tr>';
@@ -207,6 +209,19 @@ class interfazVentas
                     <td colspan="6" style="text-align:center;font-size:18px; font-weight:bold">TOTAL</td>
                     <td id="tdtotal" style="text-align:right">0.00</td>
                 </tr>
+                <tr>
+                    <td colspan="7">
+                        <table style="width: 40%" border="0">
+                            <tr>
+                                <td style="width: 20%" >Pago con:</td>
+                                <td><input style="text-align:right" type="text" class="form-control" id="txtPagoCon" name="txtPagoCon" placeholder="S/ 0.00"  onkeyup="calcularVuelto()"></td>
+                                <td></td>
+                                <td>Vuelto:</td>
+                                <td><input style="text-align:right" type="text" class="form-control" id="txtVuelto" name="txtVuelto" placeholder="S/ 0.00" readonly></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>                
                 <input type="hidden" id="txtSubtotal" name="txtSubtotal" value="0.00">
                 <input type="hidden" id="txtIgv" name="txtIgv"  value="0.00">
                 <input type="hidden" id="txtTotal" name="txtTotal" value="0.00">';
@@ -214,40 +229,296 @@ class interfazVentas
             return $html;
         }
     }
+
+    function interfazAperturarCaja()
+    {
+        $html = '
+            <form name="form" id="form" class="form-horizontal" onsubmit="return false" method="post">                
+                
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" >Cajera:</label>
+                        <div class="col-sm-9">
+                            <input type="text" style ="width:100%" class="form-control"   id="txtCodigo" name="txtCodigo" value="' . $_SESSION["sys_usuario"] . '"  readonly />
+                        </div>
+                    </div>       
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" >Fecha Apertura:</label>
+                        <div class="col-sm-9">
+                            <input type="text" style ="width:100%" class="form-control"   id="txtFechaApertura" name="txtFechaApertura" value="' . (date("Y-m-d h:m:s")) . '"  readonly />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" >Montor Apertura:</label>
+                        <div class="col-sm-9">
+                            <input onkeypress="return gKeyAceptaSoloDigitosPunto(event)" type="text" style ="width:100%;text-align:right" class="form-control"   id="txtMontoApertura" name="txtMontoApertura"  placeholder="S/ 0.00"   />
+                        </div>
+                    </div>                                                                                                                                                                                                                                   
+            </form>';
+
+        $botones = '
+                        <button type="button" class="btn btn-primary" id="btnAperturarCaja"><i class="icon-ok icon-white"></i><span id="spanSave01">Guardar</span></button>                   
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="icon-remove"></i>Cerrar</button>                        
+            </fieldset>
+            </form>';
+        return array($html, $botones);
+    }
+
+    function datagrid($criterio, $total_regs = 0, $pagina = 1, $nreg_x_pag = 100)
+    {
+        $Grid = new eGrid();
+        $Grid->numeracion();
+
+        $Grid->columna(array(
+            "titulo" => "Serie",
+            "campo" => "serie",
+            "width" => "50"
+        ));
+
+
+        $Grid->columna(array(
+            "titulo" => "Numeracióm",
+            "campo" => "nrocomprobante",
+            "width" => "100"
+        ));
+        $Grid->columna(array(
+            "titulo" => "Cliente",
+            "campo" => "nombres",
+            "width" => "250"
+        ));
+
+        $Grid->columna(array(
+            "titulo" => "Fecha de Venta",
+            "campo" => "fechaventa",
+            "width" => "50"
+        ));
+
+        $Grid->columna(array(
+            "titulo" => "Subtotal",
+            "campo" => "subtotal",
+            "width" => "50",
+            "align" => "right"
+        ));
+
+        $Grid->columna(array(
+            "titulo" => "Igv",
+            "campo" => "igv",
+            "width" => "50",
+            "align" => "right"
+        ));
+
+        $Grid->columna(array(
+            "titulo" => "Total",
+            "campo" => "total",
+            "width" => "50",
+            "align" => "right"
+        ));
+
+        $Grid->columna(array(
+            "titulo" => "Estado",
+            "campo" => "anulado",
+            "width" => "20",
+            "fnCallback" => function ($row) {
+                if ($row["anulado"] == '1') {
+                    $cadena = '<span class = "badge badge-success">Anulado</span>';
+                } elseif ($row["anulado"] == '0') {
+                    $cadena = '<span class = "badge badge-danger"></span>';
+                }
+                return $cadena;
+            }
+        ));
+
+
+        $Grid->accion(array(
+            "icono" => "fa fa-times-circle",
+            "titulo" => "Anular Registro",
+            "xajax" => array(
+                "fn" => "xajax__productoMantenimiento",
+                "msn" => "¿Esta seguro de eliminar el registro?",
+                "parametros" => array(
+                    "flag" => "3",
+                    "campos" => array("id")
+                )
+            )
+        ));
+
+        $Grid->accion(array(
+            "icono" => "fas fa-search",
+            "titulo" => "Ver detalle",
+            "xajax" => array(
+                "fn" => "xajax__verdetalle",
+                "parametros" => array(
+                    "campos" => array("id")
+                )
+            )
+        ));
+        $Grid->data(array(
+            "criterio" => $criterio,
+            "total" => $Grid->totalRegistros,
+            "pagina" => $pagina,
+            "nRegPagina" => $nreg_x_pag,
+            "class" => "venta",
+            "method" => "buscar"
+        ));
+        $Grid->paginador(array(
+            "xajax" => "xajax__ventaDatagrid",
+            "criterio" => array($criterio),
+            "total" => $Grid->totalRegistros,
+            "nRegPagina" => $nreg_x_pag,
+            "pagina" => $pagina,
+            "nItems" => "5",
+            "lugar" => "in"
+        ));
+        $html = $Grid->render();
+        return $html;
+    }
+
+
+    function listarVentas()
+    {
+        $clsabstract = new interfazAbstract();
+        $clsabstract->legenda('fas fa-search', 'Ver detalle');
+        $clsabstract->legenda('fa fa-times-circle', 'Anular');
+
+        $leyenda = $clsabstract->renderLegenda('30%');
+        $titulo = "Ventas";
+        $html = ' 
+    
+    <div class="card">
+        <div class="card-header">' . $titulo . '</div>
+            <div class="card-body">        
+                <form class="form-inline" onsubmit="return false;">
+                    <input type="text" class="form-control" id="txtBuscar" placeholder="Buscar por descripcion" style="width:70%">                           
+                    <button type="button" class="btn btn-secondary" id="btnBuscar"><i class="fas fa-search"></i>Buscar</button>                                           
+                </form>             
+            </div>
+            
+            <div class="card-body" id="outQuery">
+                ' . $this->datagrid('') . '
+            </div>
+            <p><center>' . $leyenda . '</center></p>
+        
+        
+           <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="contenido">
+                    
+                </div>
+                <div class="modal-footer" id="footer">
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+    ';
+
+        return $html;
+    }
+
+    function detalleVenta($venta)
+    {
+        $claseventa = new venta();
+        $datadetalle = $claseventa->consultar('1', $venta);
+        $html = '<table id="tab_" class="data-tbl-simple table table-bordered" style="border-left:#ccc 1px solid;border-right:0px;width:100%;">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
+        $c = 1;
+        foreach ($datadetalle as $value) {
+            $html .= '<tr>
+                            <td>' . $c++ . '</td>
+                            <td>' . $value["descripcion"] . '</td>
+                            <td style="text-align:right">' . $value["cantidad"] . '</td>
+                            <td style="text-align:right">' . $value["precio"] . '</td>
+                            <td style="text-align:right">' . $value["totalitem"] . '</td>
+                        </tr>';
+        }
+        $html .= '</bpody>
+                </table>';
+
+        $botones = '<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="icon-remove"></i>Cerrar</button>';
+
+
+        return array($html, $botones);
+    }
 }
 
 function _interfazVentas()
 {
     $rpta = new xajaxResponse();
     $cls = new interfazVentas();
-    $html = $cls->principal();
-    $rpta->assign("container", "innerHTML", $html);
-    $rpta->script("
+    $clasecaja = new caja();
+
+    $datacaja = $clasecaja->consultar('1', $_SESSION["sys_caja_asignada"]);
+
+    if ($datacaja[0]["total"] == '0') {
+        $rpta->assign("container", "innerHTML", '<div class="modal-dialog" role="document">
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="contenido">
+                    
+                </div>
+                <div class="modal-footer" id="footer">
+                </div>
+                </div>
+            </div>
+            </div>');
+        $html = $cls->interfazAperturarCaja();
+        $rpta->script("$('#modal .modal-header h5').text('Aperturar Caja');");
+        $rpta->assign("contenido", "innerHTML", $html[0]);
+        $rpta->assign("footer", "innerHTML", $html[1]);
+        $rpta->script("$('#modal').modal('show')");
+        $rpta->script("
+        $('#btnAperturarCaja').unbind('click').click(function() {
+            xajax__aperturarCaja('1',xajax.getFormValues('form'));
+        });");
+    } else {
+        $html = $cls->principal();
+        $rpta->assign("container", "innerHTML", $html);
+        $rpta->script("
     $('#btnNuevo').unbind('click').click(function() {
         xajax__interfazPerfilNuevo();
     });");
-    $rpta->script("
+        $rpta->script("
     $('#btnBuscar').unbind('click').click(function() {
     xajax__listarProductos(document.getElementById('txtBuscar').value);
     });");
-
-    $rpta->script("
+        $rpta->script("
     $('#txtBuscar').unbind('keypress').keypress(function() {
         validarEnter(event)
     });");
-
-
-    $rpta->script("
+        $rpta->script("
     $('#btnBuscarCliente').unbind('click').click(function() {
     xajax__BuscarDatosxDni(document.getElementById('txtBuscarCliente').value);
     });");
-
-    $rpta->script("
+        $rpta->script("
     $('#txtBuscarCliente').unbind('keypress').keypress(function() {
         validarEnterCliente(event)
     });");
-
-    $rpta->script("
+        $rpta->script("
         $('#lstTipoDocumento').unbind('change').change(function() {
             if(this.value===''){            
                 $('#txtDireccion').attr('readonly','readonly');
@@ -267,13 +538,11 @@ function _interfazVentas()
             }
             
     });");
-
-    $rpta->script("
+        $rpta->script("
         $('#btnProcesarVenta').unbind('click').click(function() {
             xajax__procesarVenta(xajax.getFormValues('frmVenta'));
         });");
-
-    $rpta->script("
+        $rpta->script("
         $('#lstFormaPago').unbind('change').change(function() {            
             if(this.value=='3'){
                 $('.tarjetas').css('display', 'block');
@@ -281,11 +550,13 @@ function _interfazVentas()
                 $('.tarjetas').css('display', 'none');
             }
     });");
-
-    $rpta->script("$('.datepicker').datepicker({
+        $rpta->script("$('.datepicker').datepicker({
         clearBtn: true,
         language: 'es'
     });");
+    }
+
+
 
 
     return $rpta;
@@ -426,7 +697,7 @@ function _procesarVenta($form)
                 $rpta->script("
                     function loadPage(){
                         var frame = $('#frame');
-                        var url = 'php/modulos/gestioncomercial/comprobante.php?id=" . $result[0]["id"] . "';
+                        var url = 'php/modulos/gestioncomercial/comprobante.php?id=" . $result[0]["id"] . "&pagocon=" . $form["txtPagoCon"] . "&vuelto=" . $form["txtVuelto"] . "';
                         frame.attr('src',url);
                     }
                 ");
@@ -502,6 +773,77 @@ function _actualizarCantidad($producto, $cantidad, $subtotalitem)
     return $rpta;
 }
 
+function _aperturarCaja($flag, $form)
+{
+    $rpta = new xajaxResponse();
+    $clase = new caja();
+    $interfaz = new interfazVentas();
+
+    $msj1 = '';
+    $msj = 'LOS SIGUIENTES CAMPOS SON REQUERIDOS (*)';
+    $msj .= '\\n-----------------------------------------------------------------------\\n';
+
+
+    if ($form["txtMontoApertura"] == '') {
+        $msj1 .= '- Monto de Apertura\\n';
+    }
+
+    if ($msj1 != '') {
+        $rpta->script('alert("' . $msj . $msj1 . '")');
+    } else {
+
+        $result = $clase->mantenedor($flag, $form);
+        if ($result[0]['mensaje'] == 'MSG_001') {
+            $rpta->alert(MSG_001);
+            $rpta->script("jQuery('#modal').modal('hide');");
+            $rpta->script("xajax__interfazVentas()");
+        } else {
+            $rpta->alert("Error al aperturar Caja, por favor comuníques con el Administrador del Sistema");
+        }
+    }
+    return $rpta;
+}
+
+function _ventaDatagrid($criterio, $total_regs = 0, $pagina = 1, $nregs = 100)
+{
+    $rpta = new xajaxResponse();
+    $cls = new interfazVentas();
+    $html = $cls->datagrid($criterio, $total_regs, $pagina, $nregs);
+    $rpta->assign("outQuery", "innerHTML", $html);
+    return $rpta;
+}
+
+function _interfazListarVentas()
+{
+    $rpta = new xajaxResponse();
+    $cls = new interfazVentas();
+    $html = $cls->listarVentas();
+    $rpta->assign("container", "innerHTML", $html);
+
+    $rpta->script("
+    $('#btnBuscar').unbind('click').click(function() {
+    xajax__ventaDatagrid(document.getElementById('txtBuscar').value);
+    });");
+    $rpta->script("
+    $('#txtBuscar').unbind('keypress').keypress(function() {
+        validarEnter(event)
+    });");
+    return $rpta;
+}
+
+function _verdetalle($venta)
+{
+    $rpta = new xajaxResponse();
+    $cls = new interfazVentas();
+    $html = $cls->detalleVenta($venta);
+    $rpta->script("$('#modal .modal-header h5').text('Registrar Producto');");
+    $rpta->assign("contenido", "innerHTML", $html[0]);
+    $rpta->assign("footer", "innerHTML", $html[1]);
+    $rpta->script("$('#modal').modal('show')");
+
+    return $rpta;
+}
+
 
 $xajax->register(XAJAX_FUNCTION, '_interfazVentas');
 $xajax->register(XAJAX_FUNCTION, '_BuscarDatosxDni');
@@ -509,3 +851,7 @@ $xajax->register(XAJAX_FUNCTION, '_llenarBandejaVenta');
 $xajax->register(XAJAX_FUNCTION, '_procesarVenta');
 $xajax->register(XAJAX_FUNCTION, '_vaciarBandejaVenta');
 $xajax->register(XAJAX_FUNCTION, '_actualizarCantidad');
+$xajax->register(XAJAX_FUNCTION, '_aperturarCaja');
+$xajax->register(XAJAX_FUNCTION, '_ventaDatagrid');
+$xajax->register(XAJAX_FUNCTION, '_interfazListarVentas');
+$xajax->register(XAJAX_FUNCTION, '_verdetalle');

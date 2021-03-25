@@ -586,10 +586,13 @@ function _listarProductos($criterio)
 {
     $rpta = new xajaxResponse();
     $cls = new interfazProducto();
-    $claseproducto = new producto();     
+    $claseproducto = new producto();
     $html = $cls->listarProductos($criterio);
     $rpta->assign("outQuery", "innerHTML", $html);
-    $dataproducto = $claseproducto->consultar('3', $producto);       
+    $dataproducto = $claseproducto->consultar('3', $criterio);
+    if (count($dataproducto) == '1') {
+        $rpta->script("$('#btnAgregarProducto').click()");
+    }
     return $rpta;
 }
 

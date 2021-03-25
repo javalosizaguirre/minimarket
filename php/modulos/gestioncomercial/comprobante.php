@@ -69,69 +69,67 @@ if ($datacomprobante[0]["tipocomprobante"] == '01') {
 <body>
     <table>
         <tr>
-            <td align="center"  style="font-size:16px; font-weight:bold">.:: AAA MINIMARKET E.I.R.L. ::.</td>
+            <td align="center" style="font-size:16px; font-weight:bold">.:: AAA MINIMARKET E.I.R.L. ::.</td>
         </tr>
         <tr>
-            <td align="center"  style="font-size:16px; font-weight:bold">R.U.C. 20605714413</td>
+            <td align="center" style="font-size:16px; font-weight:bold">R.U.C. 20605714413</td>
         </tr>
         <tr>
-            <td align="center"  style="font-size:16px; font-weight:bold">AV. PACÍFICO A-1 NUEVO CHIMBOTE - ANCASH</td>
+            <td align="center" style="font-size:16px; font-weight:bold">AV. PACÍFICO A-1 NUEVO CHIMBOTE - ANCASH</td>
         </tr>
         <tr>
-            <td align="center"  style="font-size:12px">FECHA/HORA: <?php echo date("Y-m-d H:i:s"); ?></td>
+            <td align="center" style="font-size:12px">FECHA/HORA: <?php echo date("Y-m-d H:i:s"); ?></td>
         </tr>
         <tr>
-            <td align="center"  style="font-size:12px"><?php echo $tipocomprobante . ' de Venta Electrónica: ' . $datacomprobante[0]["serie"] . '-' . str_pad($datacomprobante[0]["nrocomprobante"], 8, "0", STR_PAD_LEFT); ?> </td>
+            <td align="center" style="font-size:12px"><?php echo $tipocomprobante . ' de Venta Electrónica: ' . $datacomprobante[0]["serie"] . '-' . str_pad($datacomprobante[0]["nrocomprobante"], 8, "0", STR_PAD_LEFT); ?> </td>
         </tr>
         <tr>
             <td>
                 ===========================================
             </td>
-        </tr
-        <tr>
-            <td align="left"  style="font-size:12px">Nro. Doc. <?php echo $datacomprobante[0]["cliente"]; ?> </td>           
+        </tr <tr>
+        <td align="left" style="font-size:12px">Nro. Doc. <?php echo $datacomprobante[0]["cliente"]; ?> </td>
         </tr>
         <tr>
-            <td align="left"  style="font-size:12px">Cliente <?php echo $datacomprobante[0]["nombres"]; ?> </td>           
-        </tr>        
+            <td align="left" style="font-size:12px">Cliente <?php echo $datacomprobante[0]["nombres"]; ?> </td>
+        </tr>
         <tr>
             <td>
                 ===========================================
             </td>
-        </tr
-        <tr>
-            <td>
-                <table>
-                    <tr>
-                        <td style="font-size:12px">CANT.</td>
-                        <td style="font-size:12px">DESCRIPCION</td>
-                        <td style="font-size:12px">PU</td>
-                        <td style="font-size:12px">DCTO.</td>
-                        <td style="font-size:12px">IMPORTE</td>
-                    </tr>
-                    <?php
-                    $cantidadarticulos = 0;
-                    foreach ($datadetalle as $value) {
-                        echo '<tr>
+        </tr <tr>
+        <td>
+            <table>
+                <tr>
+                    <td style="font-size:12px">CANT.</td>
+                    <td style="font-size:12px">DESCRIPCION</td>
+                    <td style="font-size:12px">PU</td>
+                    <td style="font-size:12px">DCTO.</td>
+                    <td style="font-size:12px">IMPORTE</td>
+                </tr>
+                <?php
+                $cantidadarticulos = 0;
+                foreach ($datadetalle as $value) {
+                    echo '<tr>
                             <td  style="font-size:12px">' . $value["cantidad"] . '</td>
                             <td  style="font-size:12px">' . $value["descripcion"] . '</td>
                             <td  style="font-size:12px" align="right">' . $value["precio"] . '</td>
                             <td  style="font-size:12px" align="right">0.00</td>
                             <td  style="font-size:12px" align="right">' . (number_format(($value["cantidad"] * $value["precio"]), 2, '.', '')) . '</td></tr>';
-                        $cantidadarticulos++;
-                    }
-                    ?>
-                    <tr align="right">
-                        <td colspan="4">
-                            DCTO
-                        </td>
-                        <td style="font-size:12px">
-                            0.00
-                        </td>
-                    </tr>
-                    <?php
-                    if ($datacomprobante[0]["tipocomprobante"] == '01') {
-                        echo '<tr align="right">
+                    $cantidadarticulos++;
+                }
+                ?>
+                <tr align="right">
+                    <td colspan="4">
+                        DCTO
+                    </td>
+                    <td style="font-size:12px">
+                        0.00
+                    </td>
+                </tr>
+                <?php
+                if ($datacomprobante[0]["tipocomprobante"] == '01') {
+                    echo '<tr align="right">
                             <td colspan="4">
                                 IGV
                             </td>
@@ -139,55 +137,76 @@ if ($datacomprobante[0]["tipocomprobante"] == '01') {
                                 ' . $datacomprobante[0]["igv"] . '
                             </td>
                         </tr>';
-                    }
-                    ?>
-                    <tr align="right">
-                        <td colspan="4" style="font-size:16px; font-weight:bold">
-                            TOTAL
-                        </td>
-                        <td style="font-size:16px; font-weight:bold">
-                            <?php echo $datacomprobante[0]["total"] ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5">
-                            &nbsp;
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" align="center">
-                            Autorizado mediante Resolución de Intendencia
-                            N° 032- 005 Representación impresa de la
-                            Boleta de Venta Electronica.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" align="center">
-                            <img src="../../../img/qr/<?php echo $datacomprobante[0]['serie'] . '-' . str_pad($datacomprobante[0]['nrocomprobante'], 8, '0', STR_PAD_LEFT) . '.png' ?>" alt="">
+                }
+                ?>
+                <tr align="right">
+                    <td colspan="4" style="font-size:16px; font-weight:bold">
+                        TOTAL
+                    </td>
+                    <td style="font-size:16px; font-weight:bold">
+                        <?php echo $datacomprobante[0]["total"] ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" align="center">
+                        Autorizado mediante Resolución de Intendencia
+                        N° 032- 005 Representación impresa de la
+                        Boleta de Venta Electronica.
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" align="center">
+                        <img src="../../../img/qr/<?php echo $datacomprobante[0]['serie'] . '-' . str_pad($datacomprobante[0]['nrocomprobante'], 8, '0', STR_PAD_LEFT) . '.png' ?>" alt="">
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" align="center">
-                            CANCELADO
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            &nbsp;
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5">
-                            Número de artículos: <?php echo $cantidadarticulos ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5">
-                            Caj.: <?php echo $_SESSION["sys_usuario_nombre"] . ' ' . $_SESSION["sys_usuario_apellido"] ?>
-                        </td>
-                    </tr>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" align="center">
+                        CANCELADO
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        Número de artículos: <?php echo $cantidadarticulos ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        Caj.: <?php echo $_SESSION["sys_usuario_nombre"] . ' ' . $_SESSION["sys_usuario_apellido"] ?>
+                    </td>
+                </tr>
 
+            </table>
+        </td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>Pago con</td>
+                        <td>S/</td>
+                        <td align="right"><?php echo (number_format($_GET["pagocon"], 2, '.', ''))  ?></td>
+                    </tr>
+                    <tr>
+                        <td>Importe</td>
+                        <td>S/</td>
+                        <td align="right"><?php echo $datacomprobante[0]["total"] ?></td>
+                    </tr>
+                    <tr>
+                        <td>Vuelto</td>
+                        <td>S/</td>
+                        <td align="right"><?php echo $_GET["vuelto"] ?></td>
+                    </tr>
                 </table>
             </td>
         </tr>

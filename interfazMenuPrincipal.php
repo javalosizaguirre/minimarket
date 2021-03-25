@@ -29,7 +29,10 @@ include RUTA_PHP_MODULO . "interfazProducto.php";
 include RUTA_PHP_MODULO . "interfazCliente.php";
 include RUTA_PHP_MODULO . "interfazVentas.php";
 include RUTA_PHP_MODULO . "interfazGestionAccesos.php";
+include RUTA_PHP_MODULO . "interfazCierreCaja.php";
+include RUTA_PHP_MODULO . "interfazListarCierresCaja.php";
 
+date_default_timezone_set('America/Lima');
 
 $clsMenu = new menu();
 $dataModulos = $clsMenu->consultarMenu('1', $_SESSION["sys_perfil"]);

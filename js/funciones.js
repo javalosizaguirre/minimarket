@@ -34,7 +34,10 @@ function gKeyAceptaSoloAlfanumericos(evt) {
 
     return (key <= 13 || (key >= 65 && key <= 90) || (key >= 97 && key <= 122) || key == 45 || key==32);
 }
-
+function gKeyAceptaSoloDigitosPunto(evt) {
+    var key = ('charCode' in evt) ? evt.charCode : evt.keyCode;
+    return (key <= 13 || (key >= 48 && key <= 57) || key == 46);
+}
 function validarEnter(e) {
   tecla = (document.all) ? e.keyCode : e.which;
   if (tecla==13) document.getElementById('btnBuscar').click();
@@ -86,4 +89,11 @@ function calcularSubtotalItem(guia){
     $('#tdSub_'+guia).text(subtotalitem.toFixed(2));    
     sumaSubtotales();
     xajax__actualizarCantidad(($('#tdProducto_'+guia)).html(),cantidad, subtotalitem);
+}
+
+function calcularVuelto(){
+    let cantidad = parseFloat(($('#tdtotal')).html());
+    let pago = $("#txtPagoCon").val();
+    let vuelto = pago - cantidad;
+    $("#txtVuelto").val(vuelto.toFixed(2));
 }
