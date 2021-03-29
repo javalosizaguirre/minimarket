@@ -154,15 +154,11 @@ class interfazCierreCaja
                             <td style="text-align:center; font-size:20px;font-weight:bold" colspan="4">.::SALDO INICIAL::.</td>
                         </tr>
 
-                        <tr>
-                            <th>ITEM</th>
-                            <th>SALDO</th>                            
-                            <th colspan="2">TOTAL</th>                            
-                        </tr>';
+';
         $d = 1;
         foreach ($datasaldo as $val) {
             $html .= '<tr>
-                            <th colspan="2">TOTAL</th>                            
+                            <th colspan="2" style="text-align:left">TOTAL</th>                            
                             <td style="text-align:left;">S/ </td>
                             <th style="text-align:right;font-size:16px; font-weight:bold">' . $val["montoapertura"] . '</th>                            
                         </tr>';
@@ -252,7 +248,113 @@ class interfazCierreCaja
                             <td colspan="2"  style="text-align:left;">TOTAL EN CAJA (Monto Inicial + Total de Ventas)</td>
                             <td style="text-align:left;">S/ </td>
                             <td style="text-align:right;font-size:16px; font-weight:bold">' . (number_format(($datasaldo["0"]["montoapertura"] + $total), 2, '.', '')) . '</td>
-                        </tr>                     
+                        </tr>    
+                        
+                                    <tr>
+                            <td colspan="4">===============================================</th>
+                        </tr>
+            <tr>
+                            <td colspan="4">===============================================</th>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center; font-size:20px;font-weight:bold" colspan="4">.::DETALLADO BILLETES Y MONEDAS::.</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align:left">
+                            Billetes de S/ 200
+                            </td>
+                            <td style="text-align:right">
+                                <input id="txt200" name="txt200" type="text" class="form-control" style="width:50%;text-align:right" onkeypress="return gKeyAceptaSoloDigitos(event);" onkeyup="calcularDetlladoBilletasMonedas()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align:left">
+                            Billetes de S/ 100
+                            </td>
+                            <td style="text-align:right">
+                                <input id="txt100" name="txt100" type="text" class="form-control" style="width:50%;text-align:right" onkeypress="return gKeyAceptaSoloDigitos(event)" onkeyup="calcularDetlladoBilletasMonedas()">
+                            </td>
+                        </tr>               
+                        <tr>
+                            <td colspan="3" style="text-align:left">
+                            Billetes de S/ 50
+                            </td>
+                            <td style="text-align:right">
+                                <input id="txt50" name="txt50" type="text" class="form-control" style="width:50%;text-align:right" onkeypress="return gKeyAceptaSoloDigitos(event)" onkeyup="calcularDetlladoBilletasMonedas()">
+                            </td>
+                        </tr>               
+                        <tr>
+                            <td colspan="3" style="text-align:left">
+                            Billetes de S/ 20
+                            </td>
+                            <td style="text-align:right">
+                                <input id="txt20" name="txt20" type="text" class="form-control" style="width:50%;text-align:right" onkeypress="return gKeyAceptaSoloDigitos(event)" onkeyup="calcularDetlladoBilletasMonedas()">
+                            </td>
+                        </tr>               
+                        <tr>
+                            <td colspan="3" style="text-align:left">
+                            Billetes de S/ 10
+                            </td>
+                            <td style="text-align:right">
+                                <input id="txt10" name="txt10" type="text" class="form-control" style="width:50%;text-align:right" onkeypress="return gKeyAceptaSoloDigitos(event)" onkeyup="calcularDetlladoBilletasMonedas()">
+                            </td>
+                        </tr>               
+                        <tr>
+                            <td colspan="3" style="text-align:left">
+                            Monedas de S/ 5
+                            </td>
+                            <td style="text-align:right">
+                                <input id="txt5" name="txt5" type="text" class="form-control" style="width:50%;text-align:right" onkeypress="return gKeyAceptaSoloDigitos(event)" onkeyup="calcularDetlladoBilletasMonedas()">
+                            </td>
+                        </tr>                                                            
+                        <tr>
+                            <td colspan="3" style="text-align:left">
+                            Monedas de S/ 2
+                            </td>
+                            <td style="text-align:right">
+                                <input id="txt2" name="txt2" type="text" class="form-control" style="width:50%;text-align:right" onkeypress="return gKeyAceptaSoloDigitos(event)" onkeyup="calcularDetlladoBilletasMonedas()">
+                            </td>
+                        </tr>              
+                        <tr>
+                            <td colspan="3" style="text-align:left">
+                            Monedas de S/ 1
+                            </td>
+                            <td style="text-align:right">
+                                <input id="txt1" name="txt1" type="text" class="form-control" style="width:50%;text-align:right" onkeypress="return gKeyAceptaSoloDigitos(event)" onkeyup="calcularDetlladoBilletasMonedas()">
+                            </td>
+                        </tr>                                                                                                                                                          
+                        <tr>
+                            <td colspan="3" style="text-align:left">
+                            Monedas de S/ 0.50
+                            </td>
+                            <td style="text-align:right">
+                                <input id="txt05" name="txt05" type="text" class="form-control" style="width:50%;text-align:right" onkeypress="return gKeyAceptaSoloDigitos(event)" onkeyup="calcularDetlladoBilletasMonedas()">
+                            </td>
+                        </tr>               
+                        <tr>
+                            <td colspan="3" style="text-align:left">
+                            Monedas de S/ 0.20
+                            </td>
+                            <td style="text-align:right">
+                                <input id="txt02" name="txt02" type="text" class="form-control" style="width:50%;text-align:right" onkeypress="return gKeyAceptaSoloDigitos(event)" onkeyup="calcularDetlladoBilletasMonedas()">
+                            </td>
+                        </tr>                 
+                        <tr>
+                            <td colspan="3" style="text-align:left">
+                            Monedas de S/ 0.10
+                            </td>
+                            <td style="text-align:right">
+                                <input id="txt01" name="txt01" type="text" class="form-control" style="width:50%;text-align:right" onkeypress="return gKeyAceptaSoloDigitos(event)" onkeyup="calcularDetlladoBilletasMonedas()">
+                            </td>
+                        </tr>   
+                        <tr>
+                            <td colspan="2" style="text-align:left">
+                            TOTAL
+                            </td>
+                            <td style="text-align:right"colspan="2">
+                                <input id="txtBilletesyMonedas" name="txtBilletesyMonedas" type="text" class="form-control" style="width:75%;text-align:right" readonly placeholder="S/ ">
+                            </td>
+                        </tr>                                                                                                                                                                                                                                                   
 
         </tbody>
                 </table>
@@ -344,7 +446,7 @@ function _verCierreGeneral($form)
         $rpta->script('alert("' . $msj . $msj1 . '")');
     } else {
         $clasecaja = new caja();
-        $datacaja = $clasecaja->consultar('1', $form["lstCaja"]);
+        $datacaja = $clasecaja->consultar('3', $form["lstCaja"] . '*' . ymd($form["txtFecha"]));
 
         if ($datacaja[0]["total"] === '0') {
             $rpta->alert("No existen datos para la fecha y Caja seleccionados");
@@ -375,6 +477,7 @@ function _cerrarCaja($form)
     $msj1 = '';
     $msj = 'LOS SIGUIENTES CAMPOS SON REQUERIDOS (*)';
     $msj .= '\\n-----------------------------------------------------------------------\\n';
+
 
 
 

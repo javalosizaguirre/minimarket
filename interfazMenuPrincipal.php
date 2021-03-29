@@ -31,6 +31,7 @@ include RUTA_PHP_MODULO . "interfazVentas.php";
 include RUTA_PHP_MODULO . "interfazGestionAccesos.php";
 include RUTA_PHP_MODULO . "interfazCierreCaja.php";
 include RUTA_PHP_MODULO . "interfazListarCierresCaja.php";
+include RUTA_PHP_MODULO . "interfazIngresoProductos.php";
 
 date_default_timezone_set('America/Lima');
 

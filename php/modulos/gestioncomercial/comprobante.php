@@ -78,7 +78,7 @@ if ($datacomprobante[0]["tipocomprobante"] == '01') {
             <td align="center" style="font-size:16px; font-weight:bold">AV. PACÍFICO A-1 NUEVO CHIMBOTE - ANCASH</td>
         </tr>
         <tr>
-            <td align="center" style="font-size:12px">FECHA/HORA: <?php echo date("Y-m-d H:i:s"); ?></td>
+            <td align="center" style="font-size:12px">FECHA/HORA: <?php echo $datacomprobante[0]["fechaventa"]; ?></td>
         </tr>
         <tr>
             <td align="center" style="font-size:12px"><?php echo $tipocomprobante . ' de Venta Electrónica: ' . $datacomprobante[0]["serie"] . '-' . str_pad($datacomprobante[0]["nrocomprobante"], 8, "0", STR_PAD_LEFT); ?> </td>
@@ -195,17 +195,17 @@ if ($datacomprobante[0]["tipocomprobante"] == '01') {
                     <tr>
                         <td>Pago con</td>
                         <td>S/</td>
-                        <td align="right"><?php echo (number_format($_GET["pagocon"], 2, '.', ''))  ?></td>
+                        <td align="right"><?php echo (number_format($datacomprobante[0]["pagocon"], 2, '.', ''))  ?></td>
                     </tr>
                     <tr>
                         <td>Importe</td>
                         <td>S/</td>
-                        <td align="right"><?php echo $datacomprobante[0]["total"] ?></td>
+                        <td align="right"><?php echo (number_format($datacomprobante[0]["total"], 2, '.', ''))  ?></td>
                     </tr>
                     <tr>
                         <td>Vuelto</td>
                         <td>S/</td>
-                        <td align="right"><?php echo $_GET["vuelto"] ?></td>
+                        <td align="right"><?php echo (number_format($datacomprobante[0]["vuelto"], 2, '.', '')) ?></td>
                     </tr>
                 </table>
             </td>

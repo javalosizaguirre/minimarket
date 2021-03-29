@@ -28,7 +28,8 @@ class venta extends connectdb
         $data = array();
         $usuario = $_SESSION["sys_usuario"];
         $tipocomprobante = isset($form["lstTipoDocumento"]) ? $form["lstTipoDocumento"] : '';
-        $fechacomprobante = isset($form["txtFecha"]) ? ymd($form["txtFecha"]) : '0000-00-00';
+        $hora = substr(date('h:i:s A'), 0, 8);
+        $fechacomprobante = isset($form["txtFecha"]) ? (ymd($form["txtFecha"]) . ' ' . $hora) : '0000-00-00 00:00:00';
         $cliente = isset($form["txtBuscarCliente"]) ? $form["txtBuscarCliente"] : '';
         $nombrecliente = isset($form["txtNombre"]) ? $form["txtNombre"] : '';
         $direccion = isset($form["txtDireccion"]) ? $form["txtDireccion"] : '';
@@ -38,8 +39,13 @@ class venta extends connectdb
         $formapago  = isset($form["lstFormaPago"]) ? $form["lstFormaPago"] : '';
         $tarjeta = isset($form["lstTarjeta"]) ? $form["lstTarjeta"] : '';
         $caja = $_SESSION["sys_caja_asignada"];
+        $pagocon = isset($form["txtPagoCon"]) ? $form["txtPagoCon"] : '';
+        $vuelto = isset($form["txtVuelto"]) ? $form["txtVuelto"] : '';
+        isset($form["lstTarjeta"]) ? $form["lstTarjeta"] : '';
+        $id = isset($form["hhddIdVenta"]) ? $form["hhddIdVenta"] : '';
 
-        $query = "CALL sp_ventaMantenedor('$flag', '$tipocomprobante', '$fechacomprobante', '$cliente','$direccion','$nombrecliente','$formapago','$tarjeta','$subtotal','$igv','$total', '$usuario','$caja')";
+        $query = "CALL sp_ventaMantenedor('$flag', '$tipocomprobante', '$fechacomprobante', '$cliente','$direccion','$nombrecliente','$formapago','$tarjeta','$subtotal','$igv','$total', '$usuario','$caja', '$id', '$pagocon', '$vuelto')";
+
         $result = parent::query($query);
         if (!isset($result['error'])) {
             foreach ($result as $row) {

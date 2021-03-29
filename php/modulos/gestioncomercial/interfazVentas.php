@@ -327,19 +327,20 @@ class interfazVentas
             }
         ));
 
-
-        $Grid->accion(array(
-            "icono" => "fa fa-times-circle",
-            "titulo" => "Anular Registro",
-            "xajax" => array(
-                "fn" => "xajax__productoMantenimiento",
-                "msn" => "¿Esta seguro de eliminar el registro?",
-                "parametros" => array(
-                    "flag" => "3",
-                    "campos" => array("id")
+        if ($_SESSION["sys_perfil"] == '1' || $_SESSION["sys_perfil"] == '2') {
+            $Grid->accion(array(
+                "icono" => "fa fa-times-circle",
+                "titulo" => "Anular Registro",
+                "xajax" => array(
+                    "fn" => "xajax__anularComprobante",
+                    "msn" => "¿Esta seguro desea anular el Comprobante?",
+                    "parametros" => array(
+                        "flag" => "2",
+                        "campos" => array("id")
+                    )
                 )
-            )
-        ));
+            ));
+        }
 
         $Grid->accion(array(
             "icono" => "fas fa-search",
@@ -351,6 +352,20 @@ class interfazVentas
                 )
             )
         ));
+
+        $Grid->accion(array(
+            "icono" => "fa fa-print",
+            "titulo" => "Reimprimir",
+            "xajax" => array(
+                "fn" => "xajax__reeimprimirComprobante",
+                "parametros" => array(
+                    "campos" => array("id")
+                )
+            )
+        ));
+
+
+
         $Grid->data(array(
             "criterio" => $criterio,
             "total" => $Grid->totalRegistros,
@@ -386,6 +401,7 @@ class interfazVentas
     <div class="card">
         <div class="card-header">' . $titulo . '</div>
             <div class="card-body">        
+            <iframe style="display:none" id="frame" width="100" height="100" frameborder="0"></iframe> 
                 <form class="form-inline" onsubmit="return false;">
                     <input type="text" class="form-control" id="txtBuscar" placeholder="Buscar por descripcion" style="width:70%">                           
                     <button type="button" class="btn btn-secondary" id="btnBuscar"><i class="fas fa-search"></i>Buscar</button>                                           
@@ -417,6 +433,7 @@ class interfazVentas
             </div>
         </div>
         </div>
+          
     </div>
     
     ';
@@ -676,6 +693,10 @@ function _procesarVenta($form)
         $msj1 .= '- Debe agregar al menos un Producto.\\n';
     }
 
+    if ($form["txtPagoCon"] == '') {
+        $msj1 .= '- Pago con.\\n';
+    }
+
 
 
     if ($msj1 != '') {
@@ -797,6 +818,8 @@ function _aperturarCaja($flag, $form)
             $rpta->alert(MSG_001);
             $rpta->script("jQuery('#modal').modal('hide');");
             $rpta->script("xajax__interfazVentas()");
+        } elseif ($result[0]['mensaje'] == 'MSG_007') {
+            $rpta->alert(MSG_007);
         } else {
             $rpta->alert("Error al aperturar Caja, por favor comuníques con el Administrador del Sistema");
         }
@@ -844,6 +867,37 @@ function _verdetalle($venta)
     return $rpta;
 }
 
+function _anularComprobante($flag, $idventa)
+{
+    $rpta = new xajaxResponse();
+    $claseventa = new venta();
+    $interfazventa = new interfazVentas();
+    $form = array("hhddIdVenta" => $idventa);
+    $result = $claseventa->mantenedor('2', $form);
+
+    if ($result[0]["mensaje"] == 'MSG_006') {
+        $rpta->alert(MSG_006);
+        $html = $interfazventa->datagrid('');
+        $rpta->assign("outQuery", "innerHTML", $html);
+    }
+    return $rpta;
+}
+
+function _reeimprimirComprobante($idventa)
+{
+    $rpta = new xajaxResponse();
+    $claseventa = new venta();
+    $interfazventa = new interfazVentas();
+    $rpta->script("
+                   
+                        var frame = $('#frame');
+                        var url = 'php/modulos/gestioncomercial/comprobante.php?id=" . $idventa . "';
+                        frame.attr('src',url);
+                    
+                ");
+    return $rpta;
+}
+
 
 $xajax->register(XAJAX_FUNCTION, '_interfazVentas');
 $xajax->register(XAJAX_FUNCTION, '_BuscarDatosxDni');
@@ -855,3 +909,5 @@ $xajax->register(XAJAX_FUNCTION, '_aperturarCaja');
 $xajax->register(XAJAX_FUNCTION, '_ventaDatagrid');
 $xajax->register(XAJAX_FUNCTION, '_interfazListarVentas');
 $xajax->register(XAJAX_FUNCTION, '_verdetalle');
+$xajax->register(XAJAX_FUNCTION, '_anularComprobante');
+$xajax->register(XAJAX_FUNCTION, '_reeimprimirComprobante');

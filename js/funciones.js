@@ -48,6 +48,13 @@ function validarEnterCliente(e) {
   if (tecla==13) document.getElementById('btnBuscarCliente').click();
 }
 
+function validarEnterBusquedaProducto(e) {
+  tecla = (document.all) ? e.keyCode : e.which;
+  if (tecla==13) xajax__resultadoProductos($('#txtBuscarProducto').val());
+}
+
+
+
 function sumaSubtotales(){
     let subtotales = 0;
     let total = 0.00;
@@ -96,4 +103,27 @@ function calcularVuelto(){
     let pago = $("#txtPagoCon").val();
     let vuelto = pago - cantidad;
     $("#txtVuelto").val(vuelto.toFixed(2));
+}
+
+function calcularDetlladoBilletasMonedas(){
+    let billetes200 = $('#txt200').val() === '' ? '0.00' : parseFloat($('#txt200').val());
+    let billetes100 = $('#txt100').val() === '' ? '0.00' : parseFloat($('#txt100').val());
+    let billetes50 = $('#txt50').val() === '' ? '0.00' : parseFloat($('#txt50').val());
+    let billetes20 = $('#txt20').val() === '' ? '0.00' : parseFloat($('#txt20').val());
+    let billetes10 = $('#txt10').val() === '' ? '0.00' : parseFloat($('#txt10').val());
+
+    let monedas5 = $('#txt5').val() === '' ? '0.00' : parseFloat($('#txt5').val());
+    let monedas2 = $('#txt2').val() === '' ? '0.00' : parseFloat($('#txt2').val());
+    let monedas1 = $('#txt1').val() === '' ? '0.00' : parseFloat($('#txt1').val());
+    let monedas05 = $('#txt05').val() === '' ? '0.00' : parseFloat($('#txt05').val());
+    let monedas02 = $('#txt02').val() === '' ? '0.00' : parseFloat($('#txt02').val());
+    let monedas01 = $('#txt01').val() === '' ? '0.00' : parseFloat($('#txt01').val());
+
+
+
+    let totalbilletes = parseFloat((billetes200 * 200)) + parseFloat((billetes100 * 100)) + parseFloat((billetes50 * 50)) + parseFloat((billetes20 * 20)) + parseFloat((billetes10 * 10));
+    let totalmonedas = parseFloat((monedas5 * 5)) + parseFloat((monedas2 * 2)) + parseFloat((monedas1 * 1)) + parseFloat((monedas05 * 0.5)) + parseFloat((monedas02 * 0.2))+ parseFloat((monedas01 * 0.1)); 
+
+    let totaldinero = parseFloat(totalbilletes) + parseFloat(totalmonedas)
+    $('#txtBilletesyMonedas').val(totaldinero.toFixed(2))
 }

@@ -46,7 +46,7 @@ class caja extends connectdb
         if ($flag == '1') {
             $caja = isset($_SESSION["sys_caja_asignada"]) ? $_SESSION["sys_caja_asignada"] : '';
         } else {
-            $caja = isset($_SESSION["txtIdCaja"]) ? $_SESSION["txtIdCaja"] : '';
+            $caja = isset($form["txtIdCaja"]) ? $form["txtIdCaja"] : '';
         }
         $fecha = isset($form["txtFechaApertura"]) ? $form["txtFechaApertura"] : '0000-00-00';
         $usuario = $_SESSION["sys_usuario"];
@@ -55,7 +55,20 @@ class caja extends connectdb
         $efectivo = isset($form["txtEfectivo"]) ? $form["txtEfectivo"] : '0.00';
         $tarjetas = isset($form["txtTarjeta"]) ? $form["txtTarjeta"] : '0.00';
         $total = isset($form["txtTotal"]) ? $form["txtTotal"] : '0.00';
-        $query = "CALL sp_cajaMantenedor('$flag','$id','$caja', '$fecha', '$usuario', '$monto','$fechacierre','$efectivo','$tarjetas','$total')";
+        $billete200  = isset($form["txt200"]) ? $form["txt200"] : '0.00';
+        $billete100 = isset($form["txt100"]) ? $form["txt100"] : '0.00';
+        $billete50 = isset($form["txt50"]) ? $form["txt50"] : '0.00';
+        $billete20 = isset($form["txt20"]) ? $form["txt20"] : '0.00';
+        $billete10 = isset($form["txt10"]) ? $form["txt10"] : '0.00';
+        $moneda5 = isset($form["txt5"]) ? $form["txt5"] : '0.00';
+        $moneda2 = isset($form["txt2"]) ? $form["txt2"] : '0.00';
+        $moneda1 = isset($form["txt1"]) ? $form["txt1"] : '0.00';
+        $moneda05 = isset($form["txt05"]) ? $form["txt05"] : '0.00';
+        $moneda02 = isset($form["txt02"]) ? $form["txt02"] : '0.00';
+        $moneda01 = isset($form["txt01"]) ? $form["txt01"] : '0.00';
+
+        $query = "CALL sp_cajaMantenedor('$flag','$id','$caja', '$fecha', '$usuario', '$monto','$fechacierre','$efectivo','$tarjetas','$total','$billete200','$billete100','$billete50','$billete20','$billete10','$moneda5','$moneda2','$moneda1','$moneda05','$moneda02','$moneda01')";
+
         $result = parent::query($query);
         if (!isset($result['error'])) {
             foreach ($result as $row) {
