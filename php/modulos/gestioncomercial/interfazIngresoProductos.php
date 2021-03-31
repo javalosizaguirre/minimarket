@@ -5,8 +5,8 @@ class interfazIngresoProducto
     function principal()
     {
         $clsabstract = new interfazAbstract();
-        $clsabstract->legenda('fa fa-user-edit', 'Editar');
-        $clsabstract->legenda('fa fa-times-circle', 'Eliminar');
+        $clsabstract->legenda('fas fa-search', 'Ver Ingresos');
+
 
         $leyenda = $clsabstract->renderLegenda('30%');
         $titulo = "Ingreso stock de Productos";
@@ -64,69 +64,38 @@ class interfazIngresoProducto
             "campo" => "tipomovimiento",
             "width" => "50"
         ));
+
+
         $Grid->columna(array(
-            "titulo" => "Fecha",
-            "campo" => "fechamovimiento",
+            "titulo" => "Producto",
+            "campo" => "producto",
             "width" => "100"
         ));
 
         $Grid->columna(array(
-            "titulo" => "Tipo de Comprobante",
-            "campo" => "nombretipocomprobante",
-            "width" => "100"
+            "titulo" => "Descripción",
+            "campo" => "nombreproducto",
+            "width" => "300"
         ));
 
         $Grid->columna(array(
-            "titulo" => "Serie",
-            "campo" => "seriecomprobante",
-            "width" => "100"
+            "titulo" => "Stock",
+            "campo" => "cant_ingreso",
+            "width" => "100",
+            "align" => "right"
         ));
-
-        $Grid->columna(array(
-            "titulo" => "Nro. Comprobante",
-            "campo" => "numerocomprobante",
-            "width" => "100"
-        ));
-
-        $Grid->columna(array(
-            "titulo" => "Estado",
-            "campo" => "anulado",
-            "width" => "20",
-            "fnCallback" => function ($row) {
-                if ($row["anulado"] == '1') {
-                    $cadena = '<span class = "badge badge-success">Anulado</span>';
-                } elseif ($row["anulado"] == '0') {
-                    $cadena = '<span class = "badge badge-danger"></span>';
-                }
-                return $cadena;
-            }
-        ));
-
 
         $Grid->accion(array(
-            "icono" => "fa fa-times-circle",
-            "titulo" => "Eliminar Registro",
+            "icono" => "fas fa-search",
+            "titulo" => "Ver Ingresos",
             "xajax" => array(
-                "fn" => "xajax__ingresoproductosMantenimiento",
-                "msn" => "¿Esta seguro de Anular el registro?",
+                "fn" => "xajax__verkardexFisico",
                 "parametros" => array(
-                    "flag" => "3",
-                    "campos" => array("id")
+                    "campos" => array("producto")
                 )
             )
         ));
 
-        $Grid->accion(array(
-            "icono" => "fa fa-user-edit",
-            "titulo" => "Editar Usuario",
-            "xajax" => array(
-                "fn" => "xajax__interfazIngresoProductosEditar",
-                "parametros" => array(
-                    "flag" => "2",
-                    "campos" => array("id")
-                )
-            )
-        ));
         $Grid->data(array(
             "criterio" => $criterio,
             "total" => $Grid->totalRegistros,
@@ -150,65 +119,43 @@ class interfazIngresoProducto
 
     public function interfazNuevo()
     {
-        $clasetipocomprobante = new tipocomprobante();
-        $datatipocomprobante = $clasetipocomprobante->consultar('2', '');
+
         $html = '
             <form name="form" id="form" class="form-horizontal" onsubmit="return false" method="post">                
-                
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" ><span style="color:red">(*)</span> Fecha:</label>
-                        <div class="col-sm-3">
-                            <input type="text" style ="width:100%" class="form-control"   id="txtFechaIngreso" name="txtFechaIngreso" readonly/>
-                        </div>
-                        <label class="col-sm-3 col-form-label"><span style="color:red">(*)</span> Tipo Comprobante</label>
-                        <div class="col-sm-4">
-                            <select id="lstTipoComprobante" name="lstTipoComprobante" class="form-control">
-                                <option value="">Seleccionar...</option>';
-        foreach ($datatipocomprobante as $value) {
-            $html .= '<option value="' . $value["tipocomprobante"] . '">' . $value["descripcion"] . '</option>';
-        }
-        $html .= '</select>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" > Buscar:</label>
+                    <div class="col-sm-10">
+                        <div class="input-group" style="width:100%">
+                        <input type="text" class="form-control" id="txtBuscarProducto" name="txtBuscarProducto" onkeypress="return validarEnterBusquedaProducto(event)">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" id="btnBuscarProductos">Buscar</button>
+                        </span>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" > <span style="color:red">(*)</span> Serie:</label>
-                        <div class="col-sm-3">
-                            <input type="text" style ="width:100%" class="form-control"   id="txtSerie" name="txtSerie"/>
-                        </div>
-                        <label class="col-sm-3 col-form-label"><span style="color:red">(*)</span> Nro. Comprobante</label>
-                        <div class="col-sm-4">
-                            <input type="text" style="width:100%" class="form-control" id="txtNroComprobante" name="txtNroComprobante" />
-                        </div>
-                    </div>   
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label"> Buscar Producto</label>
-                        <div class="col-sm-10">
-                            <input onkeyup = "validarEnterBusquedaProducto(event)" type="text" style="width:100%" class="form-control" id="txtBuscarProducto" name="txtBuscarProducto" placeholder="Escribir el Código o Descripción del producto y presione [Enter]"/>
-                        </div>
+                </div>
+                                       
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"><span style="color:red">(*)</span> Producto</label>
+                    <div class="col-sm-10" id="dvlstProducto">
+                        <select id="lstProducto" name="lstProducto" class="form-control" style="width:100%">
+                            <option value="">Sin coincidencias</option>
+                        </select> 
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label"><span style="color:red">(*)</span> Producto</label>
-                        <div class="col-sm-10" id="dvlstProducto">
-                           <select id="lstProducto" name="lstProducto" class="form-control" style="width:100%">
-                                <option value="">Seleccionar...</option>
-                           </select> 
-                        </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"><span style="color:red">(*)</span> Cantidad</label>
+                    <div class="col-sm-2">                           
+                            <input type="text" style="width:100%; text-align:right" class="form-control" id="txtCantidad" name="txtCantidad" onkeypress="return gKeyAceptaSoloDigitos(event)"/>                           
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label"><span style="color:red">(*)</span> Cantidad</label>
-                        <div class="col-sm-3">                           
-                                <input type="text" style="width:100%; text-align:right" class="form-control" id="txtCantidad" name="txtCantidad" onkeypress="return gKeyAceptaSoloDigitos(event)"/>                           
-                        </div>
-                        <label class="col-sm-2 col-form-label"> Costo</label>
-                        <div class="col-sm-3">                           
-                                <input type="text" style="width:100%; text-align:right" class="form-control" id="txtCosto" name="txtCosto" onkeypress="return gKeyAceptaSoloDigitosPunto(event)"/>                           
-                        </div>
+                    <label class="col-sm-2 col-form-label"><span style="color:red">(*)</span> Costo</label>
+                    <div class="col-sm-2">                           
+                            <input type="text" style="width:100%; text-align:right" class="form-control" id="txtCosto" name="txtCosto" onkeypress="return gKeyAceptaSoloDigitosPunto(event)"/>                           
                     </div>
-                    <div style="width:100%; text-align:center">
-                        <button type="button" class="btn btn-primary" id="btnAgregar"><i class="fas fa-plus"></i><span id="spanSave01">Agregar</span></button>
-                    </div>
-                    <div id="dvNotaIngreso">
-                    </div>                                        
+                    <label class="col-sm-2 col-form-label"><span style="color:red">(*)</span> Precio</label>
+                    <div class="col-sm-2">                           
+                            <input type="text" style="width:100%; text-align:right" class="form-control" id="txtPrecio" name="txtPrecio" onkeypress="return gKeyAceptaSoloDigitosPunto(event)"/>                           
+                    </div>                    
+                </div>                                                       
                                                                                                                                                                                                                                         
             </form>';
 
@@ -220,39 +167,41 @@ class interfazIngresoProducto
         return array($html, $botones);
     }
 
-    public function interfazEditar($perfil)
+    function interfazKardexFisico($producto)
     {
-        $clase = new perfil();
-        $data = $clase->consultar('1', $perfil);
+        $clase = new ingresoproductos();
+        $data = $clase->consultar($producto);
 
-        $html = '
-            <form name="form" id="form" class="form-horizontal" onsubmit="return false" method="post">                
-                
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" >Código:</label>
-                        <div class="col-sm-9">
-                            <input type="text" style ="width:30%" class="form-control"   id="txtCodigo" name="txtCodigo" value="' . $perfil . '" maxlength="3" readonly />
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" ><span style="color:red">(*)</span> Descripción:</label>
-                        <div class="col-sm-9">
-                            <input type="text" style ="width:100%" class="form-control"   id="txtDescripcion" name="txtDescripcion" value="' . $data[0]["descripcion"] . '"/>
-                        </div>
-                    </div>                                    
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" >Activo:</label>
-                        <div class="col-sm-9">
-                            <input id="chk_activo"  name="chk_activo" type="checkbox" value="1" style="vertical-align:middle" ' . ($data[0]["activo"] == '1' ? 'checked' : '') . '>
-                        </div>
-                    </div>                                                                                                                                                                                                                          
-            </form>';
+        $html = '<table class="data-tbl-simple table table-bordered" style="border-left:#ccc 1px solid;border-right:0px;width:100%;">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center">Fecha</th>
+                            <th style="text-align:center">Entradas</th>
+                            <th style="text-align:center">Salidas</th>
+                            <th style="text-align:center">Saldos</th>                        
+                        </tr>
+                    </thead>';
+        $ingresos = 0;
+        $salidas = 0;
+        foreach ($data as $value) {
+            $ingresos = $ingresos + $value["cant_ingreso"];
+            $salidas = $salidas + $value["cant_salida"];
+            $html .= '<tr>
+                                    <td>' . substr($value["fechamovimiento"], 0, 10) . '</td>
 
-        $botones = '<span style="color:red">(*) Campos Obligatorios.</span>
-                        <button type="button" class="btn btn-primary" id="btnEdiar"><i class="icon-ok icon-white"></i><span id="spanSave01">Guardar</span></button>                   
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="icon-remove"></i>Cerrar</button>                        
-            </fieldset>
-            </form>';
+                                    <td style="text-align:right">' . ($value["tipomovimiento"] == 'I' ? number_format($value["cant_ingreso"], 0, '.', '') : '') . '</td>
+                                    <td style="text-align:right">' . ($value["tipomovimiento"] == 'S' ? number_format($value["cant_salida"], 0, '.', '') : '') . '</td>
+                                    <td style="text-align:right">' . ($ingresos - $salidas) . '</td>                        
+                                </tr>';
+        }
+        $html .= '<tr>
+                    <td style="text-align:center; font-weight:bold;font-size:18px">TOTAL</td>
+                    <td style="text-align:right; font-weight:bold;font-size:18px">' . $ingresos . '</td>
+                    <td style="text-align:right; font-weight:bold;font-size:18px">' . $salidas . '</td>
+                    <td style="text-align:right; font-weight:bold;font-size:18px">' . ($ingresos - $salidas) . '</td>
+                </tr>   
+        </table>';
+        $botones = '<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="icon-remove"></i>Cerrar</button>';
         return array($html, $botones);
     }
 }
@@ -288,29 +237,18 @@ function _interfazIngresoProductosNuevo()
     $rpta->assign("footer", "innerHTML", $html[1]);
     $rpta->script("$('#modal').modal('show')");
     $rpta->script("
-        $('#btnAgregar').unbind('click').click(function() {
-            xajax__agregarProductosTemporal(xajax.getFormValues('form'));
+        $('#btnBuscarProductos').unbind('click').click(function() {
+            xajax__resultadoProductos($('#txtBuscarProducto').val());
         });");
 
-
-    return $rpta;
-}
-
-function _interfazIngresoProductosEditar($flag, $id)
-{
-    $rpta = new xajaxResponse('UTF-8');
-    $cls = new interfazIngresoProducto();
-    $html = $cls->interfazEditar($id);
-    $rpta->script("$('#modal .modal-header h5').text('Editar Ingreso de Productos');");
-    $rpta->assign("contenido", "innerHTML", $html[0]);
-    $rpta->assign("footer", "innerHTML", $html[1]);
-    $rpta->script("$('#modal').modal('show')");
     $rpta->script("
-        $('#btnEdiar').unbind('click').click(function() {
-            xajax__ingresoproductosMantenimiento('" . $flag . "',xajax.getFormValues('form'));
+        $('#btnGuardar').unbind('click').click(function() {
+            xajax__ingresoproductosMantenimiento('1',xajax.getFormValues('form'));
         });");
+
     return $rpta;
 }
+
 
 function _ingresoproductosDatagrid($criterio, $total_regs = 0, $pagina = 1, $nregs = 50)
 {
@@ -335,8 +273,20 @@ function _ingresoproductosMantenimiento($flag, $form = '')
     $msj .= '\\n-----------------------------------------------------------------------\\n';
 
 
-    if ($form["txtDescripcion"] == '') {
-        $msj1 .= '- Descripcion\\n';
+    if ($form["lstProducto"] == '') {
+        $msj1 .= '- Producto\\n';
+    }
+
+    if ($form["txtCantidad"] == '') {
+        $msj1 .= '- Cantidad\\n';
+    }
+
+    if ($form["txtCosto"] == '') {
+        $msj1 .= '- Costo\\n';
+    }
+
+    if ($form["txtPrecio"] == '') {
+        $msj1 .= '- Precio\\n';
     }
 
     if ($msj1 != '' && $flag != '3') {
@@ -368,27 +318,53 @@ function _resultadoProductos($criterio)
 {
     $rpta = new xajaxResponse();
     $claseproducto = new producto();
-    $dataproducto = $claseproducto->consultar('4', $criterio);
-    $combo = '<select id="lstProducto" name="lstProducto" class="form-control" style="width:100%">
-                <option value="">Seleccionar</option>';
-    foreach ($dataproducto as $value) {
-        $combo .= '<option value="' . $value["producto"] . '">' . $value["descripcion"] . '</option>';
+    if (strlen($criterio) < 4) {
+        $rpta->alert("Debe ingresar al menos 4 caracteres");
+    } else {
+        $dataproducto = $claseproducto->consultar('4', $criterio);
+        $combo = '<select id="lstProducto" name="lstProducto" class="form-control" style="width:100%">
+                    <option value="">Seleccionar...</option>';
+        foreach ($dataproducto as $value) {
+            $combo .= '<option value="' . $value["producto"] . '">' . $value["descripcion"] . '</option>';
+        }
+        $combo .= '</select>';
+        $rpta->assign("dvlstProducto", "innerHTML", $combo);
+        $rpta->script("
+        $('#lstProducto').unbind('change').change(function() {
+            xajax__consultarDatosProducto(this.value);
+        });");
     }
-    $combo .= '</select>';
-    $rpta->assign("dvlstProducto", "innerHTML", $combo);
     return $rpta;
 }
 
-function _agregarProductosTemporal($producto, $cantidad, $costo)
+function _consultarDatosProducto($criterio)
 {
     $rpta = new xajaxResponse();
-
+    $claseproducto = new producto();
+    $dataproducto = $claseproducto->consultar('5', $criterio);
+    $rpta->assign("txtCosto", "value", $dataproducto[0]["preciocompra"]);
+    $rpta->assign("txtPrecio", "value", $dataproducto[0]["precioventa"]);
     return $rpta;
 }
+
+function _verkardexFisico($producto)
+{
+    $rpta = new xajaxResponse('UTF-8');
+    $cls = new interfazIngresoProducto();
+    $html = $cls->interfazKardexFisico($producto);
+    $rpta->script("$('#modal .modal-header h5').text('Kardex Físico');");
+    $rpta->assign("contenido", "innerHTML", $html[0]);
+    $rpta->assign("footer", "innerHTML", $html[1]);
+    $rpta->script("$('#modal').modal('show')");
+    return $rpta;
+}
+
+
 
 $xajax->register(XAJAX_FUNCTION, '_interfazIngresoProductos');
 $xajax->register(XAJAX_FUNCTION, '_interfazIngresoProductosNuevo');
 $xajax->register(XAJAX_FUNCTION, '_ingresoproductosDatagrid');
 $xajax->register(XAJAX_FUNCTION, '_ingresoproductosMantenimiento');
-$xajax->register(XAJAX_FUNCTION, '_interfazIngresoProductosEditar');
 $xajax->register(XAJAX_FUNCTION, '_resultadoProductos');
+$xajax->register(XAJAX_FUNCTION, '_consultarDatosProducto');
+$xajax->register(XAJAX_FUNCTION, '_verkardexFisico');

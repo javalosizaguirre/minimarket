@@ -27,10 +27,11 @@ class ingresoproductos extends connectdb
     {
         $data = array();
         $usuario = $_SESSION["sys_usuario"];
-        $perfil = isset($form["txtCodigo"]) ? $form["txtCodigo"] : '';
-        $descripcion = isset($form["txtDescripcion"]) ? $form["txtDescripcion"] : '';
-        $activo = isset($form["chk_activo"]) ? $form["chk_activo"] : '0';
-        $query = "CALL sp_perfilMantenedor('$flag', '$perfil', '$descripcion', '$activo', '$usuario')";
+        $producto = $form["lstProducto"];
+        $cantidad = $form["txtCantidad"];
+        $costo = $form["txtCosto"];
+        $precio = $form["txtPrecio"];
+        $query = "CALL sp_ingresoproductosMantenedor('$flag', '$producto', '$cantidad', '$costo','$precio','$usuario')";
         $result = parent::query($query);
         if (!isset($result['error'])) {
             foreach ($result as $row) {
@@ -42,10 +43,11 @@ class ingresoproductos extends connectdb
         return $data;
     }
 
-    function consultar($flag, $criterio)
+    function consultar($producto)
     {
         $data = array();
-        $query = "CALL sp_perfilConsultar('$flag', '$criterio')";
+        $usuario = $_SESSION["sys_usuario"];
+        $query = "CALL sp_kardexfisico('$producto')";
         $result = parent::query($query);
         if (!isset($result['error'])) {
             foreach ($result as $row) {

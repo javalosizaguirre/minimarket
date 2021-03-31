@@ -223,8 +223,13 @@ class interfazVentas
                     </td>
                 </tr>                
                 <input type="hidden" id="txtSubtotal" name="txtSubtotal" value="0.00">
-                <input type="hidden" id="txtIgv" name="txtIgv"  value="0.00">
-                <input type="hidden" id="txtTotal" name="txtTotal" value="0.00">';
+                <input type="hidden" id="txtIgv" name="txtIgv"  value="0.00">                
+                <input type="hidden" id="txtTotal" name="txtTotal" value="0.00">
+
+
+                <input type="text" id="txtSubtotalBoleta" name="txtSubtotalBoleta"  value="0.00">
+                <input type="text" id="txtIgvBoleta" name="txtIgvBoleta"  value="0.00">
+                <input type="text" id="txtTotalBoleta" name="txtTotalBoleta"  value="0.00">';
             $html .= '</tbody></table>';
             return $html;
         }

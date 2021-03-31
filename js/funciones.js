@@ -80,11 +80,17 @@ function sumaSubtotales(){
         $("#txtIgv").val(igv.toFixed(2));
         $("#txtTotal").val(total.toFixed(2));
     }else{
+        subtotales = parseFloat(total.toFixed(2));
+        base = parseFloat(subtotales.toFixed(2))/parseFloat(igv.toFixed(2))
+        igv = parseFloat(total.toFixed(2))-parseFloat(base.toFixed(2))
+
+        $("#txtSubtotalBoleta").val(base.toFixed(2));
+        $("#txtIgvBoleta").val(igv.toFixed(2));
+        $("#txtTotalBoleta").val(total.toFixed(2));
+
         $("#tdSubtotal").text('0.00');
         $("#tdigv").text('0.00');
-         $("#txtSubtotal").val('0.00');
-        $("#txtIgv").val('0.00');
-        $("#txtTotal").val(total.toFixed(2));
+       
     }            
 }
 

@@ -55,9 +55,10 @@ $resp = $procesarcomprobante->procesar_boleta($array_cabecera, $array_detalle, $
 $resp['file'] = $nombre_archivo;
 echo json_encode($resp);
 
-function get_array_cabecera($data, $emisor) {
+function get_array_cabecera($data, $emisor)
+{
     $cabecera = array(
-        'TIPO_OPERACION' => (isset($data['tipo_operacion'])) ? $data['tipo_operacion'] : "", 
+        'TIPO_OPERACION' => (isset($data['tipo_operacion'])) ? $data['tipo_operacion'] : "",
         'TOTAL_GRAVADAS' => (isset($data['total_gravadas'])) ? $data['total_gravadas'] : "0",
         'TOTAL_INAFECTA' => (isset($data['total_inafecta'])) ? $data['total_inafecta'] : "0",
         'TOTAL_EXONERADAS' => (isset($data['total_exoneradas'])) ? $data['total_exoneradas'] : "0",
@@ -65,7 +66,7 @@ function get_array_cabecera($data, $emisor) {
         'TOTAL_EXPORTACION' => (isset($data['total_exportacion'])) ? $data['total_exportacion'] : "0",
         'TOTAL_DESCUENTO' => (isset($data['total_descuento'])) ? $data['total_descuento'] : "0",
         'SUB_TOTAL' => (isset($data['sub_total'])) ? $data['sub_total'] : "0",
-        'POR_IGV' => (isset($data['porcentaje_igv'])) ? $data['porcentaje_igv'] : "0", 
+        'POR_IGV' => (isset($data['porcentaje_igv'])) ? $data['porcentaje_igv'] : "0",
         'TOTAL_IGV' => (isset($data['total_igv'])) ? $data['total_igv'] : "0",
         'TOTAL_ISC' => (isset($data['total_isc'])) ? $data['total_isc'] : "0",
         'TOTAL_OTR_IMP' => (isset($data['total_otr_imp'])) ? $data['total_otr_imp'] : "0",
@@ -76,12 +77,12 @@ function get_array_cabecera($data, $emisor) {
         'NRO_OTR_COMPROBANTE' => (isset($data['nro_otr_comprobante'])) ? $data['nro_otr_comprobante'] : "",
         'NRO_COMPROBANTE' => $data['serie_comprobante'] . '-' . $data['numero_comprobante'],
         'FECHA_DOCUMENTO' => $data['fecha_comprobante'],
-        'FECHA_VTO' => $data['fecha_vto_comprobante'], 
+        'FECHA_VTO' => $data['fecha_vto_comprobante'],
         'COD_TIPO_DOCUMENTO' => $data['cod_tipo_documento'],
         'COD_MONEDA' => $data['cod_moneda'],
         'NRO_DOCUMENTO_CLIENTE' => $data['cliente_numerodocumento'],
         'RAZON_SOCIAL_CLIENTE' => $data['cliente_nombre'],
-        'TIPO_DOCUMENTO_CLIENTE' => $data['cliente_tipodocumento'], 
+        'TIPO_DOCUMENTO_CLIENTE' => $data['cliente_tipodocumento'],
         'DIRECCION_CLIENTE' => $data['cliente_direccion'],
         'COD_PAIS_CLIENTE' => $data['cliente_pais'],
         'COD_UBIGEO_CLIENTE' => (isset($data['cliente_codigoubigeo'])) ? $data['cliente_codigoubigeo'] : "",
@@ -90,7 +91,7 @@ function get_array_cabecera($data, $emisor) {
         'DISTRITO_CLIENTE' => (isset($data['cliente_distrito'])) ? $data['cliente_distrito'] : "",
         'CIUDAD_CLIENTE' => (isset($data['cliente_ciudad'])) ? $data['cliente_ciudad'] : "",
         'NRO_DOCUMENTO_EMPRESA' => $emisor['ruc'],
-        'TIPO_DOCUMENTO_EMPRESA' => $emisor['tipo_doc'], 
+        'TIPO_DOCUMENTO_EMPRESA' => $emisor['tipo_doc'],
         'NOMBRE_COMERCIAL_EMPRESA' => $emisor['nom_comercial'],
         'CODIGO_UBIGEO_EMPRESA' => $emisor['codigo_ubigeo'],
         'DIRECCION_EMPRESA' => $emisor['direccion'],
@@ -108,12 +109,14 @@ function get_array_cabecera($data, $emisor) {
     return $cabecera;
 }
 
-function get_array_detalle($data) {
+function get_array_detalle($data)
+{
     $detalle_documento = $data['detalle'];
     return $detalle_documento;
 }
 
-function get_array_emisor($data) {
+function get_array_emisor($data)
+{
     $data_emisor = $data['emisor'];
 
     $emisor['ruc'] = (isset($data_emisor['ruc'])) ? $data_emisor['ruc'] : '';

@@ -28,6 +28,7 @@ class producto extends connectdb
         $data = array();
         $usuario = $_SESSION["sys_usuario"];
         $producto = isset($form["txtCodigo"]) ? $form["txtCodigo"] : '';
+        $codigonuevo = isset($form["txtCodigoNuevo"]) ? $form["txtCodigoNuevo"] : ''; 
         $descripcion = isset($form["txtDescripcion"]) ? $form["txtDescripcion"] : '';
         $categoria = isset($form["lstCategoria"]) ? $form["lstCategoria"] : '';
         $marca = isset($form["lstMarca"]) ? $form["lstMarca"] : '';
@@ -40,7 +41,7 @@ class producto extends connectdb
         $stockminimo = isset($form["txtStockMinimo"]) ? $form["txtStockMinimo"] : 0;
         $fechavencimiento = isset($form["txtFechaVencimiento"]) ? $form["txtFechaVencimiento"] : '0000-00-00';
         $activo = isset($form["chk_activo"]) ? $form["chk_activo"] : '0';
-        $query = "CALL sp_productoMantenedor('$flag', '$producto','$descripcion','$categoria','$marca','$modelo','$talla','$unidadmedida','$stockactual','$stockminimo','$preciocompra','$precioventa','$fechavencimiento', '$activo', '$usuario')";
+        $query = "CALL sp_productoMantenedor('$flag', '$producto','$descripcion','$categoria','$marca','$modelo','$talla','$unidadmedida','$stockactual','$stockminimo','$preciocompra','$precioventa','$fechavencimiento', '$activo', '$usuario', '$codigonuevo')";
         $result = parent::query($query);
         if (!isset($result['error'])) {
             foreach ($result as $row) {

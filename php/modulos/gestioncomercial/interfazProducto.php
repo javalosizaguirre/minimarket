@@ -308,6 +308,12 @@ class interfazProducto
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" >Código Nuevo:</label>
+                        <div class="col-sm-10">
+                            <input type="text" style ="width:30%" class="form-control"   id="txtCodigoNuevo" name="txtCodigoNuevo" maxlength="15" value="' . $producto . '" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-sm-2 col-form-label" ><span style="color:red">(*)</span> Descripción:</label>
                         <div class="col-sm-10">
                             <input type="text" style ="width:100%" class="form-control"   id="txtDescripcion" name="txtDescripcion" value = "' . $dataproducto[0]["descripcion"] . '"/>
