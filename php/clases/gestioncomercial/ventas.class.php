@@ -124,4 +124,23 @@ class venta extends connectdb
         }
         return $data;
     }
+
+
+    function consultarReportes($form)
+    {
+        $data = array();
+        $tiporeporte = $form["lstTipoReporte"];
+        $fechadesde = ymd($form["txtFechaDesde"]);
+        $fechahasta = ymd($form["txtFechaHasta"]);
+        $query = "CALL sp_ventasConsultaReportes('$tiporeporte', '$fechadesde', '$fechahasta')";
+        $result = parent::query($query);
+        if (!isset($result['error'])) {
+            foreach ($result as $row) {
+                $data[] = $row;
+            }
+        } else {
+            $this->setMsgErr($result['error']);
+        }
+        return $data;
+    }
 }
