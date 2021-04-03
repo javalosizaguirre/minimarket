@@ -10,7 +10,7 @@ class interfazEnvioSunat
         $clasetipocomprobante = new tipocomprobante();
         $clsabstract->legenda('fas fa-search', 'Ver detalle');
         $clsabstract->legenda('fas fa-arrow-circle-right', 'Enviar Comprobante');
-        $datostipocomprobante = $clasetipocomprobante->consultar('2', '');
+        $datostipocomprobante = $clasetipocomprobante->consultar('3', '');
         $leyenda = $clsabstract->renderLegenda('30%');
         $titulo = "Ventas";
         $html = ' 
@@ -20,10 +20,10 @@ class interfazEnvioSunat
             <div class="card-body">        
             
                 <form class="form-inline" onsubmit="return false;" id="frmConsulta">
-                    <table style="width:40%">
+                    <table style="width:100%">
                         <tr>
-                            <td>Comprobante</td>
-                            <td>
+                            <td style="width:20%">Comprobante</td>
+                            <td  style="width:30%">
                                 <select id="lstTipoComprobante" name="lstTipoComprobante" class="form-control" style="width:100%">
                                     <option value="">Seleccionar...</option>';
         foreach ($datostipocomprobante as $value) {
@@ -31,29 +31,47 @@ class interfazEnvioSunat
         }
         $html .= '</select>
                             </td>
+                            <td style="width:60%"></td>
                         </tr>
                         <tr>
                             <td>Fecha</td>
                             <td><input type="text" class="form-control datepicker" id="txtFecha" name="txtFecha" readonly style="width:100%"></td>                            
+                            <td></td>
                         </tr>
                         <tr>
                            <td>Nro. Comprobante</td> 
                            <td><input type="text" class="form-control" id="txtBuscar" name="txtBuscar" placeholder="Nro. Comprobante" style="width:100%"></td>
+                           <td></td>
                         </tr>
                         <tr>
-                            <td colspan="2">
+                           <td>Estado</td> 
+                           <td>
+                                <select id="lstEstado" name="lstEstado" class="form-control">
+                                    <option value="">Todos...</option>
+                                    <option value="1">Enviados</option>
+                                    <option value="0" selected>Pendientes</option>
+                                </select>
+                           </td>
+                           <td></td>
+                        </tr>                        
+                        <tr>
+                            <td colspan="3">
                                 <button type="button" class="btn btn-secondary" id="btnBuscar"><i class="fas fa-search"></i>Buscar</button>
+                                <button type="button" class="btn btn-secondary" id="btnSeleccionarTodo">Todos</button>
+                                <button style="display:none" type="button" class="btn btn-secondary" id="btnDeseleccionarTodo">Borrar</button>
+                                <button style="display:none" type="button" class="btn btn-secondary" id="btnEnviarSunat"><i class="fas fa-arrow-circle-right"></i>Enviar a Sunat</button>
                             </td>
                         </tr>    
                     </table>
                                                
                     
-                </form>             
+            </form>                
             </div>
-            
+            <form id="frmChk" name="frmChk" onsubmit="return false">
             <div class="card-body" id="outQuery">
                 ' . $this->datagrid('') . '
             </div>
+            </form>
             <p><center>' . $leyenda . '</center></p>
         
         
@@ -149,6 +167,20 @@ class interfazEnvioSunat
             }
         ));
 
+
+        $Grid->accion(array(
+            "titulo" => "Sel.",
+            "width" => "20",
+            "fnCallback" => function ($row) {
+                if ($row["estadosunat"] == '0') {
+                    $cadena = '<input type="checkbox" disabled id="checkbox_' . $row["rownum"] . '" name="checkbox_' . $row["rownum"] . '" value="' . $row["id"] . '">';
+                }
+
+                return $cadena;
+            }
+        ));
+
+
         $Grid->accion(array(
             "icono" => "fas fa-search",
             "titulo" => "Ver detalle",
@@ -160,17 +192,23 @@ class interfazEnvioSunat
             )
         ));
 
-
         $Grid->accion(array(
-            "icono" => "fas fa-arrow-circle-right",
             "titulo" => "Enviar Comprobante",
-            "xajax" => array(
-                "fn" => "xajax__enviarComprobanteSunat",
-                "parametros" => array(
-                    "campos" => array("id")
-                )
-            )
+            "width" => "20",
+            "fnCallback" => function ($row) {
+                if ($row["estadosunat"] == '0') {
+                    $cadena = '<a href="javascript:void(0)" onclick="xajax__enviarComprobanteSunat(' . $row["id"] . ')">
+                    <i class="fas fa-arrow-circle-right"></i>
+                    </a>';
+                } else {
+                    $cadena = '';
+                }
+
+                return $cadena;
+            }
         ));
+
+
 
 
 
@@ -365,6 +403,29 @@ function _interfazEnvioSunat()
     xajax__enviosunatDatagrid(xajax.getFormValues('frmConsulta'));
     });");
 
+    $rpta->script("
+    $('#btnSeleccionarTodo').unbind('click').click(function() {  
+        $('input:checkbox').prop('disabled', false); 
+        $('input:checkbox').prop('checked', true);      
+        $('#btnEnviarSunat').show();
+        $('#btnDeseleccionarTodo').show();        
+    });");
+
+    $rpta->script("
+    $('#btnDeseleccionarTodo').unbind('click').click(function() {  
+        $('input:checkbox').prop('checked', false);      
+        $('input:checkbox').prop('disabled', true); 
+        $('#btnEnviarSunat').hide();
+        $('#btnDeseleccionarTodo').hide();        
+    });");
+
+
+    $rpta->script("
+    $('#btnEnviarSunat').unbind('click').click(function() {        
+    xajax__enviosunatMasa(xajax.getFormValues('frmChk'));
+    });");
+
+
     $rpta->script("$('.datepicker').datepicker({
         clearBtn: true,
         language: 'es'
@@ -388,7 +449,6 @@ function _enviarComprobanteSunat($idventa)
     $interfaz = new interfazEnvioSunat();
     $c = 0;
     $d = 1;
-
 
     $databoleta = $clsventa->consultar('2', $idventa);
     $datadetalle = $clsventa->consultar('3', $idventa);
@@ -501,9 +561,7 @@ function _enviarComprobanteSunat($idventa)
 
 
 
-
         if ($response["respuesta"] == 'OK') {
-
             $clsventa->mantenimientocomprobantesunat('1', $idventa, $data["serie_comprobante"], $data["numero_comprobante"], $response['respuesta'], $response['hash_cpe'], $response['hash_cdr'], $response['cod_sunat'], $response['msj_sunat'], '1');
             $rpta->alert($response['msj_sunat']);
             $rpta->script("document.getElementById('btnBuscar').click()");
@@ -623,10 +681,7 @@ function _enviarComprobanteSunat($idventa)
         $response = json_decode($respuesta, true);
 
 
-
-
         if ($response["respuesta"] == 'OK') {
-
             $clsventa->mantenimientocomprobantesunat('1', $idventa, $data["serie_comprobante"], $data["numero_comprobante"], $response['respuesta'], $response['hash_cpe'], $response['hash_cdr'], $response['cod_sunat'], $response['msj_sunat'], '1');
             $rpta->alert($response['msj_sunat']);
             $rpta->script("document.getElementById('btnBuscar').click()");
@@ -638,21 +693,286 @@ function _enviarComprobanteSunat($idventa)
             $clsventa->mantenimientocomprobantesunat('2', $idventa, $data["serie_comprobante"], $data["numero_comprobante"], $response['respuesta'], $response['hash_cpe'], $response['hash_cdr'], $response['cod_sunat'], str_replace("'", "", $response['msj_sunat']), '0');
             $rpta->alert($cadena);
         }
-
-
-
-        $rpta->assign("idRespuesta", "innerHTML", $cadena);
     }
-
-
-
-
-
     return $rpta;
 }
 
+function _enviosunatMasa($form)
+{
+    $rpta = new xajaxResponse();
 
+    $f = 1;
+
+
+
+
+    $cabeceraaceptados = 'RESUMEN COMPROBANTES ACEPTADOS (*)';
+    $cabeceraaceptados .= '\\n-----------------------------------------------------------------------\\n';
+    $msjaceptados = '';
+
+    $cabeceranoaceptados = '\\nRESUMEN COMPROBANTES NO ACEPTADOS (*)';
+    $cabeceranoaceptados .= '\\n-----------------------------------------------------------------------\\n';
+    $msjnoaceptados = '';
+
+    while ($f <= 100) {
+        if (isset($form["checkbox_" . $f])) {
+            $idventa  = $form["checkbox_" . $f];
+            $clsventa = new venta();
+            $interfaz = new interfazEnvioSunat();
+            $c = 0;
+            $d = 1;
+
+
+            $databoleta = $clsventa->consultar('2', $idventa);
+            $datadetalle = $clsventa->consultar('3', $idventa);
+            $data = array();
+            $arraydetalle = array();
+
+
+            if ($databoleta[0]["tipocomprobante"] == '03') {
+                $ruta = "http://localhost/minimarket/tools/UBL21/ws/boleta.php";
+                $codigotipodocumento = '03';
+
+                $arrayempresa = array(
+                    "ruc" => "20605714413",
+                    "tipo_doc" => '6',
+                    "nom_comercial" => 'A.A.A. MINIMARKET E.I.R.L.',
+                    "razon_social" => 'A.A.A. MINIMARKET E.I.R.L.',
+                    "codigo_ubigeo" => '021809',
+                    "direccion" => 'AV. PACIFICO MZA. A-1 LOTE. 2 (FRENTE DEL MERCADO BUENOS AIRES) ANCASH - SANTA - NUEVO CHIMBOTE',
+                    "direccion_departamento" => 'ANCASH',
+                    "direccion_provincia" => 'SANTA',
+                    "direccion_distrito" => 'NUEVO CHIMBOTE',
+                    "direccion_codigopais" => '9589',
+                    "usuariosol" => 'MODDATOS',
+                    "clavesol" => 'MODDATOS'
+                );
+
+                while ($c < count($datadetalle)) {
+                    $arraydetalle[$c] = array(
+                        "txtITEM" => $d++,
+                        "txtUNIDAD_MEDIDA_DET" => "NIU",
+                        "txtCANTIDAD_DET" => $datadetalle[$c]["cantidad"],
+                        "txtPRECIO_DET" => $datadetalle[$c]["precio"],
+                        "txtSUB_TOTAL_DET" => $datadetalle[$c]["subtotalsinigv"],
+                        "txtPRECIO_TIPO_CODIGO" => "01",
+                        "txtIGV" => $datadetalle[$c]["igv"],
+                        "txtISC" => "0", //  POR DEFECTO NO MOVER
+                        "txtIMPORTE_DET" => $datadetalle[$c]["subtotalsinigv"],
+                        "txtCOD_TIPO_OPERACION" => "10", // 10 POR DEFECTO NO MOVER
+                        "txtCODIGO_DET" => $datadetalle[$c]["detalle"],
+                        "txtDESCRIPCION_DET" => $datadetalle[$c]["descripcion"],
+                        "txtPRECIO_SIN_IGV_DET" => $datadetalle[$c]["subtotalsinigv"]
+                    );
+                    $c++;
+                }
+
+
+
+                foreach ($databoleta as $item) {
+                    $data["tipo_proceso"] = "3";
+                    $data["pass_firma"] = "20605714413";
+                    $data["tipo_operacion"] = "0101";
+                    $data["total_gravadas"] = $item["subtotal"];
+                    $data["total_inafecta"] = 0;
+                    $data["total_exoneradas"] = 0;
+                    $data["total_gratuitas"] = 0;
+                    $data["total_exportacion"] = 0;
+                    $data["total_descuento"] = 0;
+                    $data["sub_total"] = $item["subtotal"];
+                    $data["porcentaje_igv"] = '18.00';
+                    $data["total_igv"] = $item["igv"];
+                    $data["total_isc"] = "0";
+                    $data["total_otr_imp"] = "0";
+                    $data["total"] = $item["total"];
+                    $data["total_letras"] = $interfaz->numtoletras($item["total"]);
+                    $data["nro_guia_remision"] = "";
+                    $data["cod_guia_remision"] = "";
+                    $data["nro_otr_comprobante"] = "";
+                    $data["serie_comprobante"] = $item["serie"];
+                    $data["numero_comprobante"] = $item["nrocomprobante"];
+                    $data["fecha_comprobante"] = substr($item["fechaventa"], 0, 10);
+                    $data["fecha_vto_comprobante"] = substr($item["fechaventa"], 0, 10);
+                    $data["cod_tipo_documento"] = $codigotipodocumento;
+                    $data["cod_moneda"] = 'PEN';
+
+                    $data["cliente_numerodocumento"] = $item["nrodocumento"];
+                    $data["cliente_nombre"] = $item["nombres"];
+                    $data["cliente_tipodocumento"] = $codigotipodocumento;
+                    $data["cliente_direccion"] = $item["direccion"];
+                    $data["cliente_pais"] = "PE";
+                    $data["cliente_ciudad"] = "CHIMBOTE";
+                    $data["cliente_codigoubigeo"] = "";
+                    $data["cliente_departamento"] = "";
+                    $data["cliente_provincia"] = "";
+                    $data["cliente_distrito"] = "";
+                    $data["emisor"] = $arrayempresa;
+                    $data["detalle"] = $arraydetalle;
+                }
+
+                //Invocamos el servicio
+                $token = ''; //en caso quieras utilizar algún token generado desde tu sistema
+                //codificamos la data
+                $data_json = json_encode($data);
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $ruta);
+                curl_setopt(
+                    $ch,
+                    CURLOPT_HTTPHEADER,
+                    array(
+                        'Authorization: Token token="' . $token . '"',
+                        'Content-Type: application/json',
+                    )
+                );
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $data_json);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                $respuesta = curl_exec($ch);
+                curl_close($ch);
+                $response = json_decode($respuesta, true);
+
+
+
+                if ($response["respuesta"] == 'OK') {
+                    $clsventa->mantenimientocomprobantesunat('1', $idventa, $data["serie_comprobante"], $data["numero_comprobante"], $response['respuesta'], $response['hash_cpe'], $response['hash_cdr'], $response['cod_sunat'], $response['msj_sunat'], '1');
+                    $msjaceptados .= $response['msj_sunat'] . '\\n';
+                } else {
+                    $clsventa->mantenimientocomprobantesunat('2', $idventa, $data["serie_comprobante"], $data["numero_comprobante"], $response['respuesta'], $response['hash_cpe'], $response['hash_cdr'], $response['cod_sunat'], str_replace("'", "", $response['msj_sunat']), '0');
+                    $msjnoaceptados .= $response['msj_sunat'] . '\\n';
+                }
+            } elseif ($databoleta[0]["tipocomprobante"] == '01') {
+                $ruta = "http://localhost/minimarket/tools/UBL21/ws/factura.php";
+                $codigotipodocumento = '06';
+
+                $arrayempresa = array(
+                    "ruc" => "20605714413",
+                    "tipo_doc" => '6',
+                    "nom_comercial" => 'A.A.A. MINIMARKET E.I.R.L.',
+                    "razon_social" => 'A.A.A. MINIMARKET E.I.R.L.',
+                    "codigo_ubigeo" => '021809',
+                    "direccion" => 'AV. PACIFICO MZA. A-1 LOTE. 2 (FRENTE DEL MERCADO BUENOS AIRES) ANCASH - SANTA - NUEVO CHIMBOTE',
+                    "direccion_departamento" => 'ANCASH',
+                    "direccion_provincia" => 'SANTA',
+                    "direccion_distrito" => 'NUEVO CHIMBOTE',
+                    "direccion_codigopais" => '9589',
+                    "usuariosol" => 'MODDATOS',
+                    "clavesol" => 'MODDATOS'
+                );
+
+                while ($c < count($datadetalle)) {
+                    $arraydetalle[$c] = array(
+                        "txtITEM" => $d++,
+                        "txtUNIDAD_MEDIDA_DET" => "NIU",
+                        "txtCANTIDAD_DET" => $datadetalle[$c]["cantidad"],
+                        "txtPRECIO_DET" => $datadetalle[$c]["precio"],
+                        "txtSUB_TOTAL_DET" => $datadetalle[$c]["subtotalsinigv"],
+                        "txtPRECIO_TIPO_CODIGO" => "01",
+                        "txtIGV" => $datadetalle[$c]["igv"],
+                        "txtISC" => "0", //  POR DEFECTO NO MOVER
+                        "txtIMPORTE_DET" => $datadetalle[$c]["subtotalsinigv"],
+                        "txtCOD_TIPO_OPERACION" => "10", // 10 POR DEFECTO NO MOVER
+                        "txtCODIGO_DET" => $datadetalle[$c]["detalle"],
+                        "txtDESCRIPCION_DET" => $datadetalle[$c]["descripcion"],
+                        "txtPRECIO_SIN_IGV_DET" => $datadetalle[$c]["subtotalsinigv"]
+                    );
+                    $c++;
+                }
+
+
+
+                foreach ($databoleta as $item) {
+                    $data["tipo_proceso"] = "3";
+                    $data["pass_firma"] = "20605714413";
+                    $data["tipo_operacion"] = "0101";
+                    $data["total_gravadas"] = $item["subtotal"];
+                    $data["total_inafecta"] = 0;
+                    $data["total_exoneradas"] = 0;
+                    $data["total_gratuitas"] = 0;
+                    $data["total_exportacion"] = 0;
+                    $data["total_descuento"] = 0;
+                    $data["sub_total"] = $item["subtotal"];
+                    $data["porcentaje_igv"] = '18.00';
+                    $data["total_igv"] = $item["igv"];
+                    $data["total_isc"] = "0";
+                    $data["total_otr_imp"] = "0";
+                    $data["total"] = $item["total"];
+                    $data["total_letras"] = $interfaz->numtoletras($item["total"]);
+                    $data["nro_guia_remision"] = "";
+                    $data["cod_guia_remision"] = "";
+                    $data["nro_otr_comprobante"] = "";
+                    $data["serie_comprobante"] = $item["serie"];
+                    $data["numero_comprobante"] = $item["nrocomprobante"];
+                    $data["fecha_comprobante"] = substr($item["fechaventa"], 0, 10);
+                    $data["fecha_vto_comprobante"] = substr($item["fechaventa"], 0, 10);
+                    $data["cod_tipo_documento"] = "01";
+                    $data["cod_moneda"] = 'PEN';
+
+                    $data["cliente_numerodocumento"] = $item["nrodocumento"];
+                    $data["cliente_nombre"] = $item["nombres"];
+                    $data["cliente_tipodocumento"] = "6";
+                    $data["cliente_direccion"] = $item["direccion"];
+                    $data["cliente_pais"] = "PE";
+                    $data["cliente_ciudad"] = "CHIMBOTE";
+                    $data["cliente_codigoubigeo"] = "";
+                    $data["cliente_departamento"] = "";
+                    $data["cliente_provincia"] = "";
+                    $data["cliente_distrito"] = "";
+                    $data["emisor"] = $arrayempresa;
+                    $data["detalle"] = $arraydetalle;
+                }
+
+                //Invocamos el servicio
+                $token = ''; //en caso quieras utilizar algún token generado desde tu sistema
+                //codificamos la data
+                $data_json = json_encode($data);
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $ruta);
+                curl_setopt(
+                    $ch,
+                    CURLOPT_HTTPHEADER,
+                    array(
+                        'Authorization: Token token="' . $token . '"',
+                        'Content-Type: application/json',
+                    )
+                );
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $data_json);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                $respuesta = curl_exec($ch);
+                curl_close($ch);
+                $response = json_decode($respuesta, true);
+
+
+                if ($response["respuesta"] == 'OK') {
+                    $clsventa->mantenimientocomprobantesunat('1', $idventa, $data["serie_comprobante"], $data["numero_comprobante"], $response['respuesta'], $response['hash_cpe'], $response['hash_cdr'], $response['cod_sunat'], $response['msj_sunat'], '1');
+                    $msjaceptados .= $response['msj_sunat'] . '\\n';
+                } else {
+                    $clsventa->mantenimientocomprobantesunat('2', $idventa, $data["serie_comprobante"], $data["numero_comprobante"], $response['respuesta'], $response['hash_cpe'], $response['hash_cdr'], $response['cod_sunat'], str_replace("'", "", $response['msj_sunat']), '0');
+                    $msjnoaceptados .= $response['msj_sunat'] . '\\n';
+                }
+            }
+        }
+        $f++;
+    }
+
+    if ($msjaceptados == '') {
+        $cabeceraaceptados = '';
+    }
+
+    if ($msjnoaceptados == '') {
+        $cabeceranoaceptados = '';
+    }
+    $rpta->script('alert("' . $cabeceraaceptados . $msjaceptados . $cabeceranoaceptados . $msjnoaceptados . '")');
+
+
+
+    $rpta->script('$("#btnBuscar").click()');
+    return $rpta;
+}
 
 $xajax->register(XAJAX_FUNCTION, '_interfazEnvioSunat');
 $xajax->register(XAJAX_FUNCTION, '_enviosunatDatagrid');
 $xajax->register(XAJAX_FUNCTION, '_enviarComprobanteSunat');
+$xajax->register(XAJAX_FUNCTION, '_enviosunatMasa');

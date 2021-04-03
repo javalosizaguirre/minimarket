@@ -132,7 +132,7 @@ class interfazVentas
            <button class="btn btn-primary" type="button" id="btnProcesarVenta" style="width:100px">Procesar</button>
            </div> 
         </div>     
-        <iframe style="display:none" id="frame" width="1" height="1" frameborder="0"></iframe>    
+        <iframe style="display:none" id="frame" width="300" height="300" frameborder="0"></iframe>    
             <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         
     </div>       
@@ -214,7 +214,7 @@ class interfazVentas
                         <table style="width: 40%" border="0">
                             <tr>
                                 <td style="width: 20%" >Pago con:</td>
-                                <td><input style="text-align:right" type="text" class="form-control" id="txtPagoCon" name="txtPagoCon" placeholder="S/ 0.00"  onkeyup="calcularVuelto()"></td>
+                                <td><input style="text-align:right" type="text" class="form-control" id="txtPagoCon" name="txtPagoCon" placeholder="S/ 0.00"  onkeyup="calcularVuelto()" onkeypress="return gKeyAceptaSoloDigitosPunto(event)"></td>
                                 <td></td>
                                 <td>Vuelto:</td>
                                 <td><input style="text-align:right" type="text" class="form-control" id="txtVuelto" name="txtVuelto" placeholder="S/ 0.00" readonly></td>
@@ -227,9 +227,9 @@ class interfazVentas
                 <input type="hidden" id="txtTotal" name="txtTotal" value="0.00">
 
 
-                <input type="text" id="txtSubtotalBoleta" name="txtSubtotalBoleta"  value="0.00">
-                <input type="text" id="txtIgvBoleta" name="txtIgvBoleta"  value="0.00">
-                <input type="text" id="txtTotalBoleta" name="txtTotalBoleta"  value="0.00">';
+                <input type="hidden" id="txtSubtotalBoleta" name="txtSubtotalBoleta"  value="0.00">
+                <input type="hidden" id="txtIgvBoleta" name="txtIgvBoleta"  value="0.00">
+                <input type="hidden" id="txtTotalBoleta" name="txtTotalBoleta"  value="0.00">';
             $html .= '</tbody></table>';
             return $html;
         }
@@ -693,13 +693,31 @@ function _procesarVenta($form)
         $msj1 .= '- Nombre.\\n';
     }
 
-
-    if ($form["txtTotal"] == '' || (!isset($form["txtTotal"]))) {
-        $msj1 .= '- Debe agregar al menos un Producto.\\n';
+    if ($form["lstTipoDocumento"] == '01') {
+        if ($form["txtTotal"] == '0.00' || $form["txtTotal"] == '' || (!isset($form["txtTotal"]))) {
+            $msj1 .= '- Debe agregar al menos un Producto.\\n';
+        }
+    } else {
+        if ($form["txtTotalBoleta"] == '0.00' || $form["txtTotalBoleta"] == '' || (!isset($form["txtTotalBoleta"]))) {
+            $msj1 .= '- Debe agregar al menos un Producto.\\n';
+        }
     }
 
-    if ($form["txtPagoCon"] == '') {
-        $msj1 .= '- Pago con.\\n';
+
+    if ($form["lstFormaPago"] != '3') {
+        if ($form["txtPagoCon"] == '') {
+            $msj1 .= '- Pago con.\\n';
+        } else {
+            if ($form["lstTipoDocumento"] == '01') {
+                if ($form["txtPagoCon"] < $form["txtTotal"]) {
+                    $msj1 .= '- El importe pagado no puede ser menor al total de venta.\\n';
+                }
+            } else {
+                if ($form["txtPagoCon"] < $form["txtTotalBoleta"]) {
+                    $msj1 .= '- El importe pagado no puede ser menor al total de venta.\\n';
+                }
+            }
+        }
     }
 
 
@@ -720,6 +738,7 @@ function _procesarVenta($form)
             }
 
             if ($resultdetalle[0]["mensaje"] == 'MSG_001') {
+
                 $rpta->script("
                     function loadPage(){
                         var frame = $('#frame');
@@ -727,7 +746,6 @@ function _procesarVenta($form)
                         frame.attr('src',url);
                     }
                 ");
-
                 $rpta->script("loadPage()");
                 $_SESSION["carrito"] = array();
                 $rpta->assign("outQuery", "innerHTML", '');
@@ -900,6 +918,8 @@ function _reeimprimirComprobante($idventa)
                         frame.attr('src',url);
                     
                 ");
+
+
     return $rpta;
 }
 

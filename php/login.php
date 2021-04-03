@@ -23,6 +23,7 @@ if ($datosUsuario[0]["perfil"] != '') {
     $_SESSION["sys_caja_asignada"] = $datosUsuario[0]["cajaasignada"];
     $_SESSION["carrito"] = array();
     $_SESSION["notaingreso"] = array();
+    $_SESSION["sys_mensaje_sunat"] = '';
     header('Location: ../interfazMenuPrincipal.php');
 } else {
     header('Location: ../');

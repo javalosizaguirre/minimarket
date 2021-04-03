@@ -88,7 +88,8 @@ class venta extends connectdb
         $tipocomprobante = $criterio["lstTipoComprobante"];
         $fecha = ymd($criterio["txtFecha"]);
         $nrocomprobante = $criterio["txtBuscar"];
-        $query = "CALL sp_ventaEnvioSunatBuscar('$criterio', '$buscar', '$flagContar', '$paginaActual', '$regsPorPag','$tipocomprobante','$fecha','$nrocomprobante')";
+        $estado = isset($criterio["lstEstado"]) ? $criterio["lstEstado"] : '';
+        $query = "CALL sp_ventaEnvioSunatBuscar('$criterio', '$buscar', '$flagContar', '$paginaActual', '$regsPorPag','$tipocomprobante','$fecha','$nrocomprobante','$estado')";
         // echo "buscar--->   ".$query;
         $result = parent::query($query);
 
