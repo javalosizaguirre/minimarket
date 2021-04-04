@@ -1,3 +1,3 @@
 <?php
 session_destroy();
-header('LocationEsto: ../');
+header('Location: ../');
