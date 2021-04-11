@@ -35,6 +35,7 @@ include RUTA_PHP_MODULO . "interfazIngresoProductos.php";
 include RUTA_PHP_MODULO . "interfazEnvioComprobantesSunat.php";
 include RUTA_PHP_MODULO . "interfazReporteVentas.php";
 include RUTA_PHP_MODULO . "interfazCreadorCodigoBarras.php";
+include RUTA_PHP_MODULO . "interfazParametrosGenerales.php";
 
 date_default_timezone_set('America/Lima');
 
