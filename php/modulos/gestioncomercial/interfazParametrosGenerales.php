@@ -231,7 +231,7 @@ function _parametrosgeneralesMantenimiento($flag, $form)
 
     if ($result[0]['mensaje'] == 'MSG_001') {
         $rpta->alert(MSG_001);
-        $rpta->script("xajax__interfazParametrosGenerales()");
+        $rpta->script("location.reload()");
     }
 
 
