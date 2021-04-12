@@ -7,8 +7,54 @@ include_once '../../../tools/phpqrcode/qrlib.php';
 
 
 $clasecomprobante = new comprobante();
+
+
+$dataempresa = $clasecomprobante->consultarParametrosGenerales('4', '');
+
 $datacomprobante = $clasecomprobante->consultar('1', $_GET["id"]);
 $datadetalle = $clasecomprobante->consultar('2', $datacomprobante[0]["id"]);
+
+$razonsocial = '';
+$razonsocialcomercial = '';
+$ruc = '';
+$direccion = '';
+$nombredepartamento = '';
+$nombreprovincia = '';
+$nombredistrito = '';
+$codigoubigeo = '';
+
+foreach ($dataempresa as $value) {
+    if ($value["descripcion"] == 'RAZON_SOCIAL') {
+        $razonsocial = $value["valor"];
+    }
+    if ($value["descripcion"] == 'RUC_EMPRESA') {
+        $ruc = $value["valor"];
+    }
+    if ($value["descripcion"] == 'DIRECCION_EMPRESA') {
+        $direccion = $value["valor"];
+    }
+    if ($value["descripcion"] == 'RAZON_SOCIAL_COMERCIAL') {
+        $razonsocialcomercial = $value["valor"];
+    }
+
+    if ($value["descripcion"] == 'DEPARTAMENTO_EMPRESA') {
+        $nombredepartamento = $value["nombredepartamento"];
+    }
+
+    if ($value["descripcion"] == 'PROVINCIA_EMPRESA') {
+        $nombreprovincia = $value["nombreprovincia"];
+    }
+
+    if ($value["descripcion"] == 'DISTRITO_EMPRESA') {
+        $nombredistrito = $value["nombredistrito"];
+    }
+    if ($value["descripcion"] == 'DISTRITO_EMPRESA') {
+        $codigoubigeo = $value["valor"];
+    }
+}
+
+
+
 
 $tipocomprobante = '';
 if (strlen($datacomprobante[0]["cliente"]) == 8) {
@@ -46,15 +92,15 @@ if ($databoleta[0]["tipocomprobante"] == '03') {
     $ruta = "http://localhost/minimarket/tools/UBL21/ws/boleta.php";
     $codigotipodocumento = '03';
     $arrayempresa = array(
-        "ruc" => "20605714413",
+        "ruc" => $ruc,
         "tipo_doc" => '6',
-        "nom_comercial" => 'A.A.A. MINIMARKET E.I.R.L.',
-        "razon_social" => 'A.A.A. MINIMARKET E.I.R.L.',
-        "codigo_ubigeo" => '021809',
-        "direccion" => 'AV. PACIFICO MZA. A-1 LOTE. 2 (FRENTE DEL MERCADO BUENOS AIRES) ANCASH - SANTA - NUEVO CHIMBOTE',
-        "direccion_departamento" => 'ANCASH',
-        "direccion_provincia" => 'SANTA',
-        "direccion_distrito" => 'NUEVO CHIMBOTE',
+        "nom_comercial" => $razonsocialcomercial,
+        "razon_social" => $razonsocial,
+        "codigo_ubigeo" => $codigoubigeo,
+        "direccion" => $direccion . ' ' . $nombredepartamento . ' ' . $nombreprovincia . ' ' . $nombredistrito,
+        "direccion_departamento" => $nombredepartamento,
+        "direccion_provincia" => $nombreprovincia,
+        "direccion_distrito" => $nombredistrito,
         "direccion_codigopais" => '9589',
         "usuariosol" => 'MODDATOS',
         "clavesol" => 'MODDATOS'
@@ -157,15 +203,15 @@ if ($databoleta[0]["tipocomprobante"] == '03') {
     $codigotipodocumento = '06';
 
     $arrayempresa = array(
-        "ruc" => "20605714413",
+        "ruc" => $ruc,
         "tipo_doc" => '6',
-        "nom_comercial" => 'A.A.A. MINIMARKET E.I.R.L.',
-        "razon_social" => 'A.A.A. MINIMARKET E.I.R.L.',
-        "codigo_ubigeo" => '021809',
-        "direccion" => 'AV. PACIFICO MZA. A-1 LOTE. 2 (FRENTE DEL MERCADO BUENOS AIRES) ANCASH - SANTA - NUEVO CHIMBOTE',
-        "direccion_departamento" => 'ANCASH',
-        "direccion_provincia" => 'SANTA',
-        "direccion_distrito" => 'NUEVO CHIMBOTE',
+        "nom_comercial" => $razonsocialcomercial,
+        "razon_social" => $razonsocial,
+        "codigo_ubigeo" => $codigoubigeo,
+        "direccion" => $direccion . ' ' . $nombredepartamento . ' ' . $nombreprovincia . ' ' . $nombredistrito,
+        "direccion_departamento" => $nombredepartamento,
+        "direccion_provincia" => $nombreprovincia,
+        "direccion_distrito" => $nombredistrito,
         "direccion_codigopais" => '9589',
         "usuariosol" => 'MODDATOS',
         "clavesol" => 'MODDATOS'
@@ -449,13 +495,16 @@ function subfijo($xx)
 <body>
     <table>
         <tr>
-            <td align="center" style="font-size:16px; font-weight:bold">.:: AAA MINIMARKET E.I.R.L. ::.</td>
+            <td align="center" style="font-size:16px; font-weight:bold">.:: <?php echo $razonsocial ?> ::.</td>
         </tr>
         <tr>
-            <td align="center" style="font-size:16px; font-weight:bold">R.U.C. 20605714413</td>
+            <td align="center" style="font-size:16px; font-weight:bold">R.U.C. <?php echo $ruc ?></td>
         </tr>
         <tr>
-            <td align="center" style="font-size:16px; font-weight:bold">AV. PACÍFICO A-1 NUEVO CHIMBOTE - ANCASH</td>
+            <td align="center" style="font-size:16px; font-weight:bold"><?php echo $direccion ?></td>
+        </tr>
+        <tr>
+            <td align="center" style="font-size:16px; font-weight:bold"><?php echo $nombredepartamento . ' - ' . $nombreprovincia  . ' - ' . $nombredistrito ?></td>
         </tr>
         <tr>
             <td align="center" style="font-size:12px">FECHA/HORA: <?php echo $datacomprobante[0]["fechaventa"]; ?></td>
@@ -608,8 +657,8 @@ function subfijo($xx)
         </tr>
         <tr>
             <td align="center">
-                :: AAA MINIMARKET E.I.R.L::. <br>
-                R.U.C:20605714413
+                .:: <?php echo $razonsocial ?> ::. <br>
+                <?php echo $ruc ?>
             </td>
         </tr>
     </table>

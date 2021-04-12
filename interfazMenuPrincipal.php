@@ -35,12 +35,50 @@ include RUTA_PHP_MODULO . "interfazIngresoProductos.php";
 include RUTA_PHP_MODULO . "interfazEnvioComprobantesSunat.php";
 include RUTA_PHP_MODULO . "interfazReporteVentas.php";
 include RUTA_PHP_MODULO . "interfazCreadorCodigoBarras.php";
+include RUTA_PHP_MODULO . "interfazParametrosGenerales.php";
 
 date_default_timezone_set('America/Lima');
 
 $clsMenu = new menu();
 $dataModulos = $clsMenu->consultarMenu('1', $_SESSION["sys_perfil"]);
+$xajax->register(XAJAX_FUNCTION, '_verificarDatos');
 
+
+
+function _verificarDatos()
+{
+    $rpta = new xajaxResponse();
+    $clase = new parametrosgenerales();
+    $data = $clase->consultar('4', '');
+    $razonsocial = '';
+    $ruc = '';
+    $direccion = '';
+    $razonsocialcomercial = '';
+
+    foreach ($data as $value) {
+        if ($value["descripcion"] == 'RAZON_SOCIAL') {
+            $razonsocial = $value["valor"];
+        }
+
+        if ($value["descripcion"] == 'RUC_EMPRESA') {
+            $ruc = $value["valor"];
+        }
+
+        if ($value["descripcion"] == 'RAZON_SOCIAL_COMERCIAL') {
+            $razonsocialcomercial = $value["valor"];
+        }
+    }
+
+    if ($razonsocial == '' || $ruc == '') {
+        $rpta->script("$('#dvMenuPrincipal').hide()");
+        $rpta->alert("Por favor sirvase llenar los datos iniciales de Configuración");
+        $rpta->script("xajax__interfazParametrosGenerales()");
+    } else {
+        header('Location: ../interfazMenuPrincipal.php');
+    }
+    $rpta->assign("dvRazonSocial", "text", $razonsocialcomercial);
+    return $rpta;
+}
 $xajax->processRequest();
 ?>
 <!DOCTYPE html>
@@ -83,7 +121,7 @@ $xajax->processRequest();
 
 </head>
 
-<body>
+<body onload="xajax__verificarDatos()">
 
     <div class="page-wrapper chiller-theme toggled">
         <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
@@ -92,7 +130,7 @@ $xajax->processRequest();
         <nav id="sidebar" class="sidebar-wrapper">
             <div class="sidebar-content">
                 <div class="sidebar-brand">
-                    <a href="#">Minimarket aaa</a>
+                    <a href="#" id="dvRazonSocial"></a>
                     <div id="close-sidebar">
                         <i class="fas fa-times"></i>
                     </div>
@@ -113,7 +151,7 @@ $xajax->processRequest();
                     </div>
                 </div>
                 <!-- sidebar-header  -->
-                <div class="sidebar-menu">
+                <div class="sidebar-menu" id="dvMenuPrincipal">
                     <ul>
 
                         <?php

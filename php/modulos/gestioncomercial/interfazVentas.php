@@ -320,13 +320,13 @@ class interfazVentas
 
         $Grid->columna(array(
             "titulo" => "Estado",
-            "campo" => "anulado",
+            "campo" => "estadosunat",
             "width" => "20",
             "fnCallback" => function ($row) {
-                if ($row["anulado"] == '1') {
-                    $cadena = '<span class = "badge badge-success">Anulado</span>';
-                } elseif ($row["anulado"] == '0') {
-                    $cadena = '<span class = "badge badge-danger"></span>';
+                if ($row["estadosunat"] == '1') {
+                    $cadena = '<span class = "badge badge-success">Enviado</span>';
+                } elseif ($row["estadosunat"] == '0') {
+                    $cadena = '<span class = "badge badge-danger">Pendiente</span>';
                 }
                 return $cadena;
             }
